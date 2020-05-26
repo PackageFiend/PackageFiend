@@ -13,3 +13,4 @@ deploy:
         bucket_name: "elasticbeanstalk-us-east-1-236301425402"
 after_deploy:
         - echo "(!!!)done deploying!"
+script: "true"
