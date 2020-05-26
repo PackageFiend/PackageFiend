@@ -3,10 +3,8 @@ node_js:
         - 12.16.2
 deploy:
         provider: elasticbeanstalk
-        access_key_id:
-                secure: "Encrypted $ACCESSKEYID="
-        secret_access_key:
-                secure: "Encrypted $SECRETACCESSKEY="
+        access_key_id: "$ACCESSKEYID="
+        secret_access_key: "$SECRETACCESSKEY="
         region: "us-east-1"
         app: "package-fiend"
         env: "Pkgfnd-env"
