@@ -8,7 +8,7 @@ deploy:
         region: "us-east-1"
         app: "PKGFND"
         env: "Pkgfnd-env"
-        bucket_name: "elasticbeanstalk-us-east-1-236301425402"
+        bucket_name: "packagefiend" 
 after_deploy:
         - echo "(!!!)done deploying!"
 script: "true"
