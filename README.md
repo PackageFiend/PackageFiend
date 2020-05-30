@@ -3,6 +3,8 @@ Authentication
 Follow the instructions for
 [installation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html) of DynamoDB
 
+`git pull` and switch to the `api_endpoints` branch
+
 Run `npm install` in the root of this repo
 
 Run `node ./dev/create.js` 
