@@ -1,7 +1,7 @@
 Authentication
 ---
 Follow the instructions for
-(installation)[https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html]
+[installation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html)
 
 Run `npm install` in the root of this repo
 
