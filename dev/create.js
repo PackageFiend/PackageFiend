@@ -27,7 +27,7 @@ async function main() {
     try {
       const data = await dynamodb.createTable(params);
       console.log('Created table:', JSON.stringify(data, null, 2));
-    } catch {
+    } catch (err) {
       console.error('Error creating table:', JSON.stringify(err, null, 2));
     }
   }
@@ -61,7 +61,7 @@ async function main() {
       Item: user
     };
 
-    puts.push(docClient.put(params));
+    puts.push(docClient.put(params).promise());
   }
 
   try {
