@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const crypto = require('crypto');
+const AWS = require('aws-sdk');
+
+AWS.config.update({
+  region: 'us-east-1',
+  endpoint: 'http://localhost:8000'
+});
+
+const docClient = new AWS.DynamoDB.DocumentClient();
 
 router.post('/login', function (req, res, next) {
   console.log(req.body);
@@ -21,13 +30,69 @@ router.post('/login', function (req, res, next) {
           return res.send(err);
         }
 
-        const token = jwt.sign(user, 'secret'); //TODO: CHANGE SECRET TO SOMETHING SECURE AND NOT IN CODE
+        const token = jwt.sign(user, 'secret'); //CRITICAL: CHANGE SECRET TO SOMETHING SECURE AND NOT IN CODE
         return res.json({user, token});
       });
     })(req, res);
   } catch (e) {
     res.send(e);
   }
+});
+
+router.post('/createuser', async (req, res, next) => {
+  dat = req.body;
+  if (!dat.username || !dat.password || !dat.name) {
+    return res.status(400).json({
+      message: 'Bad data. Must contain username, password, and name'
+    });
+  }
+
+  const checkParams = {
+    TableName: 'Users',
+    Key: {
+      "username": dat.username
+    }
+  }
+
+  try {
+    const udat = await docClient.get(checkParams).promise();
+    if (udat.Item !== undefined) {
+      return res.status(400).json({
+        message: 'Username already in use'
+      });
+    }
+  } catch (err) {
+    console.error('Error checking if user exists:', err);
+    return res.sendStatus(500);
+  }
+
+  const passes = 80000;
+
+  const salt = crypto.randomBytes(16).toString('hex');
+  const hash = crypto.pbkdf2Sync(dat.password, salt, passes, 32, 'sha256').toString('hex');
+
+  const params = {
+    TableName: 'Users',
+    Item: {
+      username: dat.username,
+      name: dat.name,
+      password: hash,
+      salt: salt,
+      pass_iter: passes,
+      packages: []
+    }
+  }
+
+  console.log('Creating user:', params.Item);
+
+  try{
+    await docClient.put(params).promise();
+  } catch (err) {
+    console.error('Error adding user to database:', err);
+    return res.sendStatus(500);
+  }
+
+  return res.sendStatus(201);
 });
 
 module.exports = router;

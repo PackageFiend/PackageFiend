@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -12,38 +14,47 @@ AWS.config.update({
   endpoint: "http://localhost:8000"
 });
 
-var docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new AWS.DynamoDB.DocumentClient();
 
 passport.use(new LocalStrategy(
   function (username, password, cb) {
     const params = {
       TableName: "Users",
-      KeyConditionExpression: "username = :uname",
-      ExpressionAttributeValues: {
-        ":uname": username
-      },
-      Limit: 1
+      Key: {
+        "username": username
+      }
     };
 
-    docClient.query(params, function(err, data) {
+    docClient.get(params, function(err, data) {
       if (err) {
-        return cb(null, false, {message: 'Unknown error occurred.'});
+        console.error('Error getting user for login:', err);
+        return cb(null, false, {message: 'Internal error'});
       }
 
-      if (data.Count == 0) {
+      if (data.Item === undefined) {
         console.log('Bad login attempt, bad username');
         return cb(null, false, {message: 'Incorrect username or password'});
       }
 
-      if (data.Items[0].password === password) {
+      console.log(data.Item);
+
+      const salt = data.Item.salt;
+      const passes = data.Item.pass_iter;
+      const hash = crypto.pbkdf2Sync(password, salt, passes, 32, 'sha256').toString('hex');
+      if (data.Item.password === hash) {
         const jwtDat = {
           username: username,
-          name: data.Items[0].name
+          name: data.Item.name
         };
 
         console.log('Successful login');
         return cb(null, jwtDat, {message: 'Logged in'});
       }
+
+      console.log('Bad login attempt, bad password');
+      console.log(hash)
+      console.log(data.Item.password);
+      return cb(null, false, {message: 'Incorrect username or password'});
     })
   })
 );
