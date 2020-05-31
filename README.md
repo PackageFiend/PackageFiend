@@ -1,5 +1,5 @@
 Authentication
----
+===
 Follow the instructions for
 [installation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html) of DynamoDB
 
@@ -34,5 +34,18 @@ be accessed when authenticated)
 
 
 Showing Database Data
----
+===
 Run `node ./dev/showdat.js`
+
+Endpoints
+===
+`/user/`
+---
+`GET /user/profile`: Gives relevent information on the current user. Really,
+this is just the information stored in the JWT.
+
+`GET /user/packages`: Returns a JSON array of all of the package data
+associated with a user.
+
+`POST /user/packages`: Add a new package to the user. The POST must contain at
+least the keys `provider` and `id`.
