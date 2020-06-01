@@ -12,13 +12,13 @@ async function main() {
 
   try {
     const description = await dynamodb.describeTable({TableName: 'Users'});
-    console.log('Users Table:', description);
+    //console.log('Users Table:', description);
     console.log('Table already exists, skipping creation.');
     if (force) {
       throw Error;
     }
   } catch (err) {
-    console.loc('Table does not exist, creating.');
+    console.log('Table does not exist, creating.');
     const params = {
       TableName: 'Users',
       KeySchema: [
