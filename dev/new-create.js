@@ -5,6 +5,8 @@ AWS.config.update({
   endpoint: 'http://localhost:8000'
 });
 
+const dynamodb = new AWS.DynamoDB();
+
 async function main() {
   const params = {
     TableName: 'Users',
@@ -19,7 +21,7 @@ async function main() {
 
   try {
     const data = await dynamodb.createTable(params);
-    console.log('Created table:', JSON.stringify(data, null, 2));
+    console.log('Created table:', data);
   } catch (err) {
     console.error('Error creating table:', err);
   }
