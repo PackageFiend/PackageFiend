@@ -19,6 +19,7 @@
   "homepage": "https://github.com/bean710/PackageFiend#readme",
   "dependencies": {
     "aws-sdk": "^2.686.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
@@ -26,6 +27,8 @@
     "jsonwebtoken": "^8.5.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "request": "^2.88.2",
+    "xml-js": "^1.6.11"
   }
 }
