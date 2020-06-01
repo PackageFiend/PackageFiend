@@ -20,7 +20,7 @@ async function main() {
   };
 
   try {
-    const data = await dynamodb.createTable(params);
+    const data = await dynamodb.createTable(params).promise();
     console.log('Created table:', data);
   } catch (err) {
     console.error('Error creating table:', err);
