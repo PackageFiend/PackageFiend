@@ -5,7 +5,7 @@ AWS.config.update({
   endpoint: 'http://localhost:8000'
 });
 
-function main() {
+async function main() {
   const params = {
     TableName: 'Users',
     KeySchema: [
