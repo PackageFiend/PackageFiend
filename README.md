@@ -49,3 +49,11 @@ associated with a user.
 
 `POST /user/packages`: Add a new package to the user. The POST must contain at
 least the keys `provider` and `id`.
+
+`/auth/`
+---
+`POST /auth/createuser`: Creates a new user. The POST must contain at least the
+keys `name`, `username`, and `password`.
+
+`POST /auth/login`: Returns JWT bearer token given the user provides a correct
+username/password. The POST must contain the keys `username` and `password`.
