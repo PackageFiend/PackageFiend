@@ -7,6 +7,8 @@ Follow the instructions for
 
 Run `npm install` in the root of this repo
 
+Run `node dev/create.js`
+
 Do a POST request to `localhost:8080/auth/createuser` with JSON like `{
 	"name": "Test numero uno",
 	"username": "test1",
