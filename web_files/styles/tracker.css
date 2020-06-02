@@ -149,12 +149,6 @@ html, body {
     background: #56CCF2;
 }
 
-.track_data {
-    width: 363px;
-    height: 220px;
-    background: #56CCF2;
-}
-
 .completed_bar {
     width: 756px;
     height: 30px;
@@ -181,7 +175,57 @@ html, body {
     cursor: pointer;
 }
 
-.miles_traveled {
+.track_data_box {
+    width: 363px;
+    height: 220px;
+}
+
+.location_box {
+    height: 195px;
+    overflow: auto;
+}
+
+.mileage_listings {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 170px;
+    width: 100%;
+    overflow: auto;
+}
+
+.est_delivery,
+.location_times,
+.miles_soFar,
+.mileages_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.miles_total_estimated {
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    justify-content: space-between;
+}
+
+.bold_body {
+    font-size: 18px;
+    font-weight: 700;
+    height: 25px;
+    top: 0px;
+    margin-top: 0px;
+}
+
+.reg_body {
+    margin-top: 15px;
+}
+
+
+
+.miles_traveled_and_graph {
     display: flex;
     flex-direction: row;
     height: 220px;
@@ -194,7 +238,8 @@ html, body {
 .miles_data {
     width: 363px;
     height: 220px;
-    background: #56CCF2;
+    display: flex;
+    flex-direction: column;
 }
 
 .miles_graph {
