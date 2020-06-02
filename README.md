@@ -16,6 +16,8 @@ Do a POST request to `localhost:8080/auth/createuser` with JSON like `{
 }`. If you get a 201 response, the user was created with that username and
 password combo. Error codes should be self-explainitory.
 
+Run `node server.js`
+
 Do a POST request to `localhost:8080/auth/login` with JSON like `{ "username":
 "Username_here", "password": "Password_here"}`. Use the login data that you
 provided in the last step.
