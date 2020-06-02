@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="./styles/tracker.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">        <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
+        <title>Package Fiend</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="topbar">
+                <div class="track_and_button">                
+                    <div class="enter_track">
+                        <form class="enter_numbers">
+                            <div class="enter_numbers_box">
+                                <i class="fas fa-box"></i>
+                                <input type="text" placeholder="ADD TRACKING NUMBER(S)" required />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="add_button">ADD</div> 
+                </div>
+                <img class="logo" src="../images/PACKAGE_ARROW_FIEND.svg">
+                <div class="sign_in_button">Sign In</div>
+            </div>    
+            <div id="pink_line"></div>
+        </header>
+        <div class="tracker_body">
+            <div class="track_number_title">
+                <p class="tracking_number">1J543FDGLKJ6546</p>
+                <div class="carrier_icon">UPS</div>
+            </div>
+            <div class="map_estimates">
+                <div class="map"></div>
+                <div class="track_data"></div>
+            </div>
+            <div class="completed_bar">
+                <div class="percent_complete">50% est. travel completed</div>
+            </div>
+            <div class="miles_traveled">
+                <div class="miles_data"></div>
+                <div class="miles_graph"></div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div id="bottom_line"></div>
+            <div class="footer_div">
+                <div></div>
+                <div class="holberton">
+                    <img class="holb_logo" src="../images/holb_logo_black.svg">
+                    <p>Holberton School</p>
+                </div>
+                <p id="footer_link">Privacy</p>
+            </div>
+        </footer>
+    </body>
+</html>
