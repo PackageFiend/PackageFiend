@@ -1,0 +1,254 @@
+html, body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.track_and_button {
+    display: flex;
+
+}
+
+.enter_track {
+    display: flex;
+    width: 250px;
+    height: 32px;
+    border: 1px solid #9B51E0;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 19px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.enter_numbers_box i {
+    padding: 10px;
+}
+
+.enter_numbers_box input {
+    background: none;
+    border: none;
+    flex: 1;
+    height: 100%;
+    outline: none;
+    width: 200px;
+}
+
+.add_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 32px;
+    background: #4DBC7B;
+    opacity: .75;
+    border-radius: 5px;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.add_button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.logo {
+    height: 32px;
+}
+
+.sign_in_button {
+    background: #AF74E7;
+    opacity: .75;
+    border-radius: 3px;
+    width: 73px;
+    height: 32px;
+    margin-left:  4px;
+    margin-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_in_button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#pink_line {
+    opacity: 0.75;
+    border: 1px solid #9B51E0;
+}
+
+.tracker_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.track_number_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tracking_number {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.carrier_icon {
+    display: flex;
+    width: 69px;
+    height: 24px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #56CCF2;
+    color: #56CCF2;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.map_estimates {
+    display: flex;
+    flex-direction: row;
+    height: 220px;
+    width: 756px;
+    margin-left: 4px;
+    margin-right: 4px;
+    justify-content: space-between;
+}
+
+.map {
+    width: 363px;
+    height: 220px;
+    background: #56CCF2;
+}
+
+.track_data {
+    width: 363px;
+    height: 220px;
+    background: #56CCF2;
+}
+
+.completed_bar {
+    width: 756px;
+    height: 30px;
+    background: #C4C4C4;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.percent_complete {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    background: #BB6BD9;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    transition: width 2s ease;
+}
+
+.percent_complete:hover {
+    width: 100%;
+    cursor: pointer;
+}
+
+.miles_traveled {
+    display: flex;
+    flex-direction: row;
+    height: 220px;
+    width: 756px;
+    margin-left: 4px;
+    margin-right: 4px;
+    justify-content: space-between;
+}
+
+.miles_data {
+    width: 363px;
+    height: 220px;
+    background: #56CCF2;
+}
+
+.miles_graph {
+    width: 363px;
+    height: 220px;
+    background: #56CCF2;
+}
+
+#bottom_line {
+    opacity: 0.75;
+    border: 1px solid #BDBDBD;
+    padding: 0px;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: white;
+}
+
+.footer_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    opacity: 0.75;
+}
+
+.holberton img {
+    width: 25px;
+    height: 25px;
+}
+
+.holberton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.holberton:hover {
+    color: #D9534F;
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 1;
+}
+
+#footer_link {
+    padding-right: 10px;
+}
+
+#footer_link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: .9;
+}
