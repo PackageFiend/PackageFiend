@@ -20,14 +20,27 @@ html, body {
 
 .topbar {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    background-color: white;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+.track_and_button,
+.logo,
+.sign_in_box {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.sign_in_box {
+    margin-left: auto;
+    justify-content: flex-end;
 }
 
 .track_and_button {
-    display: flex;
-
+    margin-right: auto;
+    justify-content: flex-start;
 }
 
 .enter_track {
@@ -35,11 +48,14 @@ html, body {
     width: 250px;
     height: 32px;
     border: 1px solid #9B51E0;
+    background-color: white;
+    opacity: .8;
     align-items: center;
     box-sizing: border-box;
     border-radius: 19px;
     margin-top: 4px;
     margin-bottom: 4px;
+    margin-left: 4px;
 }
 
 .enter_numbers_box i {
@@ -75,7 +91,10 @@ html, body {
 }
 
 .logo {
-    height: 32px;
+    display: flex;
+    height: 16px;
+    justify-self: center;
+    opacity: .8;
 }
 
 .sign_in_button {
@@ -84,7 +103,6 @@ html, body {
     border-radius: 3px;
     width: 73px;
     height: 32px;
-    margin-left:  4px;
     margin-right: 4px;
     display: flex;
     justify-content: center;
@@ -112,11 +130,19 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    background: #bb6bd9;
+    width: 756px;
+    height: 36px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .tracking_number {
     font-weight: 700;
     font-size: 24px;
+    opacity: .8;
 }
 
 .carrier_icon {
@@ -124,9 +150,10 @@ html, body {
     width: 69px;
     height: 24px;
     font-size: 12px;
+    font-weight: 700;
     justify-content: center;
     align-items: center;
-    border: 1px solid #56CCF2;
+    border: 2px solid #56CCF2;
     color: #56CCF2;
     box-sizing: border-box;
     border-radius: 5px;
