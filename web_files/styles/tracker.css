@@ -143,10 +143,9 @@ html, body {
     justify-content: space-between;
 }
 
-.map {
+#map {
     width: 363px;
     height: 220px;
-    background: #56CCF2;
 }
 
 .completed_bar {
