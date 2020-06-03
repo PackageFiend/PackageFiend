@@ -5,6 +5,7 @@ const fs = require('fs');
 const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/; //Note: This only matches standard tracking number
+const upsReg = /^1Z[A-Z0-9]+$/;
 
 function parseUSPS(resJS) {
   ret = {};
@@ -58,6 +59,56 @@ function parseUSPS(resJS) {
   return ret;
 }
 
+function parseUPS(resJS) {
+  const package = resJS.trackResponse.shipment[0].package[0];
+
+  ret = {};
+
+  if (package === undefined) {
+    ret.TrackNum = null;
+    ret.Error = {
+      Number: resJS.response.errors[0].code,
+      Description: resJS.response.errors[0].message
+    }
+    return ret;
+  }
+
+  ret.Error = false;
+  ret.Provider = "UPS";
+
+  ret.Summary = "foo"; //I think this should probably go
+
+  ret.Delivered = (package.deliveryDate[0].type === "DEL");
+
+  ret.OutForDelivery = false;
+  
+  ret.Events = [];
+  const events = package.activity;
+
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+
+    const date = event.date;
+    const newDate = date.slice(0, 4) + '/' + date.slice(4, 6) + '/' + date.slice(6);
+    
+    const time = event.time;
+    const newTime = time.slice(0, 2) + ':' + time.slice(2, 4) + ':' + time.slice(4);
+
+    const newDateTime = `${newDate} ${newTime}`;
+
+    const loc = event.location.address;
+    const location = [loc.city, loc.stateProvince, loc.postalCode, loc.country].join(' ');
+
+    ret.Events.push({
+      Time: new Date(newDateTime),
+      Description: event.status.description,
+      Location: location
+    });
+  }
+
+  return ret;
+}
+
 module.exports = {
   track: async function(id, provider=null) {
     idClean = id.replace(/\s/g, '');
@@ -70,11 +121,27 @@ module.exports = {
       try {
         const res = await axios.get(`http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=${reqDat}`);
         const resJS = convert.xml2js(res.data, {compact: true, alwaysArray: true});
-        if (false) //I'm not an idiot, this is just for testing
-          resJS = uspsTest;
+
         return parseUSPS(resJS);
       } catch (err) {
         console.error('Error USPS tracking:', err);
+        return null;
+      }
+    } else if (upsReg.test(idClean)) {
+      console.log("UPS number");
+
+      const config = {
+        headers: {
+          AccessLicenseNumber: keys.ups
+        }
+      }
+
+      try {
+        const res = await axios.get(`https://onlinetools.ups.com/track/v1/details/${idClean}`, config);
+
+        return parseUPS(res.data);
+      } catch (err) {
+        console.error('Error UPS tracking:', err);
         return null;
       }
     } else {
