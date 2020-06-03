@@ -4,8 +4,8 @@
         <meta charset="utf8">
         <link rel="stylesheet" href="./styles/tracker.css">
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">        
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
         <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
         <title>Package Fiend</title>
     </head>
@@ -36,7 +36,7 @@
 
             <div class="map_estimates">
             
-                <div class="map"></div>
+                <div id="map"></div>
             
                 <div class="track_data_box">
                     <div class="est_delivery">
@@ -166,4 +166,5 @@
             </div>
         </footer>
     </body>
+    <script type="text/javascript" src="./scripts/tracker.js"></script>
 </html>
