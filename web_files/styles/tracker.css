@@ -92,7 +92,7 @@ html, body {
 
 .logo {
     display: flex;
-    height: 16px;
+    height: 32px;
     justify-self: center;
     opacity: .8;
 }

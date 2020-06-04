@@ -13,6 +13,7 @@ html, body {
 }
 
 .header {
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -27,7 +28,7 @@ html, body {
 }
 
 .left_nav_box,
-.logo,
+.spacer,
 .sign_in_box {
     flex: 1;
     display: inline-flex;
@@ -81,7 +82,8 @@ html, body {
 }
 
 .logo {
-    height: 20px;
+    width: 350px;
+    margin-top: 150px;
 }
 
 .enter_track {
@@ -93,7 +95,7 @@ html, body {
     justify-content: space-between;
     box-sizing: border-box;
     border-radius: 19px;
-    margin-top: 250px;
+    margin-top: 25px;
 }
 
 .enter_numbers_box i {
