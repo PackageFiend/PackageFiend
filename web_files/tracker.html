@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="./styles/tracker.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
+        <title>Package Fiend</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="topbar">
+                <div class="track_and_button">                
+                    <div class="enter_track">
+                        <form class="enter_numbers">
+                            <div class="enter_numbers_box">
+                                <i class="fas fa-box"></i>
+                                <input type="text" placeholder="ADD TRACKING NUMBER(S)" required />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="add_button">ADD</div> 
+                </div>
+                <img class="logo" src="./images/PkgFiend_logo.svg">
+                <div class="sign_in_box">
+                    <div class="sign_in_button">Sign In</div>
+                </div>
+            </div>    
+        </header>
+        <div class="tracker_body">
+            <div class="track_number_title">
+                <p class="tracking_number">1J543FDGLKJ6546</p>
+                <div class="carrier_icon">UPS</div>
+            </div>
+
+            <div class="map_estimates">
+            
+                <div id="map"></div>
+            
+                <div class="track_data_box">
+                    <div class="est_delivery">
+                        <div class="bold_body">Estimated Delivery:</div>
+                        <div class="bold_body">Friday, June 5, 2020</div>
+                    </div>
+                    <div class="location_box">
+                        <div class="location_times">
+                            <div class="location">
+                                <div class="reg_body">Origin:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">Thursday, May 21, 2020 5:09p</div>
+                                <div>Friday, May 22, 2020 5:34a</div>
+                            </div>
+                        </div>
+                        <div class="location_times">
+                            <div class="location">
+                                <div class="reg_body">Stop 1:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">Thursday, May 21, 2020 5:09p</div>
+                                <div>Friday, May 22, 2020 5:34a</div>
+                            </div>
+                        </div>
+                        <div class="location_times">
+                            <div class="location">
+                                <div class="reg_body">Stop 2:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">Thursday, May 21, 2020 5:09p</div>
+                                <div>Friday, May 22, 2020 5:34a</div>
+                            </div>
+                        </div>
+                        <div class="location_times">
+                            <div class="location">
+                                <div class="reg_body">Stop 2:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">Thursday, May 21, 2020 5:09p</div>
+                                <div>Friday, May 22, 2020 5:34a</div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+
+            </div>
+
+            <div class="completed_bar">
+                <div class="percent_complete">50% est. travel completed</div>
+            </div>
+
+            <div class="miles_traveled_and_graph">
+       
+                <div class="miles_data">
+                    <div class="miles_soFar">
+                        <div class="bold_body">Miles Traveled so far:</div>
+                        <div class="bold_body">437 miles</div>
+                    </div>
+                    
+                    <div class="mileage_listings">    
+                        <div class="mileages_box">
+                            <div class="location">
+                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">350 miles</div>
+                                <div>Time: 18hrs</div>
+                            </div>
+                        </div>
+                        <div class="mileages_box">
+                            <div class="location">
+                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">350 miles</div>
+                                <div>Time: 18hrs</div>
+                            </div>
+                        </div>
+                        <div class="mileages_box">
+                            <div class="location">
+                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">350 miles</div>
+                                <div>Time: 18hrs</div>
+                            </div>
+                        </div>
+                        <div class="mileages_box">
+                            <div class="location">
+                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
+                                <div></div>
+                            </div>
+                            <div class="times">
+                                <div class="reg_body">350 miles</div>
+                                <div>Time: 18hrs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="miles_total_estimated">
+                        <div class="bold_body">Estimated Total Miles:</div>
+                        <div class="bold_body">719 Miles</div>
+                    </div>
+                </div>
+                
+                <div class="miles_graph"></div>
+            
+            </div>
+        </div>
+        <footer class="footer">
+            <div id="bottom_line"></div>
+            <div class="footer_div">
+                <div></div>
+                <div class="holberton">
+                    <img class="holb_logo" src="./images/holb_logo_black.svg">
+                    <p>Holberton School</p>
+                </div>
+                <p id="footer_link">Privacy</p>
+            </div>
+        </footer>
+    </body>
+    <script type="text/javascript" src="./scripts/tracker.js"></script>
+</html>
