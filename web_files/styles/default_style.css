@@ -1,8 +1,6 @@
 html, body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     margin: 0;
     box-sizing: border-box;
     padding: 0;
@@ -20,14 +18,30 @@ html, body {
     width: 100%;
 }
 
-.topbar_nosign {
+.navbar {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     height: 40px;
-    padding-left: 8px;
-    padding-right: 4px;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+.left_nav_box,
+.logo,
+.sign_in_box {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.sign_in_box {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.left_nav_box {
+    margin-right: auto;
+    justify-content: flex-start;
 }
 
 .sign_in_button {
@@ -39,6 +53,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 8px;
 }
 
 .sign_in_button:hover {
@@ -49,6 +64,7 @@ html, body {
 #about {
     color: #AF74E7;
     opacity: .65;
+    margin-left: 8px;
 }
 
 #about:hover {
@@ -57,22 +73,15 @@ html, body {
     opacity: 1;
 }
 
-#pink_line {
-    opacity: 0.75;
-    border: 1px solid #9B51E0;
-}
-
 .home_body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    align-self: center;
     height: 100%;
 }
 
-.biglogo {
-    width: 420px;
+.logo {
+    height: 20px;
 }
 
 .enter_track {
@@ -84,7 +93,7 @@ html, body {
     justify-content: space-between;
     box-sizing: border-box;
     border-radius: 19px;
-    margin-top: 25px;
+    margin-top: 250px;
 }
 
 .enter_numbers_box i {
