@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const auth = require('./routes/auth');
 const user = require('./routes/user');
+const track = require('./routes/track');
 
 const passport = require('passport');
 require('./pass-auth');
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/auth', auth);
 app.use('/user', passport.authenticate('jwt', {session: false}), user);
+app.use('/track', track);
 
 app.get('/', (req, res) => res.send('Hello, TravisBearden! What is good bro?'))
 

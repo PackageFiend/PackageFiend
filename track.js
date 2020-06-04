@@ -6,6 +6,7 @@ const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/; //Note: This only matches standard tracking number
 const upsReg = /^1Z[A-Z0-9]+$/;
+const fedexReg = /^(?:\d{12}|\d{15}|\d{20})$/
 
 function parseUSPS(resJS) {
   ret = {};
@@ -46,8 +47,12 @@ function parseUSPS(resJS) {
   ret.Events = [];
 
   for (let i = 0; i < trackArr.length; i++) {
-    const groupReg = /^([\w ,]+), ((?:\d{2}\/\d{2}\/\d{4}|\w+ \d+, \d{4}), \d{1,2}:\d{2} (?:am|pm)), (.+)$/ //God save us all
-    const infoParts = trackArr[i]._text[0].match(groupReg);;
+    const groupReg = /^([\w ,-]+), ((?:\d{2}\/\d{2}\/\d{4}|\w+ \d+, \d{4}|\w+ \d+, \d{4})(?:, \d{1,2}:\d{2} (?:am|pm))?)(?:, (.+))?$/ //God save us all
+    const infoParts = trackArr[i]._text[0].match(groupReg);
+    if (infoParts === null) {
+      console.error('Could not regex USPS:', trackArr[i]._text[0]);
+      return null;
+    }
     //console.log(trackArr[i]._text[0], infoParts);
     ret.Events.push({
       Time: new Date(infoParts[2]).toString(),
@@ -109,6 +114,11 @@ function parseUPS(resJS) {
   return ret;
 }
 
+function parseFedEx(resJS) {
+  //console.log(JSON.stringify(resJS, null, 2));
+  return null;
+}
+
 module.exports = {
   track: async function(id, provider=null) {
     idClean = id.replace(/\s/g, '');
@@ -125,6 +135,7 @@ module.exports = {
         return parseUSPS(resJS);
       } catch (err) {
         console.error('Error USPS tracking:', err);
+        console.error(res.data);
         return null;
       }
     } else if (upsReg.test(idClean)) {
@@ -142,6 +153,52 @@ module.exports = {
         return parseUPS(res.data);
       } catch (err) {
         console.error('Error UPS tracking:', err);
+        return null;
+      }
+    } else if (fedexReg.test(idClean)) {
+      const req = `\
+          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v18="http://fedex.com/ws/track/v18">\
+           <soapenv:Header/>\
+           <soapenv:Body>\
+              <v18:TrackRequest>\
+                 <v18:WebAuthenticationDetail>\
+                    <v18:UserCredential>\
+                       <v18:Key>${keys.fedex.key}</v18:Key>\
+                       <v18:Password>${keys.fedex.password}</v18:Password>\
+                    </v18:UserCredential>\
+                 </v18:WebAuthenticationDetail>\
+                 <v18:ClientDetail>\
+                    <v18:AccountNumber>${keys.fedex.accnum}</v18:AccountNumber>\
+                    <v18:MeterNumber>${keys.fedex.metnum}</v18:MeterNumber>\
+                 </v18:ClientDetail>\
+                 <v18:Version>\
+                    <v18:ServiceId>trck</v18:ServiceId>\
+                    <v18:Major>18</v18:Major>\
+                    <v18:Intermediate>0</v18:Intermediate>\
+                    <v18:Minor>0</v18:Minor>\
+                 </v18:Version>\
+                 <v18:SelectionDetails>\
+                    <!--Optional:-->\
+                    <v18:PackageIdentifier>\
+                       <v18:Type>TRACKING_NUMBER_OR_DOORTAG</v18:Type>\
+                       <v18:Value>${idClean}</v18:Value>\
+                    </v18:PackageIdentifier>\
+                 </v18:SelectionDetails>\
+              </v18:TrackRequest>\
+           </soapenv:Body>\
+        </soapenv:Envelope>`
+
+      const config = {
+        headers: {'Content-Type': 'text/xml'}
+      };
+
+      try {
+        const res = await axios.post('https://wsbeta.fedex.com:443/web-services/', req, config);
+        const resJS = convert.xml2js(res.data, {compact: true, alwaysArray: false});
+
+        return parseFedEx(resJS);
+      } catch (err) {
+        console.error('Error FedEx tracking:', err);
         return null;
       }
     } else {
