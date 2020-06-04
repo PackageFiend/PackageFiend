@@ -123,7 +123,7 @@ function parseUPS(resJS) {
 }
 
 function parseFedEx(resJS) {
-  //console.log(JSON.stringify(resJS, null, 2));
+  console.log(JSON.stringify(resJS, null, 2));
   return null;
 }
 
@@ -164,6 +164,8 @@ module.exports = {
         return null;
       }
     } else if (fedexReg.test(idClean)) {
+      console.log('FedEx number');
+
       const req = `\
           <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v18="http://fedex.com/ws/track/v18">\
            <soapenv:Header/>\
