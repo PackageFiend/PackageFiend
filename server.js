@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const auth = require('./routes/auth');
 const user = require('./routes/user');
@@ -17,7 +18,7 @@ app.use('/auth', auth);
 app.use('/user', passport.authenticate('jwt', {session: false}), user);
 app.use('/track', track);
 
-app.get('/', (req, res) => res.send('Hello, TravisBearden, handsomest group member'))
+app.use(express.static(path.join(__dirname, 'web_files')));
 
 app.get('/bad_login', (req, res) => res.send("Bad login info"));
 app.get('/good_login', (req, res) => res.send("Good login info"));
