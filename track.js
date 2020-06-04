@@ -46,14 +46,22 @@ function parseUSPS(resJS) {
 
   ret.Events = [];
 
+  const groupReg = /^([\w ,-]+)(?: at )?((?:, )\d{2}\/\d{2}\/\d{4}, \d+:\d{2} (?:am|pm)|(?:, )\w+ \d+, \d{4}|\d+:\d{2} (?:am|pm) on \w+ \d+, \d{4})(?: in )?(?:, )?(.*)$/; //God save us all
+  const infoPartsSum = ret.Summary.match(groupReg);
+
+  ret.Events.push({
+    Time: new Date(infoPartsSum[2]).toString(),
+    Description: infoParts[1],
+    Location: infoParts[3]
+  });
+
   for (let i = 0; i < trackArr.length; i++) {
-    const groupReg = /^([\w ,-]+), ((?:\d{2}\/\d{2}\/\d{4}|\w+ \d+, \d{4}|\w+ \d+, \d{4})(?:, \d{1,2}:\d{2} (?:am|pm))?)(?:, (.+))?$/ //God save us all
     const infoParts = trackArr[i]._text[0].match(groupReg);
     if (infoParts === null) {
       console.error('Could not regex USPS:', trackArr[i]._text[0]);
       return null;
     }
-    //console.log(trackArr[i]._text[0], infoParts);
+    console.log(trackArr[i]._text[0], infoParts);
     ret.Events.push({
       Time: new Date(infoParts[2]).toString(),
       Description: infoParts[1],
