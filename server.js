@@ -17,7 +17,7 @@ app.use('/auth', auth);
 app.use('/user', passport.authenticate('jwt', {session: false}), user);
 app.use('/track', track);
 
-app.get('/', (req, res) => res.send('Hello, TravisBearden! What is good bro?'))
+app.get('/', (req, res) => res.send('Hello, TravisBearden, handsomest group member'))
 
 app.get('/bad_login', (req, res) => res.send("Bad login info"));
 app.get('/good_login', (req, res) => res.send("Good login info"));
