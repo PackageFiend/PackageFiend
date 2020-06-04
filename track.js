@@ -51,8 +51,8 @@ function parseUSPS(resJS) {
 
   ret.Events.push({
     Time: new Date(infoPartsSum[2]).toString(),
-    Description: infoParts[1],
-    Location: infoParts[3]
+    Description: infoPartsSum[1],
+    Location: infoPartsSum[3]
   });
 
   for (let i = 0; i < trackArr.length; i++) {
