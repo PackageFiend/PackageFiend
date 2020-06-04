@@ -4,9 +4,9 @@ const fs = require('fs');
 
 const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
-const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/; //Note: This only matches standard tracking number
+const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
 const upsReg = /^1Z[A-Z0-9]+$/;
-const fedexReg = /^(?:\d{12}|\d{15}|\d{20})$/
+const fedexReg = /^(?:\d{12}|\d{15}|\d{20})$/;
 
 function parseUSPS(resJS) {
   ret = {};
