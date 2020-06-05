@@ -126,26 +126,97 @@ html, body {
     height: 100%;
 }
 
-.track_number_title {
+.numbers_dropdown {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    background: #bb6bd9;
     width: 756px;
     height: 36px;
     margin-top: 20px;
     margin-bottom: 5px;
     border-radius: 10px 10px 0px 0px;
+    background: #bb6bd9;
 }
 
+.numbers_dropdown:hover {
+    cursor: pointer;
+}
+
+.track_number_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.more_numbers_selector {
+    margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.more_numbers_selector p {
+    margin-right: 4px;
+}
+
+.additional_track_nums {
+    background: grey;
+    width: 756px;
+    margin-top: -5px;
+}
+
+.track_data_line {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    width: 756px;
+    height: 20px;
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.track_data_line_bold {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    width: 756px;
+    height: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.data_line_l {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 378px;
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+.data_line_r {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 378px;
+    margin-left: 15px;
+    margin-right: 5px;
+    
+}
 .tracking_number {
     font-weight: 700;
     font-size: 24px;
     opacity: .8;
 }
 
-.carrier_icon {
+.carrier_icon_bold {
     display: flex;
     width: 69px;
     height: 24px;
@@ -154,6 +225,21 @@ html, body {
     justify-content: center;
     align-items: center;
     border: 2px solid #56CCF2;
+    color: #56CCF2;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.carrier_icon_reg {
+    display: flex;
+    width: 69px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #56CCF2;
     color: #56CCF2;
     box-sizing: border-box;
     border-radius: 5px;
