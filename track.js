@@ -85,7 +85,8 @@ function parseUSPS (resJS) {
 function parseUPS (resJS) {
   const retArr = [];
   for (let i = 0; i < resJS.length; i++) {
-    const parcel = resJS.trackResponse.shipment[0].parcel[0];
+    const parcel = resJS[i].data.trackResponse.shipment[0].package[0];
+    console.dir(parcel, {depth: null});
 
     const ret = {};
 
@@ -197,19 +198,25 @@ module.exports = {
       }
     }
 
-    try {
-      const res = await uspsProm;
-      const uspsVals = convert.xml2js(res.data, { compact: true, alwaysArray: true });
-      ret.push(...parseUSPS(uspsVals));
-    } catch (err) {
-      console.error('Error getting USPS:', err);
+    if (numstack.usps.length) {
+      try {
+        const res = await uspsProm;
+        const uspsVals = convert.xml2js(res.data, { compact: true, alwaysArray: true });
+        ret.push(...parseUSPS(uspsVals));
+      } catch (err) {
+        console.error('Error getting USPS:', err);
+      }
     }
 
-    try {
-      const upsVals = await Promise.all(upsProm);
-      ret.push(...parseUPS(upsVals));
-    } catch (err) {
-      console.error('Error getting UPS:', err);
+    if (numstack.ups.length) {
+      try {
+        const upsVals = await Promise.all(upsProm);
+        const parsed = parseUPS(upsVals);
+        //console.log(parsed);
+        ret.push(...parsed);
+      } catch (err) {
+        console.error('Error getting UPS:', err);
+      }
     }
 
     /*
