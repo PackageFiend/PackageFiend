@@ -12,7 +12,7 @@ function parseUSPS(resJS) {
   ret = {};
   dat = resJS.TrackResponse[0]; 
 
-  //console.log(JSON.stringify(resJS, null, 2));
+  console.log(JSON.stringify(resJS, null, 2));
 
   const tinfo = dat.TrackInfo[0]; //This index could loop for several IDs in one request
   ret.TrackNum = tinfo._attributes.ID;
