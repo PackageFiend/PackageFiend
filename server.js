@@ -7,9 +7,11 @@ const port = 8080;
 app.use(express.static(path.join(__dirname, 'web_files')));
 
 app.get('*', function (req, res, next) {
+  console.log(req);
   if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
     res.set('X-Forwarded-Proto', 'https');
-    res.redirect('https://' + req.get('host') + req.url);
+    console.log('Redirecting now!!!!!!');
+    return res.redirect('https://' + req.get('host') + req.url);
   }
 });
 
