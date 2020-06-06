@@ -9,8 +9,8 @@ app.use(express.static(path.join(__dirname, 'web_files')));
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 app.get('*', function (req, res, next) {
-  if (req.get('x-forwarded-proto') === 'https') { next(); } else {
-    res.set('x-forwarded-proto', 'https');
+  if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
+    res.set('X-Forwarded-Proto', 'https');
     res.redirect('https://' + req.get('host') + req.url);
   }
 });
