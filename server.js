@@ -11,7 +11,7 @@ app.get('*', function (req, res, next) {
   if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
     res.set('X-Forwarded-Proto', 'https');
     console.log('Redirecting now!!!!!!');
-    res.redirect('https://' + req.get('host') + req.url);
+    res.redirect('https://' + req.hostname + req.url);
   }
 });
 
