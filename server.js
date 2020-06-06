@@ -3,8 +3,7 @@ const app = express();
 const path = require('path');
 const port = 8080;
 
-// Set static folder
-
+// Redirects to https:// if X-Forwareded-Proto !== https
 app.use('*', function (req, res, next) {
   console.log(req);
   if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
@@ -13,9 +12,7 @@ app.use('*', function (req, res, next) {
     res.redirect('https://' + req.hostname + req.url);
   }
 });
-
+// Serves static files
 app.use(express.static(path.join(__dirname, 'web_files')));
-
-// app.get('/', function(req, res, next))
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
