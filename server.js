@@ -4,7 +4,6 @@ const path = require('path');
 const port = 8080;
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'web_files')));
 
 app.use('*', function (req, res, next) {
   console.log(req);
@@ -14,6 +13,8 @@ app.use('*', function (req, res, next) {
     res.redirect('https://' + req.hostname + req.url);
   }
 });
+
+app.use(express.static(path.join(__dirname, 'web_files')));
 
 // app.get('/', function(req, res, next))
 
