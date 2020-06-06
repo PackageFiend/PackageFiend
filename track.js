@@ -89,6 +89,8 @@ function parseUPS (resJS) {
     console.dir(parcel, {depth: null});
 
     const ret = {};
+    ret.TrackNum = resJS[i].data.trackingNumber;
+    ret.Provider = 'UPS';
 
     if (parcel === undefined) {
       ret.TrackNum = null;
@@ -101,7 +103,6 @@ function parseUPS (resJS) {
     }
 
     ret.Error = false;
-    ret.Provider = 'UPS';
 
     ret.Summary = 'foo'; // I think this should probably go
 
