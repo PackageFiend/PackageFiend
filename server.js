@@ -6,7 +6,7 @@ const port = 8080;
 // Set static folder
 app.use(express.static(path.join(__dirname, 'web_files')));
 
-app.get('*', function (req, res, next) {
+app.use('*', function (req, res, next) {
   console.log(req);
   if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
     res.set('X-Forwarded-Proto', 'https');
@@ -14,5 +14,7 @@ app.get('*', function (req, res, next) {
     res.redirect('https://' + req.hostname + req.url);
   }
 });
+
+// app.get('/', function(req, res, next))
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
