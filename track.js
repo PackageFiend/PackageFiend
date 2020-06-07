@@ -2,6 +2,8 @@ const axios = require('axios');
 const convert = require('xml-js');
 const fs = require('fs');
 
+const Geos = require('./geos');
+
 const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
@@ -238,6 +240,8 @@ module.exports = {
           event.Location.Geo = null;
           continue;
         }
+        geos.push(Geos.getGeo(event.Location.String, event));
+        /**
         geos.push(axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
           params: {
             address: event.Location.String,
@@ -249,6 +253,7 @@ module.exports = {
         }).catch((err) => {
           event.Location.Geo = null;
         }));
+        **/
       }
     }
 
