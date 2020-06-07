@@ -29,9 +29,10 @@ const test = {
 
 router.get('/num/:tracknum', async (req, res) => {
   const trackingNumber = req.params.tracknum;
-  const test = await track.track(trackingNumber);
+  const test = await track.track([trackingNumber]);
 
-  res.send(await ejs.renderFile('./templates/tracker.ejs', { dat: test }))
+  res.send(await ejs.renderFile('./templates/tracker.ejs', { dat: test[0] }));
+  //res.send(JSON.stringify(await track.track([trackingNumber]), null, 2));
 });
 
 module.exports = router;
