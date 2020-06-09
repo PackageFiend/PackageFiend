@@ -1,0 +1,177 @@
+html, body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+.left_nav_box,
+.spacer,
+.sign_in_box {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.sign_in_box {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.left_nav_box {
+    margin-right: auto;
+    justify-content: flex-start;
+}
+
+.sign_in_button {
+    background: #AF74E7;
+    opacity: .75;
+    border-radius: 3px;
+    width: 73px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.sign_in_button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#about {
+    color: #AF74E7;
+    opacity: .65;
+    margin-left: 8px;
+}
+
+#about:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.home_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    width: 350px;
+    margin-top: 150px;
+}
+
+.enter_track {
+    display: flex;
+    width: 459px;
+    height: 56px;
+    border: 1px solid #9B51E0;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-radius: 19px;
+    margin-top: 25px;
+}
+
+.enter_numbers_box i {
+    padding: 10px;
+}
+
+.enter_numbers_box input {
+    background: none;
+    border: none;
+    flex: 1;
+    height: 100%;
+    outline: none;
+    width: 400px;
+}
+
+.go_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 176px;
+    height: 40px;
+    background: #4DBC7B;
+    opacity: .75;
+    border-radius: 5px;
+}
+
+.go_button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#bottom_line {
+    opacity: 0.75;
+    border: 1px solid #BDBDBD;
+    padding: 0px;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+}
+
+.footer_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    opacity: 0.75;
+}
+
+.holberton img {
+    width: 25px;
+    height: 25px;
+}
+
+.holberton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.holberton:hover {
+    color: #D9534F;
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 1;
+}
+
+#footer_link {
+    padding-right: 10px;
+}
+
+#footer_link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: .9;
+}
