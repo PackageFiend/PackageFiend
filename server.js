@@ -2,6 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const ejs = require('ejs');
+const AWS = require('aws-sdk');
+const fs = require('fs');
+
+const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
+
+AWS.config.update({
+  region: 'us-east-1',
+  accessKeyId: keys.AWS.accessKeyId,
+  secretAccessKey: keys.AWS.secretAccessKey,
+  endpointDiscoveryEnabled: true
+});
 
 const auth = require('./routes/auth');
 const user = require('./routes/user');

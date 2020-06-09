@@ -25,7 +25,7 @@ function parseUSPS (resJS) {
     ret.TrackNum = tinfo._attributes.ID;
 
     if (tinfo.Error !== undefined) {
-      console.error('Error in response');
+      console.error('Error in response:', JSON.stringify(dat, null, 2));
       ret.Error = {
         Number: 1,
         Description: tinfo.Error[0].Description[0]._text
@@ -234,6 +234,7 @@ module.exports = {
 
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
+      if (parcel.Error) continue;
       for (let j = 0; j < parcel.Events.length; j++) {
         const event = parcel.Events[j];
         if (event.Location.String === null || event.Location.String.length <= 5) {
@@ -241,19 +242,6 @@ module.exports = {
           continue;
         }
         geos.push(Geos.getGeo(event.Location.String, event));
-        /**
-        geos.push(axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-          params: {
-            address: event.Location.String,
-            key: keys.google
-          }
-        }).then((data) => {
-          //console.dir(data.data, {depth: null});
-          event.Location.Geo = data.data.results[0].geometry.location;
-        }).catch((err) => {
-          event.Location.Geo = null;
-        }));
-        **/
       }
     }
 
@@ -262,72 +250,6 @@ module.exports = {
     } catch (err) {
       console.error('Error getting geo information:', err);
     }
-
-    /*
-    if (uspsReg.test(idClean)) {
-      console.log("USPS number");
-
-    } else if (upsReg.test(idClean)) {
-      console.log("UPS number");
-
-      } catch (err) {
-        console.error('Error UPS tracking:', err);
-        return null;
-      }
-    } else if (fedexReg.test(idClean)) {
-      console.log('FedEx number');
-
-      const req = `\
-          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v18="http://fedex.com/ws/track/v18">\
-           <soapenv:Header/>\
-           <soapenv:Body>\
-              <v18:TrackRequest>\
-                 <v18:WebAuthenticationDetail>\
-                    <v18:UserCredential>\
-                       <v18:Key>${keys.fedex.key}</v18:Key>\
-                       <v18:Password>${keys.fedex.password}</v18:Password>\
-                    </v18:UserCredential>\
-                 </v18:WebAuthenticationDetail>\
-                 <v18:ClientDetail>\
-                    <v18:AccountNumber>${keys.fedex.accnum}</v18:AccountNumber>\
-                    <v18:MeterNumber>${keys.fedex.metnum}</v18:MeterNumber>\
-                 </v18:ClientDetail>\
-                 <v18:Version>\
-                    <v18:ServiceId>trck</v18:ServiceId>\
-                    <v18:Major>18</v18:Major>\
-                    <v18:Intermediate>0</v18:Intermediate>\
-                    <v18:Minor>0</v18:Minor>\
-                 </v18:Version>\
-                 <v18:SelectionDetails>\
-                    <!--Optional:-->\
-                    <v18:PackageIdentifier>\
-                       <v18:Type>TRACKING_NUMBER_OR_DOORTAG</v18:Type>\
-                       <v18:Value>${idClean}</v18:Value>\
-                    </v18:PackageIdentifier>\
-                 </v18:SelectionDetails>\
-              </v18:TrackRequest>\
-           </soapenv:Body>\
-        </soapenv:Envelope>`
-
-      const config = {
-        headers: {'Content-Type': 'text/xml'}
-      };
-
-      try {
-        const res = await axios.post('https://wsbeta.fedex.com:443/web-services/', req, config);
-        const resJS = convert.xml2js(res.data, {compact: true, alwaysArray: false});
-
-        return parseFedEx(resJS);
-      } catch (err) {
-        console.error('Error FedEx tracking:', err);
-        return null;
-      }
-    } else {
-      console.log('Not a valid number:', idClean);
-      return null;
-    }
-    */
-
     return ret;
   }
 };

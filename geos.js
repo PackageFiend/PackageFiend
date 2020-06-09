@@ -4,11 +4,6 @@ const axios = require('axios');
 
 const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
-AWS.config.update({
-  region: 'us-east-1',
-  endpoint: 'http://localhost:8000'
-});
-
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {

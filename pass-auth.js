@@ -9,11 +9,6 @@ const ExtractJWT = passportJWT.ExtractJwt;
 
 const AWS = require("aws-sdk");
 
-AWS.config.update({
-  region: "us-east-2",
-  endpoint: "http://localhost:8000"
-});
-
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 passport.use(new LocalStrategy(

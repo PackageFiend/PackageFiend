@@ -5,11 +5,6 @@ const passport = require('passport');
 const crypto = require('crypto');
 const AWS = require('aws-sdk');
 
-AWS.config.update({
-  region: 'us-east-1',
-  endpoint: 'http://localhost:8000'
-});
-
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 router.post('/login', function (req, res, next) {
