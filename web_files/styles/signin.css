@@ -59,6 +59,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    overflow-y: auto;
 }
 
 .logo {
@@ -107,14 +108,16 @@ html, body {
     width: 400px;
 }
 
-.go_box {
+.go_box,
+.create_box {
     display: flex;
     width: 459px;
     justify-content: flex-end;
     margin-top: -15px;
 }
 
-.go_button {
+.go_button,
+.create_button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,7 +128,8 @@ html, body {
     border-radius: 5px;
 }
 
-.go_button:hover {
+.go_button:hover,
+.create_button:hover {
     background-color: #BB6BD9;
     cursor: pointer;
 }
@@ -165,21 +169,18 @@ html, body {
     align-items: center;
 }
 
-.create_collapsible1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 176px;
-    height: 40px;
-    background: #4DBC7B;
-    opacity: .65;
-    border-radius: 5px;
+.create_collapsible {
+    width: 459px;
+    height: 0px;
+    margin-bottom: 20px;
+    display: none;
 }
 
-.create_collapsible_button:hover {
-    opacity: 1;
-    cursor: pointer;
+.create_uncollapsed {
+    height: 400px;
+    display: block;
 }
+
 
 #bottom_line {
     opacity: 0.75;
