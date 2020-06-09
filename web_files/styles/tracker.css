@@ -112,6 +112,7 @@ html, body {
 .sign_in_button:hover {
     opacity: 1;
     cursor: pointer;
+    background-color: #BB6BD9;
 }
 
 #pink_line {
@@ -126,7 +127,7 @@ html, body {
     height: 100%;
 }
 
-.numbers_dropdown {
+.current_displayed_collapsible {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -136,11 +137,12 @@ html, body {
     margin-top: 20px;
     margin-bottom: 5px;
     border-radius: 10px 10px 0px 0px;
-    background: #bb6bd9;
+    background: #c397ed;
 }
 
-.numbers_dropdown:hover {
+.active, .current_displayed_collapsible:hover {
     cursor: pointer;
+    background-color: #BB6BD9;
 }
 
 .track_number_title {
@@ -162,52 +164,75 @@ html, body {
 }
 
 .additional_track_nums {
-    background: grey;
-    width: 756px;
+    max-height: 0;
+    overflow: hidden;
+    width: 752px;
+    transition: max-height 0.2s ease;
     margin-top: -5px;
+    margin-bottom: 5px;
+    border-bottom-color: #BB6BD9;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-left: 5px;
+    border-left-color: #BB6BD9;
+    border-left-style: solid;
+    border-left-width: 2px;
+    margin-right: 5px;
+    border-right-color: #BB6BD9;
+    border-right-style: solid;
+    border-right-width: 2px;
+}
+
+.add_auto_height {
+    max-height: 100px;
+    overflow: auto;
 }
 
 .track_data_line {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-content: center;
-    width: 756px;
-    height: 20px;
+    width: 100%;
+    height: 27px;
     font-size: 18px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+
 }
 
 .track_data_line_bold {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-content: center;
-    width: 756px;
-    height: 20px;
+    width: 100%;
+    height: 27px;
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 10px;
-    margin-top: 10px;
+}
+
+.track_data_line:hover,
+.track_data_line_bold:hover {
+    background-color: #c397ed;
 }
 
 .data_line_l {
     display: flex;
+    width: 50%;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 378px;
     margin-right: 15px;
-    margin-left: 5px;
+    margin-left: 7px;
 }
 
 .data_line_r {
     display: flex;
+    width: 50%;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 378px;
-    margin-left: 15px;
-    margin-right: 5px;
+    margin-left: 14px;
+    margin-right: 7px;
     
 }
 .tracking_number {
