@@ -4,6 +4,6 @@ L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=fEH52Z1zw
     attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
 }).addTo(mymap);
 
-const Amishtown = L.marker([40.0379, -76.3055]).addTo(mymap);
-const circle = L.circle([])
+//const Amishtown = L.marker([40.0379, -76.3055]).addTo(mymap);
+//const circle = L.circle([])
 

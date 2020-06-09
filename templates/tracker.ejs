@@ -159,5 +159,7 @@
 		pline.addTo(mymap);
 
 		mymap.fitBounds(pline.getBounds(), {padding: [25, 25]});
+
+		const data = <%- JSON.stringify(dat, null, 0) %>;
 	</script>
 </html>
