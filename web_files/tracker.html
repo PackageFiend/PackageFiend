@@ -10,6 +10,7 @@
         <title>Package Fiend</title>
     </head>
     <body>
+        <!-- Nav bar -->
         <header class="header">
             <div class="topbar">
                 <div class="track_and_button">                
@@ -29,16 +30,86 @@
                 </div>
             </div>    
         </header>
+        <!-- This section displays the current tracking number showed below -->
         <div class="tracker_body">
-            <div class="track_number_title">
-                <p class="tracking_number">1J543FDGLKJ6546</p>
-                <div class="carrier_icon">UPS</div>
+            <!-- This is the purple bar. Becomes a dropdown if multiple tracking numbers are present. -->
+            <!-- I want to make it so the entire bar is clickable to display the extra numbers, if present -->
+            <div class="current_displayed_collapsible">
+                <div></div>
+                <div class="track_number_title">
+		            <!-- PLACEHOLDER DATA -->
+		            <div class="tracking_number">1J543FDGLKJ6546</div>
+		            <!-- PLACEHOLDER DATA -->
+                    <div class="carrier_icon_bold">UPS</div>
+                </div>
+                <!-- This only appears if multiple tracking numbers are present. -->
+                <div class="more_numbers_selector">
+                    <p>more</p>
+                    <i class="fas fa-caret-down"></i>
+                </div>
             </div>
+            <!-- This is the dropdown that displays if there are multiple tracking numbers present in the URL -->
+            <!-- If there are no extra tracking numbers, it won't display -->
+            <div class="additional_track_nums">
+                <!-- Each of these track_data_line divs represents one of the numbers -->
+                <!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
+                
+                <!--                        
+                
+                    THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
+                    
+                -->
+                <div class="track_data_line_bold">
+                    <!-- Split into left and right divs for spacing -->                    
+                    <div class="data_line_l">
+                        <p>1J543FDGLKJ6546</p>
+                        <div class="carrier_icon_bold">UPS</div>
+                    </div>
+                    <div class="data_line_r">
+                        <div class="data_line_status">In transit:</div>
+                        <div class="data_line_delivery_date">Friday, June 5, 2020</div>
+                    </div>
+                </div>
 
+                <div class="track_data_line">
+                    <!-- Split into left and right divs for spacing -->
+                    <div class="data_line_l">
+                        <p>2J543FDGLKJ6546</p>
+                        <div class="carrier_icon_reg">USPS</div>
+                    </div>
+                    <div class="data_line_r">
+                        <div class="data_line_status">In transit:</div>
+                        <div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+                    </div>
+                </div>
+                
+                <div class="track_data_line">
+                    <!-- Split into left and right divs for spacing -->
+                    <div class="data_line_l">
+                        <p>2J543FDGLKJ6546</p>
+                        <div class="carrier_icon_reg">USPS</div>
+                    </div>
+                    <div class="data_line_r">
+                        <div class="data_line_status">In transit:</div>
+                        <div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+                    </div>
+                </div>
+                <!--
+                        
+                        END PLACEHOLDER DATA
+
+                -->
+            </div>
+            <!-- Contains the map and Estimated delivery boxes -->
             <div class="map_estimates">
-            
+                <!-- Map box -->
                 <div id="map"></div>
-            
+                <!-- Estimated delivery info box -->
+                <!--
+                    
+                    CONTAINS PLACEHOLDER DATA
+                
+                -->
                 <div class="track_data_box">
                     <div class="est_delivery">
                         <div class="bold_body">Estimated Delivery:</div>

@@ -1,3 +1,12 @@
+// Dropdown for multiple tracking numbers
+const collapsible = document.querySelector('.current_displayed_collapsible');
+collapsible.addEventListener("click", event => {
+    collapsible.classList.toggle('active');
+    const nums = document.querySelector('.additional_track_nums');
+    nums.classList.toggle('add_auto_height');
+});
+
+// Map settings
 let mymap = L.map('map').setView([39.8283, -98.5795], 3);
         
 L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=fEH52Z1zwyyCZ7gf1vZA', {
