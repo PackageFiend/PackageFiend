@@ -172,7 +172,7 @@ html, body {
     margin-bottom: 5px;
     border-bottom-color: #BB6BD9;
     border-bottom-style: solid;
-    border-bottom-width: 2px;
+    border-bottom-width: 0px;
     margin-left: 5px;
     border-left-color: #BB6BD9;
     border-left-style: solid;
@@ -186,6 +186,7 @@ html, body {
 .add_auto_height {
     max-height: 100px;
     overflow: auto;
+    border-bottom-width: 2px;
 }
 
 .track_data_line {
