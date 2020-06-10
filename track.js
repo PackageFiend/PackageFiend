@@ -232,6 +232,7 @@ module.exports = {
 
     const geos = [];
 
+    //Add geo data
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
@@ -251,6 +252,7 @@ module.exports = {
       console.error('Error getting geo information:', err);
     }
 
+    //Add MostRecentTime property
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
@@ -262,6 +264,17 @@ module.exports = {
       }
       if (parcel.MostRecentTime === undefined) {
         parcel.MostRecentTime = null;
+      }
+    }
+
+    //Add travel time data
+    for (let i = 0; i < ret.length; i++) {
+      const parcel = ret[i];
+      parcel.Travels = [];
+      if (parcel.Error) continue;
+      for (let j = 0; j < parcel.Events.length - 1; j++) {
+        const event = parcel.Events[j];
+        console.log(event.Location.Address, event.Description);
       }
     }
 

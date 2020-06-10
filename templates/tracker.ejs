@@ -58,11 +58,6 @@
                 <!-- Each of these track_data_line divs represents one of the numbers -->
                 <!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
                 
-                <!--                        
-                
-                    THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
-                    
-                -->
 				<% for (let i = 0; i < dat.length; i++) { %>
 				<div class=<%- !i ? "'track_data_line tdl_bold'" : 'track_data_line'  %>>
                     <!-- Split into left and right divs for spacing -->                    
@@ -71,10 +66,16 @@
 						<div class="carrier_icon_bold"><%= dat[i].Provider %></div>
                     </div>
                     <div class="data_line_r">
+						<% if (!dat[i].Error) { %>
                         <div class="data_line_status">
-							<%= dat[i].Delivered ? 'Delivered:' : 'In Transit:' %>
+							<%= (dat[i].Delivered ? 'Delivered:' : 'In Transit:') %>
 						</div>
                         <div class="data_line_delivery_date indv_time"><%- dat[i].MostRecentTime %></div>
+						<% } else { %>
+                        <div class="data_line_status">
+							No Information Yet
+						</div>
+						<% } %>
                     </div>
                 </div>
 				<% } %>
@@ -85,12 +86,15 @@
             
                 <div class="track_data_box">
                     <div class="est_delivery">
+						<% if (!dat[0].Error) { %>
                         <div id="est_delivery_desc" class="bold_body">
 							<%= dat[0].Delivered ? 'Delivered:' : 'Estimated Delivery:' %>
 						</div>
 						<div id="est_delivery_time" class="bold_body indv_time"><%- dat[0].MostRecentTime %></div>
+						<% } %>
                     </div>
                     <div class="location_box">
+						<% if (!dat[0].Error) { %>
 						<% for (event of dat[0].Events) { %>
                         <div class="location_times">
                             <div class="location">
@@ -103,6 +107,14 @@
 								</div>
                             </div>
 							<% } %>
+                        </div>
+						<% } %>
+						<% } else { %>
+                        <div class="location_times">
+                            <div class="location">
+								<div class="reg_body">Sorry, there's no
+									information about this package, yet.</div>
+                            </div>
                         </div>
 						<% } %>
                     </div>  
@@ -190,16 +202,20 @@
 	<script type="text/javascript" src="http://localhost:8080/scripts/tracker.js"></script>
 	<script type="text/javascript">
 		let latlngs = [];
+		<% if (!dat[0].Error) { %>
 		<% for (event of dat[0].Events) { %>
 			<% if (event.Location.Geo !== null) { %>
 				L.marker([<%= event.Location.Geo.lat %>, <%= event.Location.Geo.lng %>]).addTo(mymap);
 				latlngs.push([<%= event.Location.Geo.lat %>, <%= event.Location.Geo.lng %>]);
 			<% } %>
 		<% } %>
+		<% } %>
 		const pline = L.polyline(latlngs);
 		pline.addTo(mymap);
 
+		<% if (!dat[0].Error) { %>
 		mymap.fitBounds(pline.getBounds(), {padding: [25, 25]});
+		<% } %
 
 		const data = <%- JSON.stringify(dat, null, 0) %>;
 	</script>
