@@ -173,7 +173,7 @@
 		let latlngs = [];
 		<% if (!dat[0].Error) { %>
 		<% for (event of dat[0].Events) { %>
-			<% if (event.Location.Geo !== null) { %>
+			<% if (event.Location.Geo !== null && event.Location.Geo !== undefined) { %>
 				L.marker([<%= event.Location.Geo.lat %>, <%= event.Location.Geo.lng %>]).addTo(mymap);
 				latlngs.push([<%= event.Location.Geo.lat %>, <%= event.Location.Geo.lng %>]);
 			<% } %>
