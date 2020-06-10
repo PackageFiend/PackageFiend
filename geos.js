@@ -17,8 +17,8 @@ module.exports = {
       };
 
       docClient.get(checkParams).promise().then(data => {
-        if (data.Item !== undefined) {
-          event.Location.Geo = data.Item.dat;
+        if (data.Item !== undefined && data.Item.dat.lat === undefined) {
+          event.Location.Geo = data.Item.dat.geometry.location;
           resolve(true);
         } else {
           axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
@@ -37,7 +37,7 @@ module.exports = {
               TableName: 'Geos',
               Item: {
                 locstring: str,
-                dat: event.Location.Geo
+                dat: data.data.results[0]
               }
             };
 

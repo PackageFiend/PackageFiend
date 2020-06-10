@@ -23,6 +23,7 @@ function parseUSPS (resJS) {
     const tinfo = dat.TrackInfo[i];
     const ret = {};
     ret.TrackNum = tinfo._attributes.ID;
+    ret.Provider = 'USPS';
 
     if (tinfo.Error !== undefined) {
       console.error('Error in response:', JSON.stringify(dat, null, 2));
@@ -46,7 +47,6 @@ function parseUSPS (resJS) {
     }
 
     ret.Error = false;
-    ret.Provider = 'USPS';
 
     ret.Summary = tinfo.TrackSummary[0]._text[0];
 
@@ -250,6 +250,21 @@ module.exports = {
     } catch (err) {
       console.error('Error getting geo information:', err);
     }
+
+    for (let i = 0; i < ret.length; i++) {
+      const parcel = ret[i];
+      if (parcel.Error) continue;
+      for (let j = 0; j < parcel.Events.length; j++) {
+        if (parcel.Events[j].Time !== null) {
+          parcel.MostRecentTime = parcel.Events[j].Time;
+          break;
+        }
+      }
+      if (parcel.MostRecentTime === undefined) {
+        parcel.MostRecentTime = null;
+      }
+    }
+
     return ret;
   }
 };

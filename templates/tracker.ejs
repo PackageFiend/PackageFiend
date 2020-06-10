@@ -11,6 +11,7 @@
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
         <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="http://localhost:8080/scripts/time.js"></script>
         <title>Package Fiend</title>
     </head>
@@ -22,7 +23,7 @@
                         <form class="enter_numbers">
                             <div class="enter_numbers_box">
                                 <i class="fas fa-box"></i>
-                                <input type="text" placeholder="ADD TRACKING NUMBER(S)" required />
+                                <input class="add_in" type="text" placeholder="ADD TRACKING NUMBER(S)" required />
                             </div>
                         </form>
                     </div>
@@ -73,7 +74,7 @@
                         <div class="data_line_status">
 							<%= dat[i].Delivered ? 'Delivered:' : 'In Transit:' %>
 						</div>
-                        <div class="data_line_delivery_date">Friday, June 5, 2020</div>
+                        <div class="data_line_delivery_date indv_time"><%- dat[i].MostRecentTime %></div>
                     </div>
                 </div>
 				<% } %>
@@ -84,8 +85,10 @@
             
                 <div class="track_data_box">
                     <div class="est_delivery">
-                        <div class="bold_body">Estimated Delivery:</div>
-                        <div class="bold_body">Friday, June 5, 2020</div>
+                        <div id="est_delivery_desc" class="bold_body">
+							<%= dat[0].Delivered ? 'Delivered:' : 'Estimated Delivery:' %>
+						</div>
+						<div id="est_delivery_time" class="bold_body indv_time"><%- dat[0].MostRecentTime %></div>
                     </div>
                     <div class="location_box">
 						<% for (event of dat[0].Events) { %>
