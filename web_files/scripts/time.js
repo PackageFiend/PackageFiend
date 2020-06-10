@@ -48,7 +48,7 @@ $(document).ready(function() {
       for (let i = 0; i < parcel.Events.length; i++) {
         const event = parcel.Events[i];
 
-        if (event.Location.Geo !== null) { 
+        if (event.Location.Geo !== undefined && event.Location.Geo !== null) { 
           L.marker([event.Location.Geo.lat, event.Location.Geo.lng]).addTo(mymap);
           latlngs.push([event.Location.Geo.lat, event.Location.Geo.lng]);
         }
@@ -68,6 +68,35 @@ $(document).ready(function() {
           </div>`;
 
         $('.location_box').append(loctimes);
+      }
+
+      $('#total_dist').text(parcel.TotalDistance + " Miles");
+
+      $('.mileage_listings').empty();
+
+      for (let i = 0; i < parcel.Travels.length; i++) {
+        const travel = parcel.Travels[i];
+        let travString = "";
+
+        if (travel.From === travel.To) {
+          travString = travel.From;
+        } else {
+          travString = travel.From + ' -> ' + travel.To;
+        }
+
+        const mBoxTemplate = `
+          <div class="mileages_box">
+              <div class="location">
+                  <div class="reg_body">${travString}:</div>
+                  <div></div>
+              </div>
+              <div class="times">
+                  <div class="reg_body">${travel.Distance ? travel.Distance + " miles" : "At Location"}</div>
+                  <div>Time: ${moment.utc(travel.TimeTaken*1000).format('h [hours,] mm [minutes]')}</div>
+              </div>
+          </div>
+          `;
+        $('.mileage_listings').append(mBoxTemplate);
       }
     } else {
       $("#est_delivery_desc").text("");
@@ -115,7 +144,6 @@ $(document).ready(function() {
         $('.additional_track_nums').append(ndiv);
         continue;
       }
-      const recentDate = moment(nplist[i].Events[0].Time.trim()).format('dddd MMMM Do, YYYY');
       const ndiv = `
         <div id=${nplist[i].TrackNum} class="track_data_line">
           <div class="data_line_l">
