@@ -28,16 +28,11 @@ html, body {
 }
 
 .left_nav_box,
-.spacer,
-.sign_in_box {
+.logo,
+.spacer {
     flex: 1;
     display: inline-flex;
     justify-content: center;
-}
-
-.sign_in_box {
-    margin-left: auto;
-    justify-content: flex-end;
 }
 
 .left_nav_box {
@@ -45,22 +40,7 @@ html, body {
     justify-content: flex-start;
 }
 
-.sign_in_button {
-    background: #AF74E7;
-    opacity: .75;
-    border-radius: 3px;
-    width: 73px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-}
 
-.sign_in_button:hover {
-    opacity: 1;
-    cursor: pointer;
-}
 
 #about {
     color: #AF74E7;
@@ -79,14 +59,29 @@ html, body {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    overflow-y: auto;
 }
 
 .logo {
-    width: 350px;
-    margin-top: 150px;
+    display: flex;
+    height: 32px;
+    justify-self: center;
+    opacity: .8;
 }
 
-.enter_track {
+.big_text {
+    display: flex;
+    width: 459px;
+    height: 56px;
+    font-weight: 700;
+    font-size: 24px;
+    align-items: center;
+    margin-top: 37px;
+}
+
+.enter_username,
+.enter_password,
+.re_enter_password {
     display: flex;
     width: 459px;
     height: 56px;
@@ -95,14 +90,16 @@ html, body {
     justify-content: space-between;
     box-sizing: border-box;
     border-radius: 19px;
-    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
-.enter_numbers_box i {
+.enter_email_box i,
+.enter_password_box i {
     padding: 10px;
 }
 
-.enter_numbers_box input {
+.enter_email_box input,
+.enter_password_box input {
     background: none;
     border: none;
     flex: 1;
@@ -111,22 +108,79 @@ html, body {
     width: 400px;
 }
 
-.go_button {
+.go_box,
+.create_box {
+    display: flex;
+    width: 459px;
+    justify-content: flex-end;
+    margin-top: -15px;
+}
+
+.go_button,
+.create_button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
     width: 176px;
     height: 40px;
-    background: #4DBC7B;
-    opacity: .75;
+    background: #c397ed;
     border-radius: 5px;
 }
 
-.go_button:hover {
+.go_button:hover,
+.create_button:hover {
+    background-color: #BB6BD9;
+    cursor: pointer;
+}
+
+.sign_in_box {
+    opacity: 1;
+}
+
+.inactive {
+    cursor: pointer;
+    opacity: .3;
+}
+
+.no_account {
+    display: flex;
+    flex-direction: row;
+    width: 459px;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 37px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    opacity: .3;
+}
+
+.active, .no_account:hover {
     opacity: 1;
     cursor: pointer;
 }
+
+.big_text_no_account {
+    display: flex;
+    height: 40px;
+    font-weight: 700;
+    font-size: 24px;
+    align-items: center;
+}
+
+.create_collapsible {
+    width: 459px;
+    height: 0px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.create_uncollapsed {
+    height: 400px;
+    display: block;
+}
+
 
 #bottom_line {
     opacity: 0.75;
