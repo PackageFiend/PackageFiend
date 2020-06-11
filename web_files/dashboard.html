@@ -10,7 +10,6 @@
         <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src='https://d3js.org/d3.v4.min.js'></script>
         <script type="text/javascript" src="./scripts/dashboard.js"></script>
         <title>Package Fiend</title>
     </head>
@@ -374,6 +373,7 @@
             </div>
 
             <div class="statistics">
+                
                 <div class="stats_data_lines">
                     <div class="stat_line_bold">
                         <div class="bold_body">Delivered - 7 days:</div>
@@ -388,21 +388,70 @@
                         <div class="del_90">6</div>
                     </div>
                     <div class="stat_line_bold">
-                        <div class="bold_body">Delivered - 6 months:</div>
+                        <div class="bold_body">Delivered - 180 days:</div>
                         <div class="del_6m">10</div>
                     </div>
+                    
                     <div class="stat_line_bold">
-                        <div class="bold_body">Delivered - all time:</div>
-                        <div class="del_at">15</div>
+                        <div class="bold_body">TOTALS</div>
+                        <div></div>
                     </div>
                     <div class="stat_line_bold">
-                        <div class="bold_body">Total Distance Delivered:</div>
-                        <div class="miles_total">99437 miles</div>
+                        <div class="bold_body_ups">UPS:</div>
+                        <div class="del_ups">6</div>
+                    </div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body_usps">USPS:</div>
+                        <div class="del_usps">9</div>
+                    </div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Delivered:</div>
+                        <div class="del_at">15</div>
+                    </div>
+                    
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Distance (miles):</div>
+                        <div class="miles_total">99437</div>
                     </div>
                 </div>
                 
-                <div class="miles_graph"></div>
-            
+                <div class="bar_graph">
+                    <div class="g_column">
+                        <div class="g_bar_transit">
+                            <div class="ups_bar"></div>
+                            <div class="usps_bar"></div>
+                        </div>
+                        <div class="g_name">In Transit</div>
+                    </div>
+                    <div class="g_column">
+                        <div class="g_bar_7">
+                            <div class="ups_bar"></div>
+                            <div class="usps_bar"></div>
+                        </div>
+                        <div class="g_name">7 days</div>
+                    </div>
+                    <div class="g_column">
+                        <div class="g_bar_30">
+                            <div class="ups_bar"></div>
+                            <div class="usps_bar"></div>
+                        </div>
+                        <div class="g_name">30 days</div>
+                    </div>
+                    <div class="g_column">
+                        <div class="g_bar_90">
+                            <div class="ups_bar"></div>
+                            <div class="usps_bar"></div>
+                        </div>
+                        <div class="g_name">90 days</div>
+                    </div>
+                    <div class="g_column">
+                        <div class="g_bar_180">
+                            <div class="ups_bar"></div>
+                            <div class="usps_bar"></div>
+                        </div>
+                        <div class="g_name">180 days</div>
+                    </div>
+                </div>
             </div>
         </div>
         <footer class="footer">

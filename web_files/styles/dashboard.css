@@ -342,16 +342,11 @@ html, body {
     font-weight: 400;
     justify-content: center;
     align-items: center;
-    border: 1px solid #56CCF2;
-    color: #56CCF2;
+    border: 1px solid rgb(86, 204, 242);
+    color: rgb(86, 204, 242);
     box-sizing: border-box;
     border-radius: 5px;
     margin-left: 10px;
-}
-
-.location_box {
-    height: 195px;
-    overflow: auto;
 }
 
 .stat_line_bold {
@@ -370,9 +365,26 @@ html, body {
 .miles_total {
     font-size: 18px;
     font-weight: 700;
-    height: 25px;
-    top: 0px;
-    margin-top: 0px;
+}
+
+.bold_body_ups,
+.del_ups {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.bold_body_ups,
+.del_ups {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(255, 176, 0) 
+}
+
+.bold_body_usps,
+.del_usps {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(86, 204, 242) 
 }
 
 .statistics {
@@ -384,20 +396,62 @@ html, body {
     margin-right: 4px;
     margin-top: 10px;
     justify-content: space-between;
+
 }
 
 .stats_data_lines {
-    width: 363px;
+    width: 350px;
     height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
-.miles_graph {
-    width: 363px;
+.bar_graph {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 350px;
     height: 220px;
-    background: #56CCF2;
+}
+
+.g_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.g_bar,
+.g_bar_transit,
+.g_bar_7,
+.g_bar_30,
+.g_bar_90,
+.g_bar_180 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    justify-content: flex-end;
+}
+
+.ups_bar {
+    width: 30px;
+    height: 100px;
+    background-color: rgb(255, 176, 0);
+}
+
+.usps_bar {
+    width: 30px;
+    height: 92px;
+    background-color: rgb(86, 204, 242);
+}
+
+.g_name {
+    display: flex;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
 }
 
 #bottom_line {
