@@ -109,6 +109,7 @@ $(document).ready(function() {
     } else {
       $("#est_delivery_desc").text("");
       $("#est_delivery_time").text("");
+      $('#total_dist').text("");
 
       const loctimes = `
         <div class="location_times">

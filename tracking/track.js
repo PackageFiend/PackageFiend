@@ -77,7 +77,8 @@ module.exports = {
               errors: [{
                 code: 500,
                 message: "500 response from UPS"
-              }]
+              }],
+              trackNum: numstack.ups[i]
             }
           }
         }));
@@ -99,6 +100,7 @@ module.exports = {
     if (numstack.ups.length) {
       try {
         const upsVals = await Promise.all(upsProm);
+        //console.dir(upsVals, {depth: null});
         const parsed = parseUPS(upsVals);
         //console.log(parsed);
         ret.push(...parsed);
