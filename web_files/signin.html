@@ -4,6 +4,10 @@
         <meta charset="utf8">
         <link rel="stylesheet" href="./styles/signin.css">
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">        <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			  crossorigin="anonymous"></script>
         <title>Package Fiend</title>
     </head>
     <body>
@@ -23,13 +27,13 @@
                     <div class="enter_username">
                         <div class="enter_email_box">
                             <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="ENTER EMAIL ADDRESS" required />
+                            <input id="si_username" type="text" placeholder="ENTER EMAIL ADDRESS" required />
                         </div>
                     </div>
                     <div class="enter_password">
                         <div class="enter_password_box">
                             <i class="fas fa-key"></i>
-                            <input type="text" placeholder="ENTER PASSWORD" required />
+                            <input id="si_password" type="text" placeholder="ENTER PASSWORD" required />
                         </div>
                     </div>
                 </form>   
@@ -47,19 +51,25 @@
                     <div class="enter_username">
                         <div class="enter_email_box">
                             <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="ENTER EMAIL ADDRESS" required />
+                            <input id="name" type="text" placeholder="ENTER NAME" required />
+                        </div>
+                    </div>
+                    <div class="enter_username">
+                        <div class="enter_email_box">
+                            <i class="fas fa-envelope"></i>
+                            <input id="username" type="text" placeholder="ENTER EMAIL ADDRESS" required />
                         </div>
                     </div>
                     <div class="enter_password">
                         <div class="enter_password_box">
                             <i class="fas fa-key"></i>
-                            <input type="text" placeholder="ENTER PASSWORD" required />
+                            <input id="pass1" type="text" placeholder="ENTER PASSWORD" required />
                         </div>
                     </div>
                     <div class="re_enter_password">
                         <div class="enter_password_box">
                             <i class="fas fa-key"></i>
-                            <input type="text" placeholder="RE-ENTER PASSWORD" required />
+                            <input id="pass2" type="text" placeholder="RE-ENTER PASSWORD" required />
                         </div>
                     </div>
                 </form>

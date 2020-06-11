@@ -1,5 +1,8 @@
 $(document).ready(function() {
-  console.log('Ready');
+  if (localStorage.pkgfnd_name) {
+    $('.sign_in_box').text('Hello, ' + localStorage.pkgfnd_name);
+  }
+
   $('.indv_time').each(function () {
     const time = $(this).text().trim();
     console.log(time);

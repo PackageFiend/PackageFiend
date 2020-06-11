@@ -61,6 +61,8 @@ router.post('/createuser', async (req, res, next) => {
     }
   } catch (err) {
     console.error('Error checking if user exists:', err);
+    console.error(checkParams);
+    console.error(dat);
     return res.sendStatus(500);
   }
 
