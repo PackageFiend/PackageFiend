@@ -46,7 +46,16 @@ $(document).ready(() => {
     const res = await axios.post('http://localhost:8080/auth/login', {
       username: username,
       password: pass
+    }).catch((err) => {
+      if (err.response.status === 400) {
+        return null;
+      }
     });
+
+    if (res === null) {
+      $('#si_password_box').after('Incorrect username or password. Please try again.');
+      return;
+    }
 
     console.log(res);
     localStorage.pkgfnd_token = res.data.token;
