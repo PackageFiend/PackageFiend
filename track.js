@@ -206,7 +206,16 @@ module.exports = {
       };
 
       for (let i = 0; i < numstack.ups.length; i++) {
-        upsProm.push(axios.get(`https://onlinetools.ups.com/track/v1/details/${numstack.ups[i]}`, config));
+        upsProm.push(axios.get(`https://onlinetools.ups.com/track/v1/details/${numstack.ups[i]}`, config).catch(err => {
+          return {
+            response: {
+              errors: [{
+                code: 500,
+                message: "500 response from UPS"
+              }]
+            }
+          }
+        }));
       }
     }
 

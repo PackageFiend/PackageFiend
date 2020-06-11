@@ -13,6 +13,14 @@ $(document).ready(function() {
     $(this).text(fTime);
   });
 
+  $('.sec_time').each(function () {
+    const time = $(this).text().split(' ')[1].trim();
+    console.log(time);
+    const fTime = moment.utc(time).format('h [hours,] mm [minutes]');
+    //console.log(fTime);
+    $(this).text('Time: ' + fTime);
+  });
+
   $('.additional_track_nums').on('click', '.track_data_line', function (e) {
     if ($(this).is('.tdl_bold')) return;
     $('.tdl_bold').removeClass('tdl_bold');
@@ -119,6 +127,7 @@ $(document).ready(function() {
 
   $('.add_button').click(async function() {
     const newnums = $('.add_in').val();
+    $('.add_in').val('');
     //TODO: Check to make sure the number isn't already there
     const newdat = await axios.get(`http://localhost:8080/track/q/${newnums}`);
 
@@ -154,7 +163,7 @@ $(document).ready(function() {
             <div class="data_line_status">
               ${nplist[i].Delivered ? "Delivered:" : "In Transit"}
             </div>
-            <div class="data_line_delivery_date">Friday, June 5, 2020</div>
+            <div class="data_line_delivery_date">${moment(nplist[i].MostRecentTime).format('dddd, MMMM Do, YYYY')}</div>
           </div>
         `;
 

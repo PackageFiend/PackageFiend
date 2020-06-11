@@ -23,7 +23,7 @@
                         <form class="enter_numbers">
                             <div class="enter_numbers_box">
                                 <i class="fas fa-box"></i>
-                                <input class="add_in" type="text" placeholder="ADD TRACKING NUMBER(S)" required />
+                                <input class="add_in" type="text" placeholder="ADD TRACKING NUMBER(S)" />
                             </div>
                         </form>
                     </div>
@@ -131,24 +131,47 @@
                 <div class="miles_data">
                     <div class="miles_soFar">
                         <div class="bold_body">Miles Traveled so far:</div>
-                        <div id="total_dist" class="bold_body">437 miles</div>
+                        <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance %> Miles</div>
                     </div>
-                    <div class="mileage_listings">    
-                        <div class="mileages_box">
-                            <div class="location">
-                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
-                                <div></div>
-                            </div>
-                            <div class="times">
-                                <div class="reg_body">350 miles</div>
-                                <div>Time: 18hrs</div>
-                            </div>
-                        </div>
+                    <div class="mileage_listings">
+						<% if (!dat[0].Error) { %>
+						<% for (let i = 0; i < dat[0].Travels.length; i++) {
+							const travel = dat[0].Travels[i];
+							let travString = "";
+
+							if (travel.From === travel.To) {
+							  travString = travel.From;
+							} else {
+							  travString = travel.From + ' -> ' + travel.To;
+							}
+
+							const mBoxTemplate = `
+							  <div class="mileages_box">
+								  <div class="location">
+									  <div class="reg_body">${travString}:</div>
+									  <div></div>
+								  </div>
+								  <div class="times">
+									  <div class="reg_body">${travel.Distance ? travel.Distance + " miles" : "At Location"}</div>
+									  <div class="sec_time">Time: ${travel.TimeTaken*1000}</div>
+								  </div>
+							  </div>
+							  `;
+						  %>
+						  <%- mBoxTemplate %>
+						  <% } %>
+						  <% } else { %>
+							<div class="location_times">
+							  <div class="location">
+								<div class="reg_body">Sorry, there's no information about this package, yet.</div>
+							  </div>
+							</div>
+						  <% } %>
                     </div>
 
                     <div class="miles_total_estimated">
                         <div class="bold_body">Estimated Total Miles:</div>
-                        <div class="bold_body">719 Miles</div>
+                        <div class="bold_body">?</div>
                     </div>
                 </div>
                 
