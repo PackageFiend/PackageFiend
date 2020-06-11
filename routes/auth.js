@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const crypto = require('crypto');
 const AWS = require('aws-sdk');
+const fs = require('fs');
+
+const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
@@ -25,7 +28,7 @@ router.post('/login', function (req, res, next) {
           return res.send(err);
         }
 
-        const token = jwt.sign(user, 'secret'); //CRITICAL: CHANGE SECRET TO SOMETHING SECURE AND NOT IN CODE
+        const token = jwt.sign(user, keys.JWTkey);
         return res.json({user, token});
       });
     })(req, res);

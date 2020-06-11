@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const fs = require('fs');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -8,6 +9,8 @@ const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
 const AWS = require("aws-sdk");
+
+const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
@@ -56,7 +59,7 @@ passport.use(new LocalStrategy(
 
 passport.use(new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'secret' //CRITICAL: CHANGE THIS TO BE SECURE AND THE SAME AS THE OTHER
+    secretOrKey: keys.JWTkey
   },
   function (jwtPayload, cb) {
     console.log("JWT auth");
