@@ -34,6 +34,8 @@ html, body {
 }
 
 .sign_in_box {
+    display: flex;
+    align-items: center;
     margin-left: auto;
     justify-content: flex-end;
 }
@@ -96,27 +98,53 @@ html, body {
     opacity: .8;
 }
 
-.sign_in_button {
-    background: #AF74E7;
-    opacity: .75;
-    border-radius: 3px;
-    width: 73px;
-    height: 32px;
-    margin-right: 4px;
+.sign_in_box p {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.user_icon {
+    background-color: rgb(187, 107, 217, 0.75);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.sign_in_button:hover {
-    opacity: 1;
+.user_icon:hover {
     cursor: pointer;
-    background-color: #BB6BD9;
+    background-color: white;
+    border: 1px solid black;
 }
 
-#pink_line {
-    opacity: 0.75;
-    border: 1px solid #9B51E0;
+.user_initial {
+    position: absolute;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logout_button {
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    color: red;
+}
+
+.logout_button:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+  
+.user_icon:hover .logout_button {
+    visibility: visible;
+}
+.user_icon:hover .user_initial {
+    visibility: hidden;
 }
 
 .tracker_body {
@@ -243,34 +271,6 @@ html, body {
     max-height: 276px;
     overflow: auto;
     border-bottom-width: 2px;
-}
-
-.track_number_title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-
-
-.additional_track_nums {
-    max-height: 0;
-    overflow: hidden;
-    width: 752px;
-    transition: max-height 0.2s ease;
-    margin-top: -5px;
-    margin-bottom: 5px;
-    border-bottom-color: rgb(187, 107, 217);
-    border-bottom-style: solid;
-    border-bottom-width: 0px;
-    margin-left: 5px;
-    border-left-color: rgb(187, 107, 217);
-    border-left-style: solid;
-    border-left-width: 2px;
-    margin-right: 5px;
-    border-right-color: rgb(187, 107, 217);
-    border-right-style: solid;
-    border-right-width: 2px;
 }
 
 .add_auto_height {
