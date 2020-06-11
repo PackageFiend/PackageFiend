@@ -1,19 +1,24 @@
 module.exports = function parseUPS (resJS) {
   const retArr = [];
   for (let i = 0; i < resJS.length; i++) {
-    const parcel = resJS[i].data.trackResponse.shipment[0].package[0];
+    const ret = {};
+
+    let parcel = null;
+    if (resJS[i].data) {
+      parcel = resJS[i].data.trackResponse.shipment[0].package[0];
+      ret.TrackNum = parcel.trackingNumber;
+    }
     //console.dir(resJS[i].data, {depth: null});
 
-    const ret = {};
-    ret.TrackNum = parcel.trackingNumber;
     console.log(ret.TrackNum);
     ret.Provider = 'UPS';
 
-    if (parcel === undefined) {
-      ret.TrackNum = null;
+    console.log(i);
+    if (!parcel) {
+      ret.TrackNum = resJS[i].response.trackNum;
       ret.Error = {
-        Number: resJS.response.errors[0].code,
-        Description: resJS.response.errors[0].message
+        Number: resJS[i].response.errors[0].code,
+        Description: resJS[i].response.errors[0].message
       };
       retArr.push(ret);
       continue;
