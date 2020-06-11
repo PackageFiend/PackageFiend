@@ -16,11 +16,25 @@ $(document).ready(() => {
     const pass1 = $('#pass1').val();
     const pass2 = $('#pass2').val();
 
+    if (pass1 !== pass2) {
+      $('#re_enter_pass').after('Passwords don\'t match.');
+    }
+
     const res = await axios.post('http://localhost:8080/auth/createuser', {
       name: name,
       username: username,
       password: pass1
+    }).catch((err) => {
+      console.log(err.response);
+      if (err.response.status === 400) {
+        return null;
+      }
     });
+
+    if (res === null) {
+      $('#username_box').after('Username is taken.');
+      return;
+    }
 
     console.log(res);
   });
