@@ -1,7 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const router = express.Router();
-const track = require('../track');
+const track = require('../tracking/track');
 
 router.get('/num/:tracknum', async (req, res) => {
   const trackingNumber = req.params.tracknum.split(',');

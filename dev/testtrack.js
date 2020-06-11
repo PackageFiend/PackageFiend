@@ -1,4 +1,4 @@
-const track = require('../track');
+const track = require('../tracking/track');
 
 const myArgs = process.argv.slice(2);
 
