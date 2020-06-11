@@ -37,11 +37,10 @@
         </header>
         <!-- This section displays the current tracking number showed below -->
         <div class="tracker_body">
-            <!-- This is the purple bar. Becomes a dropdown if multiple tracking numbers are present. -->
-            <!-- I want to make it so the entire bar is clickable to display the extra numbers, if present -->
+            <!--  Shows packages where 'out for delivery' is true -->
             <div class="alerts_collapsible">
                 <div class="left_spacer"></div>    
-                <div class="category_title">ALERTS</div>
+                <div class="category_title">OUT FOR DELIVERY</div>
                 <div class="line_quantity">
                     <!-- PLACEHOLDER -->
                     <p>3</p>
@@ -50,18 +49,14 @@
             </div>
             <div class="alerted_nums">
                 <!-- Each of these track_data_line divs represents one of the numbers -->
-                <!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
-                
                 <!--                        
-                
                     THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
-                    
                 -->
                 <div class="alert_data_line">
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -73,7 +68,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -85,7 +80,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -100,7 +95,7 @@
             </div>
             <div class="active_collapsible">
                 <div class="left_spacer"></div>    
-                <div class="category_title">ALL ACTIVE</div>
+                <div class="category_title">IN TRANSIT</div>
                 <div class="line_quantity">
                     <!-- PLACEHOLDER -->
                     <p>6</p>
@@ -120,7 +115,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -131,7 +126,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -142,7 +137,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -153,7 +148,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -164,7 +159,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -175,7 +170,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -210,7 +205,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -221,7 +216,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -232,7 +227,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -243,7 +238,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -254,7 +249,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -265,7 +260,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -276,7 +271,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -287,7 +282,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -298,7 +293,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -309,7 +304,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -320,7 +315,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -331,7 +326,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -342,7 +337,7 @@
                     <!-- Split into left and right divs for spacing -->                    
                     <div class="data_line_l">
                         <p>1J543FDGLKJ6546</p>
-                        <div class="carrier_icon_bold">UPS</div>
+                        <div class="carrier_icon">UPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -353,7 +348,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -364,7 +359,7 @@
                     <!-- Split into left and right divs for spacing -->
                     <div class="data_line_l">
                         <p>2J543FDGLKJ6546</p>
-                        <div class="carrier_icon_reg">USPS</div>
+                        <div class="carrier_icon">USPS</div>
                     </div>
                     <div class="data_line_r">
                         <div class="data_line_status">In transit:</div>
@@ -377,66 +372,32 @@
 
                 -->
             </div>
-            
 
-            <div class="completed_bar">
-                <div class="percent_complete">50% est. travel completed</div>
-            </div>
-
-            <div class="miles_traveled_and_graph">
-       
-                <div class="miles_data">
-                    <div class="miles_soFar">
-                        <div class="bold_body">Miles Traveled so far:</div>
-                        <div class="bold_body">437 miles</div>
+            <div class="statistics">
+                <div class="stats_data_lines">
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Delivered - 7 days:</div>
+                        <div class="del_7">2</div>
                     </div>
-                    
-                    <div class="mileage_listings">    
-                        <div class="mileages_box">
-                            <div class="location">
-                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
-                                <div></div>
-                            </div>
-                            <div class="times">
-                                <div class="reg_body">350 miles</div>
-                                <div>Time: 18hrs</div>
-                            </div>
-                        </div>
-                        <div class="mileages_box">
-                            <div class="location">
-                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
-                                <div></div>
-                            </div>
-                            <div class="times">
-                                <div class="reg_body">350 miles</div>
-                                <div>Time: 18hrs</div>
-                            </div>
-                        </div>
-                        <div class="mileages_box">
-                            <div class="location">
-                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
-                                <div></div>
-                            </div>
-                            <div class="times">
-                                <div class="reg_body">350 miles</div>
-                                <div>Time: 18hrs</div>
-                            </div>
-                        </div>
-                        <div class="mileages_box">
-                            <div class="location">
-                                <div class="reg_body">Atlanta GA -> Austin TX:</div>
-                                <div></div>
-                            </div>
-                            <div class="times">
-                                <div class="reg_body">350 miles</div>
-                                <div>Time: 18hrs</div>
-                            </div>
-                        </div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Delivered - 30 days:</div>
+                        <div class="del_30">5</div>
                     </div>
-
-                    <div class="miles_total_estimated">
-                        <div class="bold_body">Estimated Total Miles:</div>
-                        <div class="bold_body">719 Miles</div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Delivered - 90 days:</div>
+                        <div class="del_90">6</div>
+                    </div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Delivered - 6 months:</div>
+                        <div class="del_6m">10</div>
+                    </div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Delivered - all time:</div>
+                        <div class="del_at">15</div>
+                    </div>
+                    <div class="stat_line_bold">
+                        <div class="bold_body">Total Distance Delivered:</div>
+                        <div class="miles_total">99437 miles</div>
                     </div>
                 </div>
                 

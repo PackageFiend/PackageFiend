@@ -334,22 +334,7 @@ html, body {
     opacity: .8;
 }
 
-.carrier_icon_bold {
-    display: flex;
-    width: 69px;
-    height: 24px;
-    font-size: 12px;
-    font-weight: 700;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #56CCF2;
-    color: #56CCF2;
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-.carrier_icon_reg {
+.carrier_icon {
     display: flex;
     width: 69px;
     height: 24px;
@@ -364,84 +349,25 @@ html, body {
     margin-left: 10px;
 }
 
-.map_estimates {
-    display: flex;
-    flex-direction: row;
-    height: 220px;
-    width: 756px;
-    margin-left: 4px;
-    margin-right: 4px;
-    justify-content: space-between;
-}
-
-#map {
-    width: 363px;
-    height: 220px;
-}
-
-.completed_bar {
-    width: 756px;
-    height: 30px;
-    background: #C4C4C4;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.percent_complete {
-    display: flex;
-    height: 100%;
-    width: 50%;
-    background: #BB6BD9;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    transition: width 2s ease;
-}
-
-.percent_complete:hover {
-    width: 100%;
-    cursor: pointer;
-}
-
-.track_data_box {
-    width: 363px;
-    height: 220px;
-}
-
 .location_box {
     height: 195px;
     overflow: auto;
 }
 
-.mileage_listings {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 170px;
-    width: 100%;
-    overflow: auto;
-}
-
-.est_delivery,
-.location_times,
-.miles_soFar,
-.mileages_box {
+.stat_line_bold {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: flex-start;
 }
 
-.miles_total_estimated {
-    display: flex;
-    flex-direction: row;
-    height: 25px;
-    justify-content: space-between;
-}
-
-.bold_body {
+.bold_body,
+.del_7,
+.del_30,
+.del_90,
+.del_6m,
+.del_at,
+.miles_total {
     font-size: 18px;
     font-weight: 700;
     height: 25px;
@@ -449,27 +375,23 @@ html, body {
     margin-top: 0px;
 }
 
-.reg_body {
-    margin-top: 15px;
-}
-
-
-
-.miles_traveled_and_graph {
+.statistics {
     display: flex;
     flex-direction: row;
     height: 220px;
     width: 756px;
     margin-left: 4px;
     margin-right: 4px;
+    margin-top: 10px;
     justify-content: space-between;
 }
 
-.miles_data {
+.stats_data_lines {
     width: 363px;
     height: 220px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
 .miles_graph {
