@@ -20,7 +20,11 @@ router.get('/dashboard', async (req, res) => {
   const udat = await docClient.get(params).promise();
 
   console.log('Fetching dashboard', req.user);
-  const data = await track.track(udat.Item.packages);
+  const pids = [];
+  for (let i = 0; i < udat.Item.packages.length; i++) {
+    pids.push(udat.Item.packages[i].id);
+  }
+  const data = await track.track(pids);
   console.log('Dashboard data:', data);
 
   res.send(await ejs.renderFile('./templates/dashboard.html', {dat: data}));
@@ -67,8 +71,8 @@ router.get('/packages', async (req, res, next) => {
 
 router.post('/packages', async (req, res, next) => {
   const rdat = req.body;
-  if (!rdat.id || !rdat.provider) {
-    return res.status(400).json({ message: 'Bad data. Must contain id and provider' });
+  if (!rdat.id) {
+    return res.status(400).json({ message: 'Bad data. Must contain id' });
   }
 
   const params = {
@@ -79,8 +83,7 @@ router.post('/packages', async (req, res, next) => {
     UpdateExpression: "SET packages = list_append(packages, :vals)",
     ExpressionAttributeValues: {
       ":vals": [{
-        id: rdat.id,
-        provider: rdat.provider
+        id: rdat.id
       }]
     }
   }

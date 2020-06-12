@@ -4,7 +4,7 @@ const fedexReg = /^(?:\d{12}|\d{15}|\d{20})$/;
 
 $(document).ready(() => {
   if (localStorage.pkgfnd_name) {
-    $('.sign_in_box').text('Hello, ' + localStorage.pkgfnd_name);
+    $('.sign_in_box').html('<a href="http://localhost:8080/track/dashboard">Dashboard</a> Hello, ' + localStorage.pkgfnd_name);
   }
 
   $('.go_button').click(() => {

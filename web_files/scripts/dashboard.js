@@ -9,6 +9,36 @@ $(document).ready(function(){
     $(".delivered_collapsible").click(function(){
         $(".delivered_nums").toggleClass("add_ten_lines");
     });
+
+  $('.logout_button').click(() => {
+    delete localStorage.pkgfnd_name;
+    delete localStorage.pkgfnd_token;
+    window.location = "http://localhost:8080";
+  });
+
+  $('.add_button').click(async () => {
+    const num = $('.enter_numbers_box input').val();
+
+    res = await axios.post('http://localhost:8080/user/packages',
+      {
+        id: num.trim()
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.pkgfnd_token}`
+        }
+      });
+
+    console.log(res);
+
+    if (res.response.code !== 200) {
+      console.error(res);
+    } else {
+      console.log('Added package');
+    }
+
+    //TODO: Call function to add to render
+  })
 });
 
 // Placeholder data for developing
