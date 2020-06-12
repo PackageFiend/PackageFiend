@@ -170,7 +170,7 @@ html, body {
     height: 100%;
 }
 
-.current_displayed_collapsible {
+.collapsible_header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -183,7 +183,7 @@ html, body {
     background-color: rgb(187, 107, 217, 0.75);
 }
 
-.active, .current_displayed_collapsible:hover {
+.active, .collapsible_header:hover {
     cursor: pointer;
     background-color: rgb(187, 107, 217);
 }
@@ -211,7 +211,7 @@ html, body {
     margin-right: 4px;
 }
 
-.additional_track_nums {
+.collapsible_list {
     max-height: 0;
     overflow: hidden;
     width: 752px;
@@ -314,7 +314,7 @@ html, body {
     margin-left: 10px;
 }
 
-.map_estimates {
+.map_and_events {
     display: flex;
     flex-direction: row;
     height: 220px;
@@ -355,12 +355,12 @@ html, body {
     cursor: pointer;
 }
 
-.track_data_box {
+.events_data {
     width: 363px;
     height: 220px;
 }
 
-.location_box {
+.events_data_box {
     height: 195px;
     overflow: auto;
 }
@@ -375,13 +375,23 @@ html, body {
 }
 
 .est_delivery,
-.location_times,
+.line_event_and_date,
 .miles_soFar,
 .mileages_box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: flex-start;
+}
+
+.times {
+    display: block;
+    min-width: 105px;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.event_description {
 }
 
 .miles_total_estimated {

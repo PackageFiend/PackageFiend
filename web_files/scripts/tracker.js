@@ -1,8 +1,8 @@
 // Dropdown for multiple tracking numbers
-const collapsible = document.querySelector('.current_displayed_collapsible');
+const collapsible = document.querySelector('.collapsible_header');
 collapsible.addEventListener("click", event => {
     collapsible.classList.toggle('active');
-    const nums = document.querySelector('.additional_track_nums');
+    const nums = document.querySelector('.collapsible_list');
     nums.classList.toggle('add_auto_height');
 });
 

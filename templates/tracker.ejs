@@ -36,7 +36,8 @@
         <div class="tracker_body">
             <!-- This is the purple bar. Becomes a dropdown if multiple tracking numbers are present. -->
             <!-- I want to make it so the entire bar is clickable to display the extra numbers, if present -->
-            <div class="current_displayed_collapsible">
+            <div class="collapsible_header">
+                <!-- Could add name of package here for users if present -->
                 <div></div>
                 <div class="track_number_title">
 		            <!-- PLACEHOLDER DATA -->
@@ -52,7 +53,7 @@
             </div>
             <!-- This is the dropdown that displays if there are multiple tracking numbers present in the URL -->
             <!-- If there are no extra tracking numbers, it won't display -->
-            <div class="additional_track_nums">
+            <div class="collapsible_list">
                 <!-- Each of these track_data_line divs represents one of the numbers -->
                 <!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
                 
@@ -78,11 +79,11 @@
                 </div>
 				<% } %>
 			</div>
-            <div class="map_estimates">
+            <div class="map_and_events">
             
                 <div id="map"></div>
             
-                <div class="track_data_box">
+                <div class="events_data">
                     <div class="est_delivery">
 						<% if (!dat[0].Error) { %>
                         <div id="est_delivery_desc" class="bold_body">
@@ -91,11 +92,11 @@
 						<div id="est_delivery_time" class="bold_body indv_time"><%- dat[0].MostRecentTime %></div>
 						<% } %>
                     </div>
-                    <div class="location_box">
+                    <div class="events_data_box">
 						<% if (!dat[0].Error) { %>
 						<% for (event of dat[0].Events) { %>
-                        <div class="location_times">
-                            <div class="location">
+                        <div class="line_event_and_date">
+                            <div class="event_description">
 								<div class="reg_body"><%= event.Description %></div>
                             </div>
 							<% if (event.Time) { %>
@@ -108,10 +109,11 @@
                         </div>
 						<% } %>
 						<% } else { %>
-                        <div class="location_times">
-                            <div class="location">
-								<div class="reg_body">Sorry, there's no
-									information about this package, yet.</div>
+                        <div class="line_event_and_date">
+                            <div class="event_description">
+								<div class="reg_body">
+                                    No information available.
+                                </div>
                             </div>
                         </div>
 						<% } %>
@@ -145,7 +147,7 @@
 
 							const mBoxTemplate = `
 							  <div class="mileages_box">
-								  <div class="location">
+								  <div class="event_description">
 									  <div class="reg_body">${travString}:</div>
 									  <div></div>
 								  </div>
@@ -159,8 +161,8 @@
 						  <%- mBoxTemplate %>
 						  <% } %>
 						  <% } else { %>
-							<div class="location_times">
-							  <div class="location">
+							<div class="line_event_and_date">
+							  <div class="event_description">
 								<div class="reg_body">Sorry, there's no information about this package, yet.</div>
 							  </div>
 							</div>

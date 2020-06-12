@@ -36,7 +36,7 @@ $(document).ready(function() {
     $(this).text('Time: ' + fTime);
   });
 
-  $('.additional_track_nums').on('click', '.track_data_line', function (e) {
+  $('.collapsible_list').on('click', '.track_data_line', function (e) {
     if ($(this).is('.tdl_bold')) return;
     $('.tdl_bold').removeClass('tdl_bold');
     $(this).addClass('tdl_bold');
@@ -55,7 +55,7 @@ $(document).ready(function() {
     $('.tracking_number').text(parcel.TrackNum);
     $('.track_number_title .carrier_icon_bold').text(parcel.Provider);
 
-    $('.location_box').empty();
+    $('.events_data_box').empty();
 
     mymap.eachLayer((layer) => {
       mymap.removeLayer(layer);
@@ -83,14 +83,14 @@ $(document).ready(function() {
         }
 
         const loctimes = `
-          <div class="location_times">
-            <div class="location">
+          <div class="line_event_and_date">
+            <div class="event_description">
               <div class="reg_body">${event.Description}</div>
             </div>
             ${thtml}
           </div>`;
 
-        $('.location_box').append(loctimes);
+        $('.events_data_box').append(loctimes);
       }
 
       $('#total_dist').text(parcel.TotalDistance + " Miles");
@@ -109,7 +109,7 @@ $(document).ready(function() {
 
         const mBoxTemplate = `
           <div class="mileages_box">
-              <div class="location">
+              <div class="event_description">
                   <div class="reg_body">${travString}:</div>
                   <div></div>
               </div>
@@ -127,13 +127,13 @@ $(document).ready(function() {
       $('#total_dist').text("");
 
       const loctimes = `
-        <div class="location_times">
-          <div class="location">
+        <div class="line_event_and_date">
+          <div class="event_description">
             <div class="reg_body">Sorry, there's no information about this package, yet.</div>
           </div>
         </div>`;
 
-      $('.location_box').append(loctimes);
+      $('.events_data_box').append(loctimes);
     }
 
     const pline = L.polyline(latlngs);
@@ -166,7 +166,7 @@ $(document).ready(function() {
               <div class="data_line_delivery_date"></div>
             </div>
           `;
-        $('.additional_track_nums').append(ndiv);
+        $('.collapsible_list').append(ndiv);
         continue;
       }
       const ndiv = `
@@ -183,7 +183,7 @@ $(document).ready(function() {
           </div>
         `;
 
-      $('.additional_track_nums').append(ndiv);
+      $('.collapsible_list').append(ndiv);
     }
     $(`#${nplist[0].TrackNum}`).click();
     
