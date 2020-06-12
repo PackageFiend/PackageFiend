@@ -76,12 +76,21 @@ module.exports = {
             response: {
               errors: [{
                 code: 500,
-                message: "500 response from UPS"
+                message: '500 response from UPS'
               }],
               trackNum: numstack.ups[i]
             }
-          }
+          };
         }));
+      }
+    }
+
+    // Create the Fedex Promise
+    if (numstack.fedex.length) {
+      try {
+
+      } catch (err) {
+
       }
     }
 
@@ -100,9 +109,9 @@ module.exports = {
     if (numstack.ups.length) {
       try {
         const upsVals = await Promise.all(upsProm);
-        //console.dir(upsVals, {depth: null});
+        // console.dir(upsVals, {depth: null});
         const parsed = parseUPS(upsVals);
-        //console.log(parsed);
+        // console.log(parsed);
         ret.push(...parsed);
       } catch (err) {
         console.error('Error getting UPS:', err);
@@ -111,7 +120,7 @@ module.exports = {
 
     const geos = [];
 
-    //Add geo data
+    // Add geo data
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
@@ -132,7 +141,7 @@ module.exports = {
       console.error('Error getting geo information:', err);
     }
 
-    //Add MostRecentTime property
+    // Add MostRecentTime property
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
@@ -147,14 +156,14 @@ module.exports = {
       }
     }
 
-    //Add travel time data
+    // Add travel time data
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
       parcel.Travels = [];
       parcel.TotalDistance = 0;
-      let start = null;
-      let end = null;
+      const start = null;
+      const end = null;
       for (let j = parcel.Events.length - 1; j > 0; j--) {
         const event = parcel.Events[j];
         if (!event.Location.Geo || !event.Time) continue;
@@ -172,19 +181,19 @@ module.exports = {
           parcel.TotalDistance += niceDist;
 
           parcel.Travels.push({
-            From: event.Location.Address, //.replace(/([A-Z]{2}).+/, '$1'),
-            To: nextEvent.Location.Address, //.replace(/([A-Z]{2}).+/, '$1'),
+            From: event.Location.Address, // .replace(/([A-Z]{2}).+/, '$1'),
+            To: nextEvent.Location.Address, // .replace(/([A-Z]{2}).+/, '$1'),
             Distance: niceDist,
             TimeTaken: timeDiff
           });
 
-          //console.log(j, k);
+          // console.log(j, k);
           j = k + 1;
           break;
         }
       }
 
-      //console.log(parcel.Travels);
+      // console.log(parcel.Travels);
     }
 
     return ret;
