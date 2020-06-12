@@ -60,6 +60,10 @@ module.exports = function parseUSPS (resJS) {
       const description = dmatch ? dmatch[1] : null;
       const location = lmatch ? lmatch[1] : null;
 
+      if (!ret.Delivered && description.match(/out for delivery/i)) {
+        ret.OutForDelivery = true;
+      }
+
       ret.Events.push({
         Time: time,
         Description: description,

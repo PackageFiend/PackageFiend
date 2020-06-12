@@ -8,7 +8,7 @@ module.exports = function parseUPS (resJS) {
       parcel = resJS[i].data.trackResponse.shipment[0].package[0];
       ret.TrackNum = parcel.trackingNumber;
     }
-    //console.dir(resJS[i].data, {depth: null});
+    console.dir(resJS[i].data, {depth: null});
 
     console.log(ret.TrackNum);
     ret.Provider = 'UPS';
@@ -49,7 +49,9 @@ module.exports = function parseUPS (resJS) {
       const loc = event.location.address;
       const location = [loc.city, loc.stateProvince, loc.postalCode, loc.country].join(' ');
 
-      let geo = null;
+      if (event.status.code === 'OT' && !ret.Delivered) {
+        ret.OutForDelivery = true;
+      }
 
       ret.Events.push({
         Time: new Date(newDateTime),
