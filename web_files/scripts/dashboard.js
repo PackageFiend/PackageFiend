@@ -1,5 +1,7 @@
 // Accordion dropdowns
 $(document).ready(function(){
+  console.log('First Script');
+
     $(".alerts_collapsible").click(function(){
         $(".alerted_nums").toggleClass("add_five_lines");
     });

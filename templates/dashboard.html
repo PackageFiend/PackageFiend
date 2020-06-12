@@ -473,7 +473,9 @@
 		<p id="footer_link">Privacy</p>
 	</div>
 </footer>
-<script>
-	const data = <%- JSON.stringify(dat, null, 0) %>;
+<script type="text/javascript">
+	window.data = <%- JSON.stringify(dat, null, 0) %>;
+	console.log('this is loading');
+	console.log(data);
 </script>
-<script type="text/javascript" src="http://localhost:8080/scripts/dashboard.js"></script>
+<script type="text/javascript" src="http://localhost:8080/scripts/dashboard.js"> </script>
