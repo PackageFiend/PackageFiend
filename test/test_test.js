@@ -6,6 +6,6 @@ const expect = chai.expect;
 
 describe('sample test', () => {
   it('Should return string', () => {
-    expect('i with travis').to.equal('ci with travis');
+    expect('ci with travis').to.equal('ci with travis');
   });
 });
