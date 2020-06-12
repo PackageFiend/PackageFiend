@@ -108,15 +108,16 @@ html, body {
     width: 400px;
 }
 
-.go_box,
-.create_box {
+.sign_in_dialogue,
+.create_dialogue {
     display: flex;
     width: 459px;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     margin-top: -15px;
 }
 
-.go_button,
+.sign_in_button,
 .create_button {
     display: flex;
     justify-content: center;
@@ -128,7 +129,7 @@ html, body {
     border-radius: 5px;
 }
 
-.go_button:hover,
+.sign_in_button:hover,
 .create_button:hover {
     background-color: #BB6BD9;
     cursor: pointer;
@@ -213,7 +214,12 @@ html, body {
     align-items: center;
 }
 
-.holberton:hover {
+#holb_link {
+    text-decoration: none;
+    color: black;
+}
+
+#holb_link:hover {
     color: #D9534F;
     text-decoration: underline;
     cursor: pointer;

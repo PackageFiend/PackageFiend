@@ -21,13 +21,14 @@
             </div>
         </header>
         <div class="home_body">
+            <!-- Need to add a clickable that appears -->
             <div class="sign_in_box">  
                 <div class="big_text">Existing Users:</div>
                 <form class="log_in">
                     <div class="enter_username">
                         <div class="enter_email_box">
                             <i class="fas fa-envelope"></i>
-                            <input id="si_username" type="text" placeholder="ENTER EMAIL ADDRESS" required />
+                            <input id="si_username" type="text" placeholder="ENTER USERNAME" required />
                         </div>
                     </div>
                     <div id="si_password_box" class="enter_password">
@@ -37,8 +38,9 @@
                         </div>
                     </div>
                 </form>   
-                <div class="go_box">    
-                    <div class="go_button">SIGN IN</div>
+                <div class="sign_in_dialogue">    
+                        <div class="sign_in_message"></div>
+                        <div class="sign_in_button">SIGN IN</div>
                 </div>
             </div>
             
@@ -46,6 +48,7 @@
                 <div class="big_text_no_account">No account?</div>
                 <i class="fas fa-bars"></i>
             </div>
+
             <div class="create_collapsible">
                 <form class="create_login">
                     <div class="enter_username">
@@ -57,7 +60,7 @@
                     <div id="username_box" class="enter_username">
                         <div class="enter_email_box">
                             <i class="fas fa-envelope"></i>
-                            <input id="username" type="text" placeholder="ENTER EMAIL ADDRESS" required />
+                            <input id="username" type="text" placeholder="ENTER USERNAME" required />
                         </div>
                     </div>
                     <div class="enter_password">
@@ -73,7 +76,8 @@
                         </div>
                     </div>
                 </form>
-                <div class="create_box">    
+                <div class="create_dialogue">    
+                    <div class="create_message"></div>
                     <div class="create_button">CREATE ACCOUNT</div>
                 </div>
             </div>
@@ -85,9 +89,9 @@
                 <div></div>
                 <div class="holberton">
                     <img class="holb_logo" src="./images/holb_logo_black.svg">
-                    <p>Holberton School</p>
+                    <a id="holb_link" href="http://www.holbertonschool.com" target="_blank">Holberton School</a>
                 </div>
-                <p id="footer_link">Privacy</p>
+                <p id="footer_link"></p>
             </div>
         </footer>
     </body>
