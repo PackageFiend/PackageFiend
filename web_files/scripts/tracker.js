@@ -6,6 +6,18 @@ collapsible.addEventListener("click", event => {
     nums.classList.toggle('add_auto_height');
 });
 
+$(document).ready(() => {
+    
+    $('.sign_in_button').click(() => {
+        window.location = "http://localhost:8080/signin.html";
+    });
+// Test
+    $('.logo').click(() => {
+        console.log(data);
+    });
+});
+
+
 // Map settings
 let mymap = L.map('map').setView([39.8283, -98.5795], 3);
 

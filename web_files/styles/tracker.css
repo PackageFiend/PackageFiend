@@ -18,7 +18,7 @@ html, body {
     width: 100%;
 }
 
-.topbar {
+.navbar {
     display: flex;
     align-items: center;
     background-color: white;
@@ -34,6 +34,8 @@ html, body {
 }
 
 .sign_in_box {
+    display: flex;
+    align-items: center;
     margin-left: auto;
     justify-content: flex-end;
 }
@@ -98,8 +100,7 @@ html, body {
 }
 
 .sign_in_button {
-    background: #AF74E7;
-    opacity: .75;
+    background-color: rgb(187, 107, 217, 0.75);
     border-radius: 3px;
     width: 73px;
     height: 32px;
@@ -110,14 +111,56 @@ html, body {
 }
 
 .sign_in_button:hover {
-    opacity: 1;
     cursor: pointer;
-    background-color: #BB6BD9;
+    background-color: rgb(187, 107, 217);
 }
 
-#pink_line {
-    opacity: 0.75;
-    border: 1px solid #9B51E0;
+.sign_in_box p {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.user_icon {
+    background-color: rgb(187, 107, 217, 0.75);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_icon:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.user_initial {
+    position: absolute;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logout_button {
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    color: red;
+}
+
+.logout_button:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+  
+.user_icon:hover .logout_button {
+    visibility: visible;
+}
+.user_icon:hover .user_initial {
+    visibility: hidden;
 }
 
 .tracker_body {
@@ -137,12 +180,12 @@ html, body {
     margin-top: 20px;
     margin-bottom: 5px;
     border-radius: 10px 10px 0px 0px;
-    background: #c397ed;
+    background-color: rgb(187, 107, 217, 0.75);
 }
 
 .active, .current_displayed_collapsible:hover {
     cursor: pointer;
-    background-color: #BB6BD9;
+    background-color: rgb(187, 107, 217);
 }
 
 .track_number_title {
@@ -152,11 +195,16 @@ html, body {
 }
 
 .more_numbers_selector {
+    visibility: hidden;
     margin-right: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
 
+}
+
+.visible {
+    visibility: visible;
 }
 
 .more_numbers_selector p {
@@ -170,21 +218,22 @@ html, body {
     transition: max-height 0.2s ease;
     margin-top: -5px;
     margin-bottom: 5px;
-    border-bottom-color: #BB6BD9;
+    border-bottom-color: rgb(187, 107, 217);
     border-bottom-style: solid;
     border-bottom-width: 0px;
     margin-left: 5px;
-    border-left-color: #BB6BD9;
+    border-left-color: rgb(187, 107, 217);
     border-left-style: solid;
     border-left-width: 2px;
     margin-right: 5px;
-    border-right-color: #BB6BD9;
+    border-right-color: rgb(187, 107, 217);
     border-right-style: solid;
     border-right-width: 2px;
 }
 
 .add_auto_height {
-    max-height: 100px;
+    max-height: 138px;
+    min-height: 54px;
     overflow: auto;
     border-bottom-width: 2px;
 }
