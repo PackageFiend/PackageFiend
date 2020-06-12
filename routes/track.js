@@ -3,6 +3,10 @@ const ejs = require('ejs');
 const router = express.Router();
 const track = require('../tracking/track');
 
+router.get('/dashboard', (req, res) => {
+  res.sendFile('/templates/predash.html', { root: `${__dirname}/../`});
+});
+
 router.get('/num/:tracknum', async (req, res) => {
   const trackingNumber = req.params.tracknum.split(',');
   const data = await track.track(trackingNumber);

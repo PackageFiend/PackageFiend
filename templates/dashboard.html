@@ -1,0 +1,479 @@
+<!-- Nav bar -->
+<header class="header">
+	<div class="navbar">
+		<div class="add_nums_widget">                
+			<div class="enter_track">
+				<form class="enter_numbers">
+					<div class="enter_numbers_box">
+						<i class="fas fa-box"></i>
+						<input type="text" placeholder="ADD TRACKING NUMBER(S)"/>
+					</div>
+				</form>
+			</div>
+			<div class="add_button">ADD</div>
+		</div>
+		<img class="logo" src="http://localhost:8080/images/PkgFiend_logo.svg">
+		<div class="sign_in_box">
+			<p>DASHBOARD</p>
+			<div class="user_icon">
+				<div class="user_initial">T</div>
+				<div class="logout_button">EXIT</div>
+			</div>
+		</div>
+	</div>    
+</header>
+<!-- This section displays the current tracking number showed below -->
+<div class="tracker_body">
+	<!--  Shows packages where 'out for delivery' is true -->
+	<div class="alerts_collapsible">
+		<div class="left_spacer"></div>    
+		<div class="category_title">OUT FOR DELIVERY</div>
+		<div class="line_quantity">
+			<!-- PLACEHOLDER -->
+			<p>3</p>
+			<i class="fas fa-caret-down"></i>
+		</div>
+	</div>
+	<div class="alerted_nums">
+		<!-- Each of these track_data_line divs represents one of the numbers -->
+		<!--                        
+			THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
+		-->
+		<div class="alert_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+
+		<div class="alert_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		
+		<div class="alert_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<!--
+				
+				END PLACEHOLDER DATA
+
+		-->
+	</div>
+	<div class="active_collapsible">
+		<div class="left_spacer"></div>    
+		<div class="category_title">IN TRANSIT</div>
+		<div class="line_quantity">
+			<!-- PLACEHOLDER -->
+			<p>6</p>
+			<i class="fas fa-caret-down"></i>
+		</div>
+	</div>
+	<div class="active_nums">
+		<!-- Each of these track_data_line divs represents one of the numbers -->
+		<!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
+		
+		<!--                        
+		
+			THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
+			
+		-->
+		<div class="active_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="active_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="active_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="active_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="active_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="active_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<!--
+				
+				END PLACEHOLDER DATA
+
+		-->
+	</div>
+	<div class="delivered_collapsible">
+		<div class="left_spacer"></div>    
+		<div class="category_title">DELIVERED</div>
+		<div class="line_quantity">
+			<!-- PLACEHOLDER -->
+			<p>15</p>
+			<i class="fas fa-caret-down"></i>
+		</div>
+	</div>
+	<div class="delivered_nums">
+		<!-- Each of these track_data_line divs represents one of the numbers -->
+		<!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
+		
+		<!--                        
+		
+			THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
+			
+		-->
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->                    
+			<div class="data_line_l">
+				<p>1J543FDGLKJ6546</p>
+				<div class="carrier_icon">UPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<div class="delivered_data_line">
+			<!-- Split into left and right divs for spacing -->
+			<div class="data_line_l">
+				<p>2J543FDGLKJ6546</p>
+				<div class="carrier_icon">USPS</div>
+			</div>
+			<div class="data_line_r">
+				<div class="data_line_status">In transit:</div>
+				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
+			</div>
+		</div>
+		<!--
+				
+				END PLACEHOLDER DATA
+
+		-->
+	</div>
+
+	<div class="statistics">
+		
+		<div class="stats_data_lines">
+			<div class="stat_line_bold">
+				<div class="bold_body">Delivered - 7 days:</div>
+				<div class="del_7">2</div>
+			</div>
+			<div class="stat_line_bold">
+				<div class="bold_body">Delivered - 30 days:</div>
+				<div class="del_30">5</div>
+			</div>
+			<div class="stat_line_bold">
+				<div class="bold_body">Delivered - 90 days:</div>
+				<div class="del_90">6</div>
+			</div>
+			<div class="stat_line_bold">
+				<div class="bold_body">Delivered - 180 days:</div>
+				<div class="del_6m">10</div>
+			</div>
+			
+			<div class="stat_line_bold">
+				<div class="bold_body">TOTALS</div>
+				<div></div>
+			</div>
+			<div class="stat_line_bold">
+				<div class="bold_body_ups">UPS:</div>
+				<div class="del_ups">6</div>
+			</div>
+			<div class="stat_line_bold">
+				<div class="bold_body_usps">USPS:</div>
+				<div class="del_usps">9</div>
+			</div>
+			<div class="stat_line_bold">
+				<div class="bold_body">Delivered:</div>
+				<div class="del_at">15</div>
+			</div>
+			
+			<div class="stat_line_bold">
+				<div class="bold_body">Distance (miles):</div>
+				<div class="miles_total">99437</div>
+			</div>
+		</div>
+		
+		<div class="bar_graph">
+			<div class="g_column">
+				<div class="g_bar_transit">
+					<div class="ups_bar">
+						<span class="ups_hover">UPS</span>
+					</div>
+					<div class="usps_bar">
+						<span class="usps_hover">USPS</span>
+					</div>
+				</div>
+				<div class="g_name">In Transit</div>
+			</div>
+			<div class="g_column">
+				<div class="g_bar_7">
+					<div class="ups_bar">
+						<span class="ups_hover">UPS</span>
+					</div>
+					<div class="usps_bar">
+						<span class="usps_hover">USPS</span>
+					</div>
+				</div>
+				<div class="g_name">7 days</div>
+			</div>
+			<div class="g_column">
+				<div class="g_bar_30">
+					<div class="ups_bar">
+						<span class="ups_hover">UPS</span>
+					</div>
+					<div class="usps_bar">
+						<span class="usps_hover">USPS</span>
+					</div>
+				</div>
+				<div class="g_name">30 days</div>
+			</div>
+			<div class="g_column">
+				<div class="g_bar_90">
+					<div class="ups_bar">
+						<span class="ups_hover">UPS</span>
+					</div>
+					<div class="usps_bar">
+						<span class="usps_hover">USPS</span>
+					</div>
+				</div>
+				<div class="g_name">90 days</div>
+			</div>
+			<div class="g_column">
+				<div class="g_bar_180">
+					<div class="ups_bar">
+						<span class="ups_hover">UPS</span>
+					</div>
+					<div class="usps_bar">
+						<span class="usps_hover">USPS</span>
+					</div>
+				</div>
+				<div class="g_name">180 days</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="footer">
+	<div id="bottom_line"></div>
+	<div class="footer_div">
+		<div></div>
+		<div class="holberton">
+			<img class="holb_logo" src="http://localhost:8080/images/holb_logo_black.svg">
+			<p>Holberton School</p>
+		</div>
+		<p id="footer_link">Privacy</p>
+	</div>
+</footer>
+<script>
+	const data = <%- JSON.stringify(dat, null, 0) %>;
+</script>
+<script type="text/javascript" src="http://localhost:8080/scripts/dashboard.js"></script>

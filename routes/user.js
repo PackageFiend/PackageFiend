@@ -1,11 +1,30 @@
 const express = require('express');
 const router = express.Router();
+const ejs = require('ejs');
+
+const track = require('../tracking/track');
 
 const AWS = require('aws-sdk');
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 router.get('/', (req, res) => res.send('foo'));
+
+router.get('/dashboard', async (req, res) => {
+  const params = {
+    TableName: 'Users',
+    Key: {
+      'username': req.user.username
+    }
+  }
+  const udat = await docClient.get(params).promise();
+
+  console.log('Fetching dashboard', req.user);
+  const data = await track.track(udat.Item.packages);
+  console.log('Dashboard data:', data);
+
+  res.send(await ejs.renderFile('./templates/dashboard.html', {dat: data}));
+});
 
 router.get('/profile', (req, res, next) => {
   res.send(req.user);
