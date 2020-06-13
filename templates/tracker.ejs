@@ -101,7 +101,7 @@
                             </div>
 							<% if (event.Time) { %>
                             <div class="times">
-								<div  class="reg_body indv_time">
+								<div class="reg_body indv_time">
 									<%= event.Time %>
 								</div>
                             </div>
@@ -129,31 +129,48 @@
             <div class="miles_traveled_and_graph">
        
                 <div class="miles_data">
-                    <div class="miles_soFar">
-                        <div class="bold_body">Miles Traveled so far:</div>
+                    <div class="miles_total">
+                        <div class="bold_body">Total Miles Traveled:</div>
                         <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance %> Miles</div>
                     </div>
-                    <div class="mileage_listings">
+                    <div class="time_elapsed_total">
+                        <div class="bold_body">Total Time Elapsed:</div>
+                        <% if (!dat[0].Error) { %>
+                            <% let running_time_total = 0; %>
+                            <% for (let i = 0; i < dat[0].Travels.length; i++) {
+                                const travel = dat[0].Travels[i];
+                                let time_taken = Math.round(travel.TimeTaken/3600); 
+                                running_time_total = running_time_total + time_taken;
+                               };
+                               const time_elapsed_template = '
+                                <div id = "total_time" class="bold_body">${running_time_total} hrs</div>
+                               ';
+                               %>
+                            <%- time_elapsed_template %>
+                        <% } else { %>
+                            <div id = "total_time" class="bold_body">Unknown</div>
+                        <% } %>
+                    </div>
+                    <div class="location_list">
 						<% if (!dat[0].Error) { %>
 						<% for (let i = 0; i < dat[0].Travels.length; i++) {
 							const travel = dat[0].Travels[i];
-							let travString = "";
+                            let startLocation = travel.From;
+                            let endLocation = '-> ' + travel.To;
 
 							if (travel.From === travel.To) {
-							  travString = travel.From;
-							} else {
-							  travString = travel.From + ' -> ' + travel.To;
-							}
-
+							  endLocation = "";
+							};
+                            let time_taken = Math.round(travel.TimeTaken/3600); 
 							const mBoxTemplate = `
-							  <div class="mileages_box">
-								  <div class="event_description">
-									  <div class="reg_body">${travString}:</div>
-									  <div></div>
+							  <div class="place_and_distance">
+								  <div class="place_description">
+									  <div class="tight_text_l">${startLocation}</div>
+									  <div class="tight_text_l">${endLocation}</div>
 								  </div>
-								  <div class="times">
-									  <div class="reg_body">${travel.Distance ? travel.Distance + " miles" : "At Location"}</div>
-									  <div class="sec_time">Time: ${travel.TimeTaken*1000}</div>
+								  <div class="distance_time">
+									  <div class="tight_text_r">${travel.Distance ? travel.Distance + " miles" : "Idle"}</div>
+									  <div class="tight_text_r">${time_taken} hrs</div>
 								  </div>
 							  </div>
 							  `;
@@ -162,16 +179,11 @@
 						  <% } %>
 						  <% } else { %>
 							<div class="line_event_and_date">
-							  <div class="event_description">
-								<div class="reg_body">Sorry, there's no information about this package, yet.</div>
+							  <div class="place_description">
+								<div class="reg_body">Time and location data not available.</div>
 							  </div>
 							</div>
 						  <% } %>
-                    </div>
-
-                    <div class="miles_total_estimated">
-                        <div class="bold_body">Estimated Total Miles:</div>
-                        <div class="bold_body">?</div>
                     </div>
                 </div>
                 

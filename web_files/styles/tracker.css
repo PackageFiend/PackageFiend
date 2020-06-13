@@ -255,7 +255,8 @@ html, body {
 
 .track_data_line:hover,
 .track_data_line_bold:hover {
-    background-color: #c397ed;
+    background-color: rgb(187, 107, 217, 0.3);
+    cursor: pointer;
 }
 
 .data_line_l {
@@ -363,8 +364,11 @@ html, body {
 .events_data_box {
     height: 195px;
     overflow: auto;
+    margin-right: 5px;
+    scrollbar-width: thin;
 }
 
+.location_list,
 .mileage_listings {
     display: flex;
     flex-direction: column;
@@ -372,12 +376,14 @@ html, body {
     height: 170px;
     width: 100%;
     overflow: auto;
+    scrollbar-width: thin;
 }
 
 .est_delivery,
 .line_event_and_date,
-.miles_soFar,
-.mileages_box {
+.miles_total,
+.place_and_distance,
+.time_elapsed_total {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -388,17 +394,44 @@ html, body {
     display: block;
     min-width: 105px;
     margin-left: 10px;
+    margin-right: 5px;
     white-space: nowrap;
 }
 
 .event_description {
+    width: 230px;
 }
 
-.miles_total_estimated {
-    display: flex;
-    flex-direction: row;
-    height: 25px;
-    justify-content: space-between;
+.widen_event {
+    width: 350px;
+}
+
+.distance_time {
+    display: block;
+    min-width: 55px;
+    margin-left: 10px;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+.place_and_distance {
+    margin-top: 10px;
+}
+
+.tight_text_r {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    text-align: end;
+}
+
+.tight_text_l {
+    width: 245px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: start;
 }
 
 .bold_body {

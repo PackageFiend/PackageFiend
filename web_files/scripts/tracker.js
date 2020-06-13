@@ -15,8 +15,8 @@ $(document).ready(() => {
     $('.logo').click(() => {
         console.log(data);
     });
-});
 
+});
 
 // Map settings
 let mymap = L.map('map').setView([39.8283, -98.5795], 3);

@@ -15,9 +15,10 @@ $(document).ready(function() {
     $(".more_numbers_selector").addClass("visible");
   }
 
+  /* Sets the dates to correct format in the collapsible menu */
   $('.indv_time').each(function () {
     const time = $(this).text().trim();
-    console.log(time);
+    //console.log(time);
     let ftime = null;
     if ($(this).parent().is('.data_line_r, .est_delivery')) {
       fTime = moment(time).format('dddd, MMMM Do, YYYY');
@@ -28,22 +29,25 @@ $(document).ready(function() {
     $(this).text(fTime);
   });
 
+  /* Sets the dates to correct format in the location v time elapsed data box */
   $('.sec_time').each(function () {
     const time = $(this).text().split(' ')[1].trim();
-    console.log(time);
+    //console.log(time);
     const fTime = moment.utc(time).format('h [hours,] mm [minutes]');
     //console.log(fTime);
     $(this).text('Time: ' + fTime);
   });
 
+  /* Resets all the data when a new tracking number is selected from the collapsible */
   $('.collapsible_list').on('click', '.track_data_line', function (e) {
     if ($(this).is('.tdl_bold')) return;
     $('.tdl_bold').removeClass('tdl_bold');
     $(this).addClass('tdl_bold');
 
+    /* parcel variable is the all the data for the newly selected track num */
     const pid = $(this).children('.data_line_l').children('.data_line_num').eq(0).text();
-    console.log(pid);
-
+    //console.log(pid);
+    /* Get parcel data */
     let parcel = null;
     for (let i = 0; i < data.length; i++) {
       if (data[i].TrackNum === pid) {
@@ -51,23 +55,25 @@ $(document).ready(function() {
         break;
       }
     }
-
+    
+    /* Clear data */
     $('.tracking_number').text(parcel.TrackNum);
     $('.track_number_title .carrier_icon_bold').text(parcel.Provider);
-
     $('.events_data_box').empty();
-
+    /* Clear map */
     mymap.eachLayer((layer) => {
       mymap.removeLayer(layer);
     });
-
+    
     tlayer.addTo(mymap);
     const latlngs = [];
 
+    /* Populate data with newly selected tracking number */
     if (!parcel.Error) {
       $("#est_delivery_desc").text(parcel.Delivered ? "Delivered:" : "In Transit:");
       $("#est_delivery_time").text(moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY'));
 
+      /* Populate events box */
       for (let i = 0; i < parcel.Events.length; i++) {
         const event = parcel.Events[i];
 
@@ -79,7 +85,7 @@ $(document).ready(function() {
         let thtml = '';
         if (event.Time) {
           const ftime = moment(event.Time.trim()).format('MMMM Do, h:mm a');
-          thtml = `<div class="times"> <div class="reg_body indv_time">${ftime}</div> </div>`;
+          thtml = `<div class="times"><div class="reg_body indv_time">${ftime}</div></div>`;
         }
 
         const loctimes = `
@@ -95,36 +101,39 @@ $(document).ready(function() {
 
       $('#total_dist').text(parcel.TotalDistance + " Miles");
 
-      $('.mileage_listings').empty();
+      $('.location_list').empty();
 
+      let running_time_total = 0;
       for (let i = 0; i < parcel.Travels.length; i++) {
         const travel = parcel.Travels[i];
-        let travString = "";
-
-        if (travel.From === travel.To) {
-          travString = travel.From;
-        } else {
-          travString = travel.From + ' -> ' + travel.To;
-        }
-
+        let startLocation = travel.From;
+        let endLocation = '-> ' + travel.To;
+        let time_taken = Math.round(travel.TimeTaken/3600); 
+        running_time_total = running_time_total + time_taken;
+        console.log('Running time total is' + running_time_total + ' hrs');
+				if (travel.From === travel.To) {
+				  endLocation = "";
+				};
         const mBoxTemplate = `
-          <div class="mileages_box">
-              <div class="event_description">
-                  <div class="reg_body">${travString}:</div>
-                  <div></div>
-              </div>
-              <div class="times">
-                  <div class="reg_body">${travel.Distance ? travel.Distance + " miles" : "At Location"}</div>
-                  <div>Time: ${moment.utc(travel.TimeTaken*1000).format('h [hours,] mm [minutes]')}</div>
-              </div>
+          <div class="place_and_distance">
+            <div class="place_description">
+              <div class="tight_text_l">${startLocation}</div>
+              <div class="tight_text_l">${endLocation}</div>
+            </div>
+            <div class="distance_time">
+              <div class="tight_text_r">${travel.Distance ? travel.Distance + " miles" : "Idle"}</div>
+              <div class="tight_text_r">${time_taken} hrs</div>
+            </div>
           </div>
           `;
-        $('.mileage_listings').append(mBoxTemplate);
+        $('.location_list').append(mBoxTemplate);
       }
+      $('#total_time').html(running_time_total + ' hrs');
     } else {
       $("#est_delivery_desc").text("");
       $("#est_delivery_time").text("");
       $('#total_dist').text("");
+
 
       const loctimes = `
         <div class="line_event_and_date">
@@ -136,11 +145,21 @@ $(document).ready(function() {
       $('.events_data_box').append(loctimes);
     }
 
+    /* Formats the location and time sections in case of no data */
+    if (parcel.Travels.length === 0) {
+      let no_data = '<div class="reg_body">Time and location data not available.</div>';
+      $('.location_list').html(no_data);
+      $('#total_dist').text('Unknown');
+      $('#total_time').text('Unknown');
+    };
+
     const pline = L.polyline(latlngs);
+    //console.log(pline);
     mymap.fitBounds(pline.getBounds(), {padding: [25, 25]});
     pline.addTo(mymap);
   });
 
+  /* Add tracking number to list */
   $('.add_button').click(async function() {
     const newnums = $('.add_in').val();
     $('.add_in').val('');
