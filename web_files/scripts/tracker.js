@@ -1,9 +1,10 @@
 // Dropdown for multiple tracking numbers
 const collapsible = document.querySelector('.collapsible_header');
 collapsible.addEventListener("click", event => {
-    collapsible.classList.toggle('active');
-    const nums = document.querySelector('.collapsible_list');
-    nums.classList.toggle('add_auto_height');
+  if (data.length <= 1) return;
+  collapsible.classList.toggle('active');
+  const nums = document.querySelector('.collapsible_list');
+  nums.classList.toggle('add_auto_height');
 });
 
 $(document).ready(() => {
@@ -15,6 +16,14 @@ $(document).ready(() => {
     $('.logo').click(() => {
         console.log(data);
     });
+
+  // Log out
+  $('.logout_button').click(() => {
+    delete localStorage.pkgfnd_name;
+    delete localStorage.pkgfnd_token;
+
+    $('.sign_in_box').empty();
+  });
 
 });
 

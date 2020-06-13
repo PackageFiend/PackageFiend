@@ -3,7 +3,7 @@ $(document).ready(function() {
   /* Switches between signin button and logged in user in Nav Bar */
   if (localStorage.pkgfnd_name) {
     const user_initial = localStorage.pkgfnd_name.slice(0,1);
-    const user_html = '<p>DASHBOARD</p><div class="user_icon"><div class="user_initial">T</div><div class="logout_button">Logout</div></div>';
+    const user_html = `<p><a href="http://localhost:8080/track/dashboard/">DASHBOARD</a></p><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
     
     $('.sign_in_box').append(user_html);
   } else {
