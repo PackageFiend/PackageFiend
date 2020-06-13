@@ -201,8 +201,14 @@ $(document).ready(function() {
             <div class="data_line_delivery_date">${moment(nplist[i].MostRecentTime).format('dddd, MMMM Do, YYYY')}</div>
           </div>
         `;
-
+      
       $('.collapsible_list').append(ndiv);
+
+      /* Makes 'more' visible on the collapsible menu header if multiple track numbers are present */
+      if (data.length > 1) {
+        $(".more_numbers_selector").addClass("visible");
+      }s
+
     }
     $(`#${nplist[0].TrackNum}`).click();
     

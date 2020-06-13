@@ -12,10 +12,24 @@ $(document).ready(() => {
     $('.sign_in_button').click(() => {
         window.location = "http://localhost:8080/signin.html";
     });
-// Test
+// Test stuff
     $('.logo').click(() => {
         console.log(data);
     });
+    
+    /* Travel Bar slider animation */
+    $('.travel_time_bar').hover(() => {
+      const road_width = $('.bar_road_time').width();
+      const idle_width = $('.bar_idle_time').width();
+      $('.bar_road_time').css("min-width", "375px");
+      $('.bar_idle_time').css("min-width", "375px");
+      $('.bar_info').css("visibility", "visible");
+    }, () => {
+      $('.bar_road_time').css("min-width", "1px");
+      $('.bar_idle_time').css("min-width", "1px");
+      $('.bar_info').css("visibility", "hidden");
+    });
+
 
   // Log out
   $('.logout_button').click(() => {

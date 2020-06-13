@@ -35,14 +35,10 @@
         </header>
         <div class="tracker_body">
             <!-- This is the purple bar. Becomes a dropdown if multiple tracking numbers are present. -->
-            <!-- I want to make it so the entire bar is clickable to display the extra numbers, if present -->
             <div class="collapsible_header">
-                <!-- Could add name of package here for users if present -->
                 <div></div>
                 <div class="track_number_title">
-		            <!-- PLACEHOLDER DATA -->
 					<div class="tracking_number"><%= dat[0].TrackNum %></div>
-		            <!-- PLACEHOLDER DATA -->
 					<div class="carrier_icon_bold"><%= dat[0].Provider %></div>
                 </div>
                 <!-- This only appears if multiple tracking numbers are present. -->
@@ -87,7 +83,7 @@
                     <div class="est_delivery">
 						<% if (!dat[0].Error) { %>
                         <div id="est_delivery_desc" class="bold_body">
-							<%= dat[0].Delivered ? 'Delivered:' : 'Estimated Delivery:' %>
+							<%= dat[0].Delivered ? 'Delivered:' : 'Est. Delivery:' %>
 						</div>
 						<div id="est_delivery_time" class="bold_body indv_time"><%- dat[0].MostRecentTime %></div>
 						<% } %>
@@ -121,73 +117,123 @@
                 </div>
 
             </div>
-
-            <div class="completed_bar">
-                <div class="percent_complete">50% est. travel completed</div>
+            
+            <div class="travel_time_bar">
+                <% if (!dat[0].Error) { %>
+                    <% let time_total = 0; %>
+                    <% let time_idle = 0; %>
+                    <% let time_road = 0; %>
+                    <% for (let i = 0; i < dat[0].Travels.length; i++) {
+                        const travel = dat[0].Travels[i];
+                        let time_taken = Math.round(travel.TimeTaken/3600); 
+                        time_total = time_total + time_taken;
+                        if (travel.Distance === 0) {
+                            time_idle = time_idle + time_taken;
+                        } else {
+                            time_road = time_road + time_taken;
+                        };
+                       };
+                       //const road_percent = Math.round(time_road*100/time_total);
+                       //const idle_percent = Math.round(time_idle*100/time_total);
+                       const road_width = 'style="width:' + 756*time_road/time_total + 'px;"';
+                       const idle_width = 'style="width:' + (756 - 756*time_road/time_total) + 'px;"';
+                       const time_bar_template = `
+                       <div class="bar_road_time" ${road_width}><p class="bar_info">Time on Road: ${time_road} hrs</p></div>
+                       <div class="white_stripe"></div>
+                       <div class="bar_idle_time" ${idle_width}><p class="bar_info">Time at Idle: ${time_idle} hrs</p></div>
+                       `;
+                       %>
+                    <%- time_bar_template %>
+                <% } else { %>
+                    <div class="bold_body">Travel Time Unknown</div>
+                <% } %>
             </div>
 
-            <div class="miles_traveled_and_graph">
-       
-                <div class="miles_data">
-                    <div class="miles_total">
-                        <div class="bold_body">Total Miles Traveled:</div>
-                        <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance %> Miles</div>
-                    </div>
-                    <div class="time_elapsed_total">
-                        <div class="bold_body">Total Time Elapsed:</div>
-                        <% if (!dat[0].Error) { %>
-                            <% let running_time_total = 0; %>
-                            <% for (let i = 0; i < dat[0].Travels.length; i++) {
-                                const travel = dat[0].Travels[i];
-                                let time_taken = Math.round(travel.TimeTaken/3600); 
-                                running_time_total = running_time_total + time_taken;
-                               };
-                               const time_elapsed_template = `
-                                <div id = "total_time" class="bold_body">${running_time_total} hrs</div>
-                               `;
-                               %>
-                            <%- time_elapsed_template %>
-                        <% } else { %>
-                            <div id = "total_time" class="bold_body">Unknown</div>
-                        <% } %>
-                    </div>
-                    <div class="location_list">
-						<% if (!dat[0].Error) { %>
-						<% for (let i = 0; i < dat[0].Travels.length; i++) {
-							const travel = dat[0].Travels[i];
-                            let startLocation = travel.From;
-                            let endLocation = '-> ' + travel.To;
-
-							if (travel.From === travel.To) {
-							  endLocation = "";
-							};
-                            let time_taken = Math.round(travel.TimeTaken/3600); 
-							const mBoxTemplate = `
-							  <div class="place_and_distance">
-								  <div class="place_description">
-									  <div class="tight_text_l">${startLocation}</div>
-									  <div class="tight_text_l">${endLocation}</div>
-								  </div>
-								  <div class="distance_time">
-									  <div class="tight_text_r">${travel.Distance ? travel.Distance + " miles" : "Idle"}</div>
-									  <div class="tight_text_r">${time_taken} hrs</div>
-								  </div>
-							  </div>
-							  `;
-						  %>
-						  <%- mBoxTemplate %>
-						  <% } %>
-						  <% } else { %>
-							<div class="line_event_and_date">
-							  <div class="place_description">
-								<div class="reg_body">Time and location data not available.</div>
-							  </div>
-							</div>
-						  <% } %>
-                    </div>
+            <div class="travel_totals">
+                <div class="miles_total">
+                    <div class="bold_body">Total Miles Traveled:</div>
+                    <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance %> Miles</div>
                 </div>
+                <div class="time_elapsed_total">
+                    <div class="bold_body">Total Time Elapsed:</div>
+                    <% if (!dat[0].Error) { %>
+                        <% let running_time_total = 0; %>
+                        <% for (let i = 0; i < dat[0].Travels.length; i++) {
+                            const travel = dat[0].Travels[i];
+                            let time_taken = Math.round(travel.TimeTaken/3600); 
+                            running_time_total = running_time_total + time_taken;
+                           };
+                           const time_elapsed_template = `
+                            <div id = "total_time" class="bold_body">${running_time_total} hrs</div>
+                           `;
+                           %>
+                        <%- time_elapsed_template %>
+                    <% } else { %>
+                        <div id = "total_time" class="bold_body">Unknown</div>
+                    <% } %>
+                </div>
+            </div>
+
+       
+            <div class="miles_data">
+                <div class="location_list">
+                    <% if (!dat[0].Error) { %>
+                    <% let max_time = 0; %>
+                    <% let max_dist = 0; %>
+                    <% for (let i = 0; i < dat[0].Travels.length; i++) {
+                        const travel = dat[0].Travels[i];
+                        if (travel.Distance > max_dist) {
+                            max_dist = travel.Distance;
+                        };
+                        if (travel.TimeTaken > max_time) {
+                            max_time = travel.TimeTaken;
+                        };
+                    %>
+                    <% }; %>
+                    <% max_time = Math.round(max_time/3600); %>
+                    <% for (let i = 0; i < dat[0].Travels.length; i++) {
+                        const travel = dat[0].Travels[i];
+                        let startLocation = travel.From;
+                        let endLocation = '-> ' + travel.To;
+
+                        if (travel.From === travel.To) {
+                            endLocation = "";
+                        };
+                        let time_taken = Math.round(travel.TimeTaken/3600);
+                        let dist_width = travel.Distance * 353 / dat[0].TotalDistance;
+                        let time_width = time_taken * 353 / 17;
+                                
+                        const dist_bar = '<div class="distance_bar" style="width:' + dist_width + 'px;"></div>';
+                        const time_bar = '<div class="time_bar" style="width:' + time_width + 'px;"></div>'
+                        const mBoxTemplate = `
+                            <div class="place_and_distance">
+                                <div class="place_description">
+                                    <div class="tight_text_l">${startLocation}</div>
+                                    <div class="tight_text_l">${endLocation}</div>
+                                </div>
+                                <div class="distance_time">
+                                    <div class="tight_text_r">${travel.Distance ? travel.Distance + " miles" : "Idle"}</div>
+                                    <div class="tight_text_r">${time_taken} hrs</div>
+                                </div>
+                                <div class="graph_box">
+                                    ${dist_bar}
+                                    ${time_bar}
+                                </div>
+                            </div>
+                            `;
+                        %>
+                        <%- mBoxTemplate %>
+                        <% } %>
+                        <% } else { %>
+                        <div class="line_event_and_date">
+                            <div class="place_description">
+                            <div class="reg_body">Time and location data not available.</div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
                 
-                <div class="miles_graph"></div>
             
             </div>
         </div>

@@ -293,8 +293,8 @@ html, body {
     font-weight: 700;
     justify-content: center;
     align-items: center;
-    border: 2px solid #56CCF2;
-    color: #56CCF2;
+    border: 2px solid rgb(86, 204, 242);
+    color: rgb(86, 204, 242);
     box-sizing: border-box;
     border-radius: 5px;
     margin-left: 10px;
@@ -308,7 +308,7 @@ html, body {
     font-weight: 400;
     justify-content: center;
     align-items: center;
-    border: 1px solid #56CCF2;
+    border: 1px solid rgb(86, 204, 242);
     color: #56CCF2;
     box-sizing: border-box;
     border-radius: 5px;
@@ -330,30 +330,58 @@ html, body {
     height: 220px;
 }
 
-.completed_bar {
+.travel_totals {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 756px;
+}
+
+.travel_time_bar {
+    display: flex;
+    flex-direction: row;
     width: 756px;
     height: 30px;
-    background: #C4C4C4;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgb(107, 217, 217);
     border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.percent_complete {
+.bar_road_time {
     display: flex;
     height: 100%;
-    width: 50%;
-    background: #BB6BD9;
-    border-radius: 5px;
+    width: 375px;
+    background-color: rgb(255, 176, 0);
+    border-radius: 5px 0px 0px 5px;
     justify-content: center;
     align-items: center;
-    transition: width 2s ease;
+    transition: min-width 1s ease;
 }
 
-.percent_complete:hover {
-    width: 100%;
-    cursor: pointer;
+.bar_idle_time {
+    height: 100%;
+    width: 375px;
+    display: flex;
+    border-radius: 5px 0px 0px 5px;
+    background-color: rgb(107, 217, 217);
+    justify-content: center;
+    align-items: center;
+    transition: min-width 1s ease;
+}
+
+.even_width {
+    width: 375px;
+}
+
+.bar_info {
+    visibility: hidden;
+}
+
+.white_stripe {
+    height: 100%;
+    width: 3px;
+    background-color: white;
 }
 
 .events_data {
@@ -364,7 +392,6 @@ html, body {
 .events_data_box {
     height: 195px;
     overflow: auto;
-    margin-right: 5px;
     scrollbar-width: thin;
 }
 
@@ -373,11 +400,10 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 170px;
     width: 100%;
-    overflow: auto;
-    scrollbar-width: thin;
+    
 }
+
 
 .est_delivery,
 .line_event_and_date,
@@ -388,6 +414,11 @@ html, body {
     flex-direction: row;
     justify-content: space-between;
     align-content: flex-start;
+}
+
+.miles_total,
+.time_elapsed_total {
+    width: 363px;
 }
 
 .times {
@@ -402,6 +433,10 @@ html, body {
     width: 230px;
 }
 
+.place_description {
+    width: 280px;
+}
+
 .widen_event {
     width: 350px;
 }
@@ -414,8 +449,29 @@ html, body {
     margin-right: 5px;
 }
 
+.graph_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 38px;
+    width: 353px;
+}
+
+.time_bar {
+    height: 18px;
+    min-width: 2px;
+    background-color: rgb(86, 204, 242);
+}
+
+.distance_bar {
+    height: 18px;
+    min-width: 2px;
+    background-color: rgb(255, 176, 0);
+}
+
 .place_and_distance {
     margin-top: 10px;
+    align-items: center;
 }
 
 .tight_text_r {
@@ -459,15 +515,17 @@ html, body {
 }
 
 .miles_data {
-    width: 363px;
-    height: 220px;
+    width: 756px;
+    max-height: 500px;
     display: flex;
+    overflow: auto;
+    scrollbar-width: thin;
     flex-direction: column;
 }
 
 .miles_graph {
     width: 363px;
-    height: 220px;
+    max-height: 220px;
     background: #56CCF2;
 }
 
