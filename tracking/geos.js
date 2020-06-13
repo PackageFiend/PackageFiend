@@ -17,7 +17,7 @@ module.exports = {
       };
 
       docClient.get(checkParams).promise().then(data => {
-        if (data.Item !== undefined && data.Item.dat !== null && data.Item.dat.lat === undefined) {
+        if (data.Item !== undefined && data.Item.dat && data.Item.dat.lat === undefined) {
           event.Location.Geo = data.Item.dat.geometry.location;
           event.Location.Address = data.Item.dat.formatted_address;
           resolve(true);
