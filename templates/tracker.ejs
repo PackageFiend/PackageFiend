@@ -142,9 +142,9 @@
                                 let time_taken = Math.round(travel.TimeTaken/3600); 
                                 running_time_total = running_time_total + time_taken;
                                };
-                               const time_elapsed_template = '
+                               const time_elapsed_template = `
                                 <div id = "total_time" class="bold_body">${running_time_total} hrs</div>
-                               ';
+                               `;
                                %>
                             <%- time_elapsed_template %>
                         <% } else { %>
