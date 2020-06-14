@@ -20,14 +20,38 @@ router.get('/dashboard', async (req, res) => {
   const udat = await docClient.get(params).promise();
 
   console.log('Fetching dashboard', req.user);
-  const pids = [];
-  for (let i = 0; i < udat.Item.packages.length; i++) {
-    pids.push(udat.Item.packages[i].id);
-  }
+  const pids = Object.keys(udat.Item.packages);
+  const upacs = Object.values(udat.Item.packages);
   const data = await track.track(pids);
-  console.log('Dashboard data:', data);
+  //console.log('Dashboard data:', data);
 
-  res.send(await ejs.renderFile('./templates/dashboard.html', {dat: data}));
+  const it = [];
+  const dd = [];
+  const ofd = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const parcel = data[i];
+    if (udat.Item.packages[parcel.TrackNum]) {
+      parcel.Name = udat.Item.packages[parcel.TrackNum].name;
+    }
+
+    if (parcel.OutForDelivery) {
+      ofd.push(parcel);
+    } else if (parcel.Delivered) {
+      dd.push(parcel);
+    } else {
+      it.push(parcel);
+    }
+    console.log('Parcel:', parcel);
+  }
+
+  res.send(await ejs.renderFile('./templates/dashboard.html',
+    {
+      dat: data,
+      it: it,
+      dd: dd,
+      ofd: ofd
+    }));
 });
 
 router.get('/profile', (req, res, next) => {
@@ -62,7 +86,7 @@ router.get('/packages', async (req, res, next) => {
       return res.sendCode(500);
     }
 
-    return res.json(data.Item.packages);
+    return res.json(Object.values(data.Item.packages));
   } catch (err) {
     console.error('Error getting user data:', err);
     return res.sendCode(500);
@@ -80,13 +104,16 @@ router.post('/packages', async (req, res, next) => {
     Key: {
       "username": req.user.username
     },
-    UpdateExpression: "SET packages = list_append(packages, :vals)",
+    UpdateExpression: `SET packages.#Name = :vals`,
+    ExpressionAttributeNames:{
+      "#Name": rdat.id
+    },
     ExpressionAttributeValues: {
-      ":vals": [{
-        id: rdat.id
-      }]
+      ":vals": {
+        TrackNum: rdat.id
+      }
     }
-  }
+  };
 
   try {
     await docClient.update(params).promise();
@@ -95,6 +122,51 @@ router.post('/packages', async (req, res, next) => {
     console.error('Problem adding package to user:', err);
     return res.sendStatus(500);
   }
+});
+
+router.post('/packages/name', async (req, res, next) => {
+  const rdat = req.body;
+  if (!rdat.id || !rdat.name) {
+    return res.status(400).json({ message: 'Bad data. Must contain id and name' });
+  }
+
+  const getParams = {
+    TableName: "Users",
+    Key: {
+      "username": req.user.username
+    }
+  };
+
+  const pdat = await docClient.get(getParams).promise().catch(err => {
+    console.error('Problem adding package to user:', err);
+    return res.sendStatus(500);
+  });
+
+  console.log(pdat.Item);
+
+  const updateParams = {
+    TableName: 'Users',
+    Key: {
+      'username': req.user.username
+    },
+    UpdateExpression: `SET packages.#Name.#sitem = :plist`,
+    ExpressionAttributeNames: {
+      '#Name': rdat.id,
+      '#sitem': 'name'
+    },
+    ExpressionAttributeValues: {
+      ':plist': rdat.name
+    }
+  };
+
+  try {
+    await docClient.update(updateParams).promise();
+    return res.sendStatus(200);
+  } catch (err) {
+    console.error('Problem adding package to user 2:', err);
+    return res.sendStatus(500);
+  }
+
 });
 
 module.exports = router;

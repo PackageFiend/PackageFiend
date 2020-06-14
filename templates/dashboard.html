@@ -29,63 +29,32 @@
 		<div class="left_spacer"></div>    
 		<div class="category_title">OUT FOR DELIVERY</div>
 		<div class="line_quantity">
-			<!-- PLACEHOLDER -->
-			<p>3</p>
+			<p><%= ofd.length %></p>
 			<i class="fas fa-caret-down"></i>
 		</div>
 	</div>
 	<div class="alerted_nums">
 		<!-- Each of these track_data_line divs represents one of the numbers -->
-		<!--                        
-			THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
-		-->
+		<% for (let i = 0; i < ofd.length; i++) { %>
 		<div class="alert_data_line">
 			<!-- Split into left and right divs for spacing -->                    
 			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
+				<p><%= dat[i].Name ? dat[i].Name : dat[i].TrackNum %></p>
+				<div class="carrier_icon"><% ofd[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
 				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+				<div class="data_line_delivery_date"><%= dat[i].MostRecentTime %></div>
 			</div>
 		</div>
-
-		<div class="alert_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		
-		<div class="alert_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<!--
-				
-				END PLACEHOLDER DATA
-
-		-->
+		<% } %>
 	</div>
 	<div class="active_collapsible">
 		<div class="left_spacer"></div>    
 		<div class="category_title">IN TRANSIT</div>
 		<div class="line_quantity">
 			<!-- PLACEHOLDER -->
-			<p>6</p>
+			<p><%= it.length %></p>
 			<i class="fas fa-caret-down"></i>
 		</div>
 	</div>
@@ -93,89 +62,26 @@
 		<!-- Each of these track_data_line divs represents one of the numbers -->
 		<!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
 		
-		<!--                        
-		
-			THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
-			
-		-->
+		<% for (let i = 0; i < it.length; i++) { %>
 		<div class="active_data_line">
 			<!-- Split into left and right divs for spacing -->                    
 			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
+				<p><%= dat[i].Name ? dat[i].Name : dat[i].TrackNum %></p>
+				<div class="carrier_icon"><%= it[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
 				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+				<div class="data_line_delivery_date"><% it[i].MostRecentTime %></div>
 			</div>
 		</div>
-		<div class="active_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="active_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="active_data_line">
-			<!-- Split into left and right divs for spacing -->                    
-			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
-			</div>
-		</div>
-		<div class="active_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="active_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<!--
-				
-				END PLACEHOLDER DATA
-
-		-->
+		<% } %>
 	</div>
 	<div class="delivered_collapsible">
 		<div class="left_spacer"></div>    
 		<div class="category_title">DELIVERED</div>
 		<div class="line_quantity">
 			<!-- PLACEHOLDER -->
-			<p>15</p>
+			<p><%= dd.length %></p>
 			<i class="fas fa-caret-down"></i>
 		</div>
 	</div>
@@ -183,181 +89,19 @@
 		<!-- Each of these track_data_line divs represents one of the numbers -->
 		<!-- This should automatically select the first number to be selected. It will be changed via JS when switching -->
 		
-		<!--                        
-		
-			THIS SECTION CONTAINS PLACEHOLDER DATA WHICH WILL NEED TO BE GENERATED VIA JS
-			
-		-->
+		<% for (let i = 0; i < dd.length; i++) { %>
 		<div class="delivered_data_line">
 			<!-- Split into left and right divs for spacing -->                    
 			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
+				<p><%= dd[i].Name ? dd[i].Name : dd[i].TrackNum %></p>
+				<div class="carrier_icon"><%= dd[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
+				<div class="data_line_status">Delivered: </div>
+				<div class="data_line_delivery_date"><%= dd[i].MostRecentTime %></div>
 			</div>
 		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->                    
-			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->                    
-			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->                    
-			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->                    
-			<div class="data_line_l">
-				<p>1J543FDGLKJ6546</p>
-				<div class="carrier_icon">UPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Friday, June 5, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<div class="delivered_data_line">
-			<!-- Split into left and right divs for spacing -->
-			<div class="data_line_l">
-				<p>2J543FDGLKJ6546</p>
-				<div class="carrier_icon">USPS</div>
-			</div>
-			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date">Saturday, June 6, 2020</div>
-			</div>
-		</div>
-		<!--
-				
-				END PLACEHOLDER DATA
-
-		-->
+		<% } %>
 	</div>
 
 	<div class="statistics">

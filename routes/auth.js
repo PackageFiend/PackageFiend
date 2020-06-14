@@ -79,7 +79,7 @@ router.post('/createuser', async (req, res, next) => {
       password: hash,
       salt: salt,
       pass_iter: passes,
-      packages: []
+      packages: {}
     }
   }
 
