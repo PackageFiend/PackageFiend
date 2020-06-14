@@ -40,6 +40,17 @@ html, body {
     justify-content: flex-end;
 }
 
+.sign_in_box a {
+    text-decoration: none;
+    color: black;
+    opacity: 0.55;
+    margin-right: 10px;
+}
+
+.sign_in_box a:hover {
+    opacity: 1;
+}
+
 .track_and_button {
     margin-right: auto;
     justify-content: flex-start;
