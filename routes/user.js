@@ -42,7 +42,7 @@ router.get('/dashboard', async (req, res) => {
     } else {
       it.push(parcel);
     }
-    console.log('Parcel:', parcel);
+    //console.log('Parcel:', parcel);
   }
 
   res.send(await ejs.renderFile('./templates/dashboard.html',

@@ -19,7 +19,11 @@ $(document).ready(function(){
   });
 
   $('.add_button').click(async () => {
-    const num = $('.enter_numbers_box input').val();
+    const input = $('.enter_numbers_box input');
+    if (input.prop('disabled')) return;
+
+    const num = input.val();
+    input.prop('disabled', true);
 
     res = await axios.post('http://localhost:8080/user/packages',
       {
@@ -33,11 +37,18 @@ $(document).ready(function(){
 
     console.log(res);
 
-    if (res.response.code !== 200) {
+    if (res.request.status !== 200) {
       console.error(res);
     } else {
       console.log('Added package');
     }
+
+    input.prop('disabled', false);
+    input.val('Number added!');
+
+    window.setTimeout(() => {
+      input.val('');
+    }, 3000);
 
     //TODO: Call function to add to render
   })
