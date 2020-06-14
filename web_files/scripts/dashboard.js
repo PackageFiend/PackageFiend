@@ -14,6 +14,9 @@ $(document).ready(function() {
     $(this).text(fTime);
   });
 
+  const user_initial = localStorage.pkgfnd_name.slice(0,1);
+  $('.user_initial').text(user_initial);
+
   $(".alerts_collapsible").click(function(){
       $(".alerted_nums").toggleClass("add_five_lines");
   });
