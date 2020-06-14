@@ -56,7 +56,7 @@ $(document).ready(function() {
       }
     }
     
-    /* Clear data */
+  
     $('.tracking_number').text(parcel.TrackNum);
     $('.track_number_title .carrier_icon_bold').text(parcel.Provider);
     $('.events_data_box').empty();
@@ -73,7 +73,7 @@ $(document).ready(function() {
       $("#est_delivery_desc").text(parcel.Delivered ? "Delivered:" : "In Transit:");
       $("#est_delivery_time").text(moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY'));
 
-      /* Populate events box */
+      /* Populate areas requiring events */
       for (let i = 0; i < parcel.Events.length; i++) {
         const event = parcel.Events[i];
 
@@ -97,23 +97,39 @@ $(document).ready(function() {
           </div>`;
 
         $('.events_data_box').append(loctimes);
-      }
+      };
 
       $('#total_dist').text(parcel.TotalDistance + " Miles");
 
       $('.location_list').empty();
+      $('.travel_time_bar').empty();
 
+      /* Populate Areas requiring travels */
       let running_time_total = 0;
+      let time_idle = 0;
+      let time_road = 0;
       for (let i = 0; i < parcel.Travels.length; i++) {
         const travel = parcel.Travels[i];
         let startLocation = travel.From;
         let endLocation = '-> ' + travel.To;
-        let time_taken = Math.round(travel.TimeTaken/3600); 
+        
+        let time_taken = Math.round(travel.TimeTaken/3600);
         running_time_total = running_time_total + time_taken;
-        console.log('Running time total is' + running_time_total + ' hrs');
-				if (travel.From === travel.To) {
+        if (travel.Distance === 0) {
+          time_idle = time_idle + time_taken;
+        } else {
+          time_road = time_road + time_taken;
+        };
+        
+        if (travel.From === travel.To) {
 				  endLocation = "";
-				};
+        };
+        
+        let dist_width = travel.Distance * 353 / parcel.TotalDistance;
+        let time_width = time_taken * 353 / 17;
+        const dist_bar = '<div class="distance_bar" style="width:' + dist_width + 'px;"></div>';
+        const time_bar = '<div class="time_bar" style="width:' + time_width + 'px;"></div>';
+        
         const mBoxTemplate = `
           <div class="place_and_distance">
             <div class="place_description">
@@ -124,15 +140,31 @@ $(document).ready(function() {
               <div class="tight_text_r">${travel.Distance ? travel.Distance + " miles" : "Idle"}</div>
               <div class="tight_text_r">${time_taken} hrs</div>
             </div>
+            <div class="graph_box">
+                ${dist_bar}
+                ${time_bar}
+            </div>
           </div>
           `;
         $('.location_list').append(mBoxTemplate);
-      }
+      };
+      /* Repopulate the time on road vs time at idle bar */
+      const road_width = `style=\"width:${756 * time_road / running_time_total}px;\"`;
+      const idle_width = `style=\"width:${756 - 756 * time_road / running_time_total}px;\"`;
+      console.log(idle_width);
+      const time_bar_template = `
+        <div class="bar_road_time" ${road_width}><p class="bar_info">Time on Road: ${time_road} hrs</p></div>
+        <div class="white_stripe"></div>
+        <div class="bar_idle_time" ${idle_width}><p class="bar_info">Time at Idle: ${time_idle} hrs</p></div>
+      `;
+      $('.travel_time_bar').append(time_bar_template);
+      
       $('#total_time').html(running_time_total + ' hrs');
     } else {
       $("#est_delivery_desc").text("");
       $("#est_delivery_time").text("");
       $('#total_dist').text("");
+      $('.travel_time_bar').html("<p>Geo Data Unavailable</p>");
 
 
       const loctimes = `
@@ -143,7 +175,7 @@ $(document).ready(function() {
         </div>`;
 
       $('.events_data_box').append(loctimes);
-    }
+    };
 
     /* Formats the location and time sections in case of no data */
     if (parcel.Travels.length === 0) {

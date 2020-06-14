@@ -19,14 +19,12 @@ $(document).ready(() => {
     
     /* Travel Bar slider animation */
     $('.travel_time_bar').hover(() => {
-      const road_width = $('.bar_road_time').width();
-      const idle_width = $('.bar_idle_time').width();
       $('.bar_road_time').css("min-width", "375px");
       $('.bar_idle_time').css("min-width", "375px");
       $('.bar_info').css("visibility", "visible");
     }, () => {
-      $('.bar_road_time').css("min-width", "1px");
-      $('.bar_idle_time').css("min-width", "1px");
+      $('.bar_road_time').css("min-width", "20px");
+      $('.bar_idle_time').css("min-width", "20px");
       $('.bar_info').css("visibility", "hidden");
     });
 

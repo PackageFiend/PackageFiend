@@ -352,26 +352,26 @@ html, body {
     display: flex;
     height: 100%;
     width: 375px;
+    min-width: 20px;
     background-color: rgb(255, 176, 0);
     border-radius: 5px 0px 0px 5px;
     justify-content: center;
     align-items: center;
     transition: min-width 1s ease;
+    overflow: hidden;
 }
 
 .bar_idle_time {
     height: 100%;
     width: 375px;
+    min-width: 20px;
     display: flex;
     border-radius: 5px 0px 0px 5px;
     background-color: rgb(107, 217, 217);
     justify-content: center;
     align-items: center;
     transition: min-width 1s ease;
-}
-
-.even_width {
-    width: 375px;
+    overflow: hidden;
 }
 
 .bar_info {
