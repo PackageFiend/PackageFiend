@@ -10,7 +10,7 @@ collapsible.addEventListener("click", event => {
 $(document).ready(() => {
     
     $('.sign_in_button').click(() => {
-        window.location = "https://packagefiend.com/signin.html";
+        window.location = "http://localhost:8080/signin.html";
     });
 // Test stuff
     $('.logo').click(() => {

@@ -3,11 +3,11 @@ async function main () {
 
   if (!localStorage.pkgfnd_token) {
     console.error('No token');
-    window.location = 'https://packagefiend.com';
+    window.location = 'http://localhost:8080';
     return;
   }
 
-  const dashdat = await axios.get('https://packagefiend.com/user/dashboard',
+  const dashdat = await axios.get('http://localhost:8080/user/dashboard',
     {
       headers: {
         Authorization: `Bearer ${localStorage.pkgfnd_token}`
