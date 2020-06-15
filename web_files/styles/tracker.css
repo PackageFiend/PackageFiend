@@ -466,17 +466,20 @@ html, body {
     justify-content: space-between;
     height: 38px;
     width: 353px;
+    overflow: hidden;
 }
 
 .time_bar {
     height: 18px;
     min-width: 2px;
+    max-width: 353px;
     background-color: rgb(86, 204, 242);
 }
 
 .distance_bar {
     height: 18px;
     min-width: 2px;
+    max-width: 353px;
     background-color: rgb(255, 176, 0);
 }
 
