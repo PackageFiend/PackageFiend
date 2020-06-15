@@ -12,3 +12,12 @@ deploy:
 after_deploy:
         - echo "(!!!)done deploying!"
 script: "true"
+cache:
+        directories:
+        - "node_modules"
+jobs:
+        include:
+        - stage: "Node App Test"
+          script: npm run test
+stages:
+        - "Node App Test"
