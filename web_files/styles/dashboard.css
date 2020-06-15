@@ -25,7 +25,7 @@ html, body {
     box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
 }
 
-.track_and_button,
+.add_nums_widget,
 .logo,
 .sign_in_box {
     flex: 1;
@@ -40,18 +40,7 @@ html, body {
     justify-content: flex-end;
 }
 
-.sign_in_box a {
-    text-decoration: none;
-    color: black;
-    opacity: 0.55;
-    margin-right: 10px;
-}
-
-.sign_in_box a:hover {
-    opacity: 1;
-}
-
-.track_and_button {
+.add_nums_widget {
     margin-right: auto;
     justify-content: flex-start;
 }
@@ -90,8 +79,7 @@ html, body {
     align-items: center;
     width: 50px;
     height: 32px;
-    background: #4DBC7B;
-    opacity: .75;
+    background-color: rgb(77, 188, 123, 0.75);
     border-radius: 5px;
     margin-left: 4px;
     margin-top: 4px;
@@ -99,7 +87,7 @@ html, body {
 }
 
 .add_button:hover {
-    opacity: 1;
+    background-color: rgb(77, 188, 123);
     cursor: pointer;
 }
 
@@ -108,22 +96,6 @@ html, body {
     height: 32px;
     justify-self: center;
     opacity: .8;
-}
-
-.sign_in_button {
-    background-color: rgb(187, 107, 217, 0.75);
-    border-radius: 3px;
-    width: 73px;
-    height: 32px;
-    margin-right: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sign_in_button:hover {
-    cursor: pointer;
-    background-color: rgb(187, 107, 217);
 }
 
 .sign_in_box p {
@@ -181,49 +153,95 @@ html, body {
     height: 100%;
 }
 
-.collapsible_header {
+.left_spacer,
+.category_title,
+.line_quantity {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+}
+
+
+.line_quantity {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+}
+
+.line_quantity p,
+.line_quantity i {
+    margin-right: 6px;
+}
+
+.alerts_collapsible {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 756px;
     height: 36px;
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(77, 188, 123, 0.75);
+}
+
+.alerts_active, .alerts_collapsible:hover {
+    cursor: pointer;
+    background-color: rgb(77, 188, 123);
+}
+
+.active_collapsible,
+.delivered_collapsible {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 756px;
+    height: 36px;
+    font-weight: 700;
+    font-size: 22px;
     margin-top: 20px;
     margin-bottom: 5px;
     border-radius: 10px 10px 0px 0px;
     background-color: rgb(187, 107, 217, 0.75);
 }
 
-.active, .collapsible_header:hover {
+.active_active, 
+.active_collapsible:hover,
+.delivered_collapsible:hover {
     cursor: pointer;
     background-color: rgb(187, 107, 217);
 }
 
-.track_number_title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.alerted_nums,
+.delivered_nums {
+    max-height: 0px;
+    overflow: hidden;
+    width: 752px;
+    transition: max-height 0.2s ease;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    border-bottom-color: rgb(77, 188, 123);
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    margin-left: 5px;
+    border-left-color: rgb(77, 188, 123);
+    border-left-style: solid;
+    border-left-width: 2px;
+    margin-right: 5px;
+    border-right-color: rgb(77, 188, 123);
+    border-right-style: solid;
+    border-right-width: 2px;
 }
 
-.more_numbers_selector {
-    visibility: hidden;
-    margin-right: 8px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-}
-
-.visible {
-    visibility: visible;
-}
-
-.more_numbers_selector p {
-    margin-right: 4px;
-}
-
-.collapsible_list {
-    max-height: 0;
+.active_nums,
+.delivered_nums {
+    max-height: 0px;
     overflow: hidden;
     width: 752px;
     transition: max-height 0.2s ease;
@@ -242,14 +260,28 @@ html, body {
     border-right-width: 2px;
 }
 
-.add_auto_height {
+.add_five_lines {
     max-height: 138px;
-    min-height: 54px;
     overflow: auto;
     border-bottom-width: 2px;
 }
 
-.track_data_line {
+.add_ten_lines {
+    max-height: 276px;
+    overflow: auto;
+    border-bottom-width: 2px;
+}
+
+.add_auto_height {
+    max-height: 100px;
+    overflow: auto;
+    border-bottom-width: 2px;
+}
+
+.track_data_line,
+.alert_data_line,
+.delivered_data_line,
+.active_data_line {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -264,8 +296,13 @@ html, body {
     font-weight: 700;
 }
 
-.track_data_line:hover,
-.track_data_line_bold:hover {
+.alert_data_line:hover {
+    background-color: rgb(77, 188, 123, 0.3);
+    cursor: pointer;
+}
+
+.active_data_line:hover,
+.delivered_data_line:hover {
     background-color: rgb(187, 107, 217, 0.3);
     cursor: pointer;
 }
@@ -296,22 +333,7 @@ html, body {
     opacity: .8;
 }
 
-.carrier_icon_bold {
-    display: flex;
-    width: 69px;
-    height: 24px;
-    font-size: 12px;
-    font-weight: 700;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgb(86, 204, 242);
-    color: rgb(86, 204, 242);
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-.carrier_icon_reg {
+.carrier_icon {
     display: flex;
     width: 69px;
     height: 24px;
@@ -320,224 +342,133 @@ html, body {
     justify-content: center;
     align-items: center;
     border: 1px solid rgb(86, 204, 242);
-    color: #56CCF2;
+    color: rgb(86, 204, 242);
     box-sizing: border-box;
     border-radius: 5px;
     margin-left: 10px;
 }
 
-.map_and_events {
-    display: flex;
-    flex-direction: row;
-    height: 220px;
-    width: 756px;
-    margin-left: 4px;
-    margin-right: 4px;
-    justify-content: space-between;
-}
-
-#map {
-    width: 363px;
-    height: 220px;
-}
-
-.travel_totals {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 756px;
-}
-
-.travel_time_bar {
-    display: flex;
-    flex-direction: row;
-    width: 756px;
-    height: 30px;
-    background-color: rgb(107, 217, 217);
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.bar_road_time {
-    display: flex;
-    height: 100%;
-    width: 375px;
-    min-width: 20px;
-    background-color: rgb(255, 176, 0);
-    border-radius: 5px 0px 0px 5px;
-    justify-content: center;
-    align-items: center;
-    transition: min-width 1s ease;
-    overflow: hidden;
-}
-
-.bar_idle_time {
-    height: 100%;
-    width: 375px;
-    min-width: 20px;
-    display: flex;
-    border-radius: 5px 0px 0px 5px;
-    background-color: rgb(107, 217, 217);
-    justify-content: center;
-    align-items: center;
-    transition: min-width 1s ease;
-    overflow: hidden;
-}
-
-.bar_info {
-    visibility: hidden;
-}
-
-.white_stripe {
-    height: 100%;
-    width: 3px;
-    background-color: white;
-}
-
-.events_data {
-    width: 363px;
-    height: 220px;
-}
-
-.events_data_box {
-    height: 195px;
-    overflow: auto;
-    scrollbar-width: thin;
-}
-
-.location_list,
-.mileage_listings {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    
-}
-
-
-.est_delivery,
-.line_event_and_date,
-.miles_total,
-.place_and_distance,
-.time_elapsed_total {
+.stat_line_bold {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: flex-start;
 }
 
-.miles_total,
-.time_elapsed_total {
-    width: 363px;
-}
-
-.times {
-    display: block;
-    min-width: 105px;
-    margin-left: 10px;
-    margin-right: 5px;
-    white-space: nowrap;
-}
-
-.event_description {
-    width: 230px;
-}
-
-.place_description {
-    width: 280px;
-}
-
-.widen_event {
-    width: 350px;
-}
-
-.distance_time {
-    display: block;
-    min-width: 55px;
-    margin-left: 10px;
-    white-space: nowrap;
-    margin-right: 5px;
-}
-
-.graph_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 38px;
-    width: 353px;
-}
-
-.time_bar {
-    height: 18px;
-    min-width: 2px;
-    background-color: rgb(86, 204, 242);
-}
-
-.distance_bar {
-    height: 18px;
-    min-width: 2px;
-    background-color: rgb(255, 176, 0);
-}
-
-.place_and_distance {
-    margin-top: 10px;
-    align-items: center;
-}
-
-.tight_text_r {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    text-align: end;
-}
-
-.tight_text_l {
-    width: 245px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: start;
-}
-
-.bold_body {
+.bold_body,
+.del_7,
+.del_30,
+.del_90,
+.del_6m,
+.del_at,
+.miles_total {
     font-size: 18px;
     font-weight: 700;
-    height: 25px;
-    top: 0px;
-    margin-top: 0px;
 }
 
-.reg_body {
-    margin-top: 15px;
+.bold_body_ups,
+.del_ups {
+    font-size: 18px;
+    font-weight: 700;
 }
 
+.bold_body_ups,
+.del_ups {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(255, 176, 0); 
+}
 
+.bold_body_usps,
+.del_usps {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(86, 204, 242) 
+}
 
-.miles_traveled_and_graph {
+.statistics {
     display: flex;
     flex-direction: row;
     height: 220px;
     width: 756px;
     margin-left: 4px;
     margin-right: 4px;
+    margin-top: 10px;
     justify-content: space-between;
+
 }
 
-.miles_data {
-    width: 756px;
-    max-height: 500px;
+.stats_data_lines {
+    width: 350px;
+    height: 220px;
     display: flex;
-    overflow: auto;
-    scrollbar-width: thin;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
-.miles_graph {
-    width: 363px;
-    max-height: 220px;
-    background: #56CCF2;
+.bar_graph {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 350px;
+    height: 220px;
+}
+
+.g_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.g_bar,
+.g_bar_transit,
+.g_bar_7,
+.g_bar_30,
+.g_bar_90,
+.g_bar_180 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    justify-content: flex-end;
+}
+
+.ups_bar {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 100px;
+    background-color: rgb(255, 176, 0);
+}
+
+.usps_bar {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 92px;
+    background-color: rgb(86, 204, 242);
+}
+
+.g_name {
+    display: flex;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.ups_bar .ups_hover,
+.usps_bar .usps_hover {
+    visibility: hidden;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+}
+  
+.ups_bar:hover .ups_hover,
+.usps_bar:hover .usps_hover {
+    visibility: visible;
 }
 
 #bottom_line {

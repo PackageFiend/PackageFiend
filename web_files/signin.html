@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="./styles/signin.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">        <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			  crossorigin="anonymous"></script>
+        <title>Package Fiend</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="navbar">
+                <div class="left_nav_box">
+                    <p id="about">About This Project</p>
+                </div>
+                <img class="logo" src="./images/PkgFiend_logo.svg">
+                <div class="spacer"></div>
+            </div>
+        </header>
+        <div class="home_body">
+            <!-- Need to add a clickable that appears -->
+            <div class="sign_in_box">  
+                <div class="big_text">Existing Users:</div>
+                <form class="log_in">
+                    <div class="enter_username">
+                        <div class="enter_email_box">
+                            <i class="fas fa-envelope"></i>
+                            <input id="si_username" type="text" placeholder="ENTER USERNAME" required />
+                        </div>
+                    </div>
+                    <div id="si_password_box" class="enter_password">
+                        <div class="enter_password_box">
+                            <i class="fas fa-key"></i>
+                            <input id="si_password" type="password" placeholder="ENTER PASSWORD" required />
+                        </div>
+                    </div>
+                </form>   
+                <div class="sign_in_dialogue">    
+                        <div class="sign_in_message"></div>
+                        <div class="sign_in_button">SIGN IN</div>
+                </div>
+            </div>
+            
+            <div class="no_account">
+                <div class="big_text_no_account">No account?</div>
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="create_collapsible">
+                <form class="create_login">
+                    <div class="enter_username">
+                        <div class="enter_email_box">
+                            <i class="fas fa-envelope"></i>
+                            <input id="name" type="text" placeholder="ENTER NAME" required />
+                        </div>
+                    </div>
+                    <div id="username_box" class="enter_username">
+                        <div class="enter_email_box">
+                            <i class="fas fa-envelope"></i>
+                            <input id="username" type="text" placeholder="ENTER USERNAME" required />
+                        </div>
+                    </div>
+                    <div class="enter_password">
+                        <div class="enter_password_box">
+                            <i class="fas fa-key"></i>
+                            <input id="pass1" type="password" placeholder="ENTER PASSWORD" required />
+                        </div>
+                    </div>
+                    <div id="re_enter_pass" class="re_enter_password">
+                        <div class="enter_password_box">
+                            <i class="fas fa-key"></i>
+                            <input id="pass2" type="password" placeholder="RE-ENTER PASSWORD" required />
+                        </div>
+                    </div>
+                </form>
+                <div class="create_dialogue">    
+                    <div class="create_message"></div>
+                    <div class="create_button">CREATE ACCOUNT</div>
+                </div>
+            </div>
+            
+        </div>
+        <footer class="footer">
+            <div id="bottom_line"></div>
+            <div class="footer_div">
+                <div></div>
+                <div class="holberton">
+                    <img class="holb_logo" src="./images/holb_logo_black.svg">
+                    <a id="holb_link" href="http://www.holbertonschool.com" target="_blank">Holberton School</a>
+                </div>
+                <p id="footer_link"></p>
+            </div>
+        </footer>
+    </body>
+    <script type="text/javascript" src="./scripts/signin.js"></script>
+</html>
