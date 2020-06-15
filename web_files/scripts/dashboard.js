@@ -30,7 +30,7 @@ $(document).ready(function() {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-    window.location = "http://localhost:8080";
+    window.location = "https://packagefiend.com";
   });
 
   $('.add_button').click(async () => {
@@ -40,12 +40,12 @@ $(document).ready(function() {
     const num = input.val().replace(/\s/g, '');
     input.prop('disabled', true);
 
-    const getPack = axios.get(`http://localhost:8080/track/q/${num}`).catch(err => {
+    const getPack = axios.get(`https://packagefiend.com/track/q/${num}`).catch(err => {
       console.error(err);
       return null;
     });
 
-    const res = await axios.post('http://localhost:8080/user/packages',
+    const res = await axios.post('https://packagefiend.com/user/packages',
       {
         id: num.trim()
       },
