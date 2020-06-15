@@ -37,10 +37,15 @@ $(document).ready(function() {
     const input = $('.enter_numbers_box input');
     if (input.prop('disabled')) return;
 
-    const num = input.val();
+    const num = input.val().replace(/\s/g, '');
     input.prop('disabled', true);
 
-    res = await axios.post('http://localhost:8080/user/packages',
+    const getPack = axios.get(`http://localhost:8080/track/q/${num}`).catch(err => {
+      console.error(err);
+      return null;
+    });
+
+    const res = await axios.post('http://localhost:8080/user/packages',
       {
         id: num.trim()
       },
@@ -56,6 +61,76 @@ $(document).ready(function() {
       console.error(res);
     } else {
       console.log('Added package');
+    }
+
+    const packDat = await getPack;
+
+    const parcel = packDat.data[0];
+    if (!parcel) {
+      input.prop('disabled', false);
+      input.val('Problem adding number :(');
+
+      window.setTimeout(() => {
+        input.val('');
+      }, 2000);
+
+      return;
+    }
+
+    if (parcel.Delivered) {
+      const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
+      const rowDat = `
+        <div class="delivered_data_line">
+          <!-- Split into left and right divs for spacing -->                    
+          <div class="data_line_l">
+            <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
+            <div class="carrier_icon">${parcel.Provider}</div>
+          </div>
+          <div class="data_line_r">
+            <div class="data_line_status">Delivered: </div>
+            <div class="data_line_delivery_date indv_time">${fTime}</div>
+          </div>
+        </div>
+        `;
+      $('.delivered_nums').append(rowDat);
+      const old_tot = $('#delivered_num').text();
+      $('#delivered_num').text(Number(old_tot) + 1);
+    } else if (parcel.OutForDelivery) {
+      const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
+      const rowDat = `
+        <div class="alert_data_line">
+          <!-- Split into left and right divs for spacing -->                    
+          <div class="data_line_l">
+            <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
+            <div class="carrier_icon">${parcel.Provider}</div>
+          </div>
+          <div class="data_line_r">
+            <div class="data_line_status">In transit:</div>
+            <div class="data_line_delivery_date indv_time">${fTime}</div>
+          </div>
+        </div>
+        `;
+      $('.alerted_nums').append(rowDat);
+      const old_tot = $('#alerted_num').text();
+      $('#alerted_num').text(Number(old_tot) + 1);
+    } else {
+      const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
+      const rowDat = `
+        <div class="active_data_line">
+          <!-- Split into left and right divs for spacing -->                    
+          <div class="data_line_l">
+            <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
+            <div class="carrier_icon">${parcel.Provider}</div>
+          </div>
+          <div class="data_line_r">
+            <div class="data_line_status">In transit:</div>
+            <div class="data_line_delivery_date indv_time">${fTime}</div>
+          </div>
+        </div>
+        `;
+      $('.active_nums').append(rowDat);
+      const old_tot = $('#active_num').text();
+      $('#active_num').text(Number(old_tot) + 1);
     }
 
     input.prop('disabled', false);

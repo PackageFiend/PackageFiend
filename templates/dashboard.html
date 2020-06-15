@@ -29,7 +29,7 @@
 		<div class="left_spacer"></div>    
 		<div class="category_title">OUT FOR DELIVERY</div>
 		<div class="line_quantity">
-			<p><%= ofd.length %></p>
+			<p id="alerts_num"><%= ofd.length %></p>
 			<i class="fas fa-caret-down"></i>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 		<div class="category_title">IN TRANSIT</div>
 		<div class="line_quantity">
 			<!-- PLACEHOLDER -->
-			<p><%= it.length %></p>
+			<p id="active_num"><%= it.length %></p>
 			<i class="fas fa-caret-down"></i>
 		</div>
 	</div>
@@ -81,7 +81,7 @@
 		<div class="category_title">DELIVERED</div>
 		<div class="line_quantity">
 			<!-- PLACEHOLDER -->
-			<p><%= dd.length %></p>
+			<p id="delivered_num"><%= dd.length %></p>
 			<i class="fas fa-caret-down"></i>
 		</div>
 	</div>
