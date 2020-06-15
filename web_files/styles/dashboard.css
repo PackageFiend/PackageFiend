@@ -279,18 +279,29 @@ html, body {
 }
 
 .track_data_line,
-.alert_data_line,
 .delivered_data_line,
 .active_data_line {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
+    align-items: center;
     width: 100%;
     height: 27px;
-    font-size: 18px;
+    font-size: 16px;
 
 }
+
+.alert_data_line {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    width: 100%;
+    height: 27px;
+    font-size: 16px;
+
+}
+
 
 .tdl_bold {
     font-weight: 700;
@@ -301,6 +312,23 @@ html, body {
     cursor: pointer;
 }
 
+.editable {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.ed_parcel_name {
+    margin-left: 5px;
+    width: 150px;
+}
+
+.ed_parcel_name:hover {
+    background-color: lightgray;
+    cursor: text;
+}
+
 .active_data_line:hover,
 .delivered_data_line:hover {
     background-color: rgb(187, 107, 217, 0.3);
@@ -309,24 +337,36 @@ html, body {
 
 .data_line_l {
     display: flex;
-    width: 50%;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    margin-right: 15px;
-    margin-left: 7px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.data_line_l p {
+    width: 212px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 5px;
 }
 
 .data_line_r {
     display: flex;
-    width: 50%;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    margin-left: 14px;
-    margin-right: 7px;
-    
+    white-space: nowrap;
 }
+
+#data_line_status {
+    width: 120px;
+}
+
+#data_line_delivery_date {
+    width: 185px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .tracking_number {
     font-weight: 700;
     font-size: 24px;
@@ -335,7 +375,7 @@ html, body {
 
 .carrier_icon {
     display: flex;
-    width: 69px;
+    width: 45px;
     height: 24px;
     font-size: 12px;
     font-weight: 400;
@@ -345,7 +385,8 @@ html, body {
     color: rgb(86, 204, 242);
     box-sizing: border-box;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .stat_line_bold {
