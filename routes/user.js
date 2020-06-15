@@ -28,6 +28,14 @@ router.get('/dashboard', async (req, res) => {
   const it = [];
   const dd = [];
   const ofd = [];
+  let del7_ups = 0;
+  let del30_ups = 0;
+  let del90_ups = 0;
+  let del180_ups = 0;
+  let del7_usps = 0;
+  let del30_usps = 0;
+  let del90_usps = 0;
+  let del180_usps = 0;
 
   for (let i = 0; i < data.length; i++) {
     const parcel = data[i];
@@ -39,9 +47,35 @@ router.get('/dashboard', async (req, res) => {
       ofd.push(parcel);
     } else if (parcel.Delivered) {
       dd.push(parcel);
+      if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 7) {
+        if (parcel.Provider === "UPS") {
+          del7_ups = del7_ups + 1;
+        } else {
+          del7_usps = del7_usps + 1;
+        };
+      } else if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 30) {
+        if (parcel.Provider === "UPS") {
+          del30_ups = del30_ups + 1;
+        } else {
+          del30_usps = del30_usps + 1;
+        };
+      } else if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 90) {
+        if (parcel.Provider === "UPS") {
+          del90_ups = del90_ups + 1;
+        } else {
+          del90_usps = del90_usps + 1;
+        };
+      } else if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 180) {
+        if (parcel.Provider === "UPS") {
+          del180_ups = del180_ups + 1;
+        } else {
+          del180_usps = del180_usps + 1;
+        };
+      };
     } else {
       it.push(parcel);
     }
+
     //console.log('Parcel:', parcel);
   }
 
@@ -50,7 +84,15 @@ router.get('/dashboard', async (req, res) => {
       dat: data,
       it: it,
       dd: dd,
-      ofd: ofd
+      ofd: ofd,
+      del7_ups: del7_ups,
+      del30_ups: del30_ups,
+      del90_ups: del90_ups,
+      del180_ups: del180_ups,
+      del7_usps: del7_usps,
+      del30_usps: del30_usps,
+      del90_usps: del90_usps,
+      del180_usps: del180_usps
     }));
 });
 
