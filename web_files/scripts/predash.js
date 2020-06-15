@@ -3,7 +3,7 @@ async function main () {
 
   if (!localStorage.pkgfnd_token) {
     console.error('No token');
-    window.location = 'localhost:8080';
+    window.location = 'http://localhost:8080';
     return;
   }
 

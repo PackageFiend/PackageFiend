@@ -1,16 +1,31 @@
 // Accordion dropdowns
-$(document).ready(function(){
+$(document).ready(function() {
   console.log('First Script');
+  $('.indv_time').each(function () {
+    const time = $(this).text().trim();
+    //console.log(time);
+    let ftime = null;
+    if ($(this).parent().is('.data_line_r, .est_delivery')) {
+      fTime = moment(time).format('dddd, MMMM Do, YYYY');
+    } else {
+      fTime = moment(time).format('MMMM Do, h:mm a');
+    }
+    //console.log(fTime);
+    $(this).text(fTime);
+  });
 
-    $(".alerts_collapsible").click(function(){
-        $(".alerted_nums").toggleClass("add_five_lines");
-    });
-    $(".active_collapsible").click(function(){
-        $(".active_nums").toggleClass("add_five_lines");
-    });
-    $(".delivered_collapsible").click(function(){
-        $(".delivered_nums").toggleClass("add_ten_lines");
-    });
+  const user_initial = localStorage.pkgfnd_name.slice(0,1);
+  $('.user_initial').text(user_initial);
+
+  $(".alerts_collapsible").click(function(){
+      $(".alerted_nums").toggleClass("add_five_lines");
+  });
+  $(".active_collapsible").click(function(){
+      $(".active_nums").toggleClass("add_five_lines");
+  });
+  $(".delivered_collapsible").click(function(){
+      $(".delivered_nums").toggleClass("add_ten_lines");
+  });
 
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
@@ -48,7 +63,7 @@ $(document).ready(function(){
 
     window.setTimeout(() => {
       input.val('');
-    }, 3000);
+    }, 2000);
 
     //TODO: Call function to add to render
   })

@@ -20,7 +20,7 @@ function parseFedEx (resJS) {
 }
 
 module.exports = {
-  track: async function (ids, provider = null) {
+  track: async function (ids, lite=false, provider=null) {
     const ret = [];
 
     const numstack = {
@@ -95,6 +95,7 @@ module.exports = {
     }
 
     // Parse all of the USPS data
+    console.log('Waiting for usps data');
     if (numstack.usps.length) {
       try {
         const res = await uspsProm;
@@ -105,6 +106,7 @@ module.exports = {
       }
     }
 
+    console.log('Waiting for UPS data');
     // Parse all of the UPS data
     if (numstack.ups.length) {
       try {
@@ -118,27 +120,69 @@ module.exports = {
       }
     }
 
-    const geos = [];
+    console.log('Got all data');
 
-    // Add geo data
-    for (let i = 0; i < ret.length; i++) {
-      const parcel = ret[i];
-      if (parcel.Error) continue;
-      for (let j = 0; j < parcel.Events.length; j++) {
-        const event = parcel.Events[j];
-        if (event.Location.String === null || event.Location.String.length <= 5) {
-          event.Location.Geo = null;
-          event.Location.Address = null;
-          continue;
+    if (!lite) {
+      const geos = [];
+
+      // Add geo data
+      for (let i = 0; i < ret.length; i++) {
+        const parcel = ret[i];
+        if (parcel.Error) continue;
+        for (let j = 0; j < parcel.Events.length; j++) {
+          const event = parcel.Events[j];
+          if (event.Location.String === null || event.Location.String.length <= 5) {
+            event.Location.Geo = null;
+            event.Location.Address = null;
+            continue;
+          }
+          geos.push(Geos.getGeo(event.Location.String, event));
         }
-        geos.push(Geos.getGeo(event.Location.String, event));
       }
-    }
 
-    try {
-      await Promise.all(geos);
-    } catch (err) {
-      console.error('Error getting geo information:', err);
+      try {
+        await Promise.all(geos);
+      } catch (err) {
+        console.error('Error getting geo information:', err);
+      }
+
+      // Add travel time data
+      for (let i = 0; i < ret.length; i++) {
+        const parcel = ret[i];
+        if (parcel.Error) continue;
+        parcel.Travels = [];
+        parcel.TotalDistance = 0;
+        const start = null;
+        const end = null;
+        for (let j = parcel.Events.length - 1; j > 0; j--) {
+          const event = parcel.Events[j];
+          if (!event.Location.Geo || !event.Time) continue;
+          const thisPosition = new GeoPoint(event.Location.Geo.lat, event.Location.Geo.lng);
+
+          for (let k = j - 1; k >= 0; k--) {
+            const nextEvent = parcel.Events[k];
+            if (!nextEvent.Location.Geo || !nextEvent.Time) continue;
+            const nextPosition = new GeoPoint(nextEvent.Location.Geo.lat, nextEvent.Location.Geo.lng);
+
+            const dist = thisPosition.distanceTo(nextPosition);
+            const timeDiff = (nextEvent.Time.getTime() - event.Time.getTime()) / 1000;
+
+            const niceDist = (dist ? Math.floor(dist) : 0);
+            parcel.TotalDistance += niceDist;
+
+            parcel.Travels.push({
+              From: event.Location.Address, // .replace(/([A-Z]{2}).+/, '$1'),
+              To: nextEvent.Location.Address, // .replace(/([A-Z]{2}).+/, '$1'),
+              Distance: niceDist,
+              TimeTaken: timeDiff
+            });
+
+            // console.log(j, k);
+            j = k + 1;
+            break;
+          }
+        }
+      }
     }
 
     // Add MostRecentTime property
@@ -156,45 +200,8 @@ module.exports = {
       }
     }
 
-    // Add travel time data
-    for (let i = 0; i < ret.length; i++) {
-      const parcel = ret[i];
-      if (parcel.Error) continue;
-      parcel.Travels = [];
-      parcel.TotalDistance = 0;
-      const start = null;
-      const end = null;
-      for (let j = parcel.Events.length - 1; j > 0; j--) {
-        const event = parcel.Events[j];
-        if (!event.Location.Geo || !event.Time) continue;
-        const thisPosition = new GeoPoint(event.Location.Geo.lat, event.Location.Geo.lng);
 
-        for (let k = j - 1; k >= 0; k--) {
-          const nextEvent = parcel.Events[k];
-          if (!nextEvent.Location.Geo || !nextEvent.Time) continue;
-          const nextPosition = new GeoPoint(nextEvent.Location.Geo.lat, nextEvent.Location.Geo.lng);
-
-          const dist = thisPosition.distanceTo(nextPosition);
-          const timeDiff = (nextEvent.Time.getTime() - event.Time.getTime()) / 1000;
-
-          const niceDist = (dist ? Math.floor(dist) : 0);
-          parcel.TotalDistance += niceDist;
-
-          parcel.Travels.push({
-            From: event.Location.Address, // .replace(/([A-Z]{2}).+/, '$1'),
-            To: nextEvent.Location.Address, // .replace(/([A-Z]{2}).+/, '$1'),
-            Distance: niceDist,
-            TimeTaken: timeDiff
-          });
-
-          // console.log(j, k);
-          j = k + 1;
-          break;
-        }
-      }
-
-      // console.log(parcel.Travels);
-    }
+    // console.log(parcel.Travels);
 
     return ret;
   }

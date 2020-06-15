@@ -22,7 +22,7 @@ router.get('/dashboard', async (req, res) => {
   console.log('Fetching dashboard', req.user);
   const pids = Object.keys(udat.Item.packages);
   const upacs = Object.values(udat.Item.packages);
-  const data = await track.track(pids);
+  const data = await track.track(pids, lite=true);
   //console.log('Dashboard data:', data);
 
   const it = [];

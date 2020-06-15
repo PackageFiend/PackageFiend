@@ -8,12 +8,12 @@ module.exports = function parseUPS (resJS) {
       parcel = resJS[i].data.trackResponse.shipment[0].package[0];
       ret.TrackNum = parcel.trackingNumber;
     }
-    console.dir(resJS[i].data, {depth: null});
+    //console.dir(resJS[i].data, {depth: null});
 
-    console.log(ret.TrackNum);
+    //console.log(ret.TrackNum);
     ret.Provider = 'UPS';
 
-    console.log(i);
+    //console.log(i);
     if (!parcel) {
       ret.TrackNum = resJS[i].response.trackNum;
       ret.Error = {
