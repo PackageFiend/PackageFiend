@@ -40,5 +40,5 @@ $(document).ready(() => {
       send_to_tracking();
     }
   });
-  
+
 });
