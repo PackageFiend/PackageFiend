@@ -469,7 +469,8 @@ html, body {
 .g_bar_7,
 .g_bar_30,
 .g_bar_90,
-.g_bar_180 {
+.g_bar_180,
+.g_bar_all {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -479,17 +480,19 @@ html, body {
 
 .ups_bar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 40px;
-    height: 100px;
+    min-height: 4px;
     background-color: rgb(255, 176, 0);
 }
 
 .usps_bar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 40px;
-    height: 92px;
+    min-height: 4px;
     background-color: rgb(86, 204, 242);
 }
 
@@ -505,8 +508,7 @@ html, body {
     visibility: hidden;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    font-size: 10px;
 }
   
 .ups_bar:hover .ups_hover,

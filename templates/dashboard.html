@@ -115,19 +115,19 @@
 		<div class="stats_data_lines">
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered - 7 days:</div>
-				<div class="del_7"><%= del7_ups %></div>
+				<div class="del_7"><%= del7_ups + del7_usps %></div>
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered - 30 days:</div>
-				<div class="del_30">5</div>
+				<div class="del_30"><%= del30_ups + del30_usps %></div>
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered - 90 days:</div>
-				<div class="del_90">6</div>
+				<div class="del_90"><%= del90_ups + del90_usps %></div>
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered - 180 days:</div>
-				<div class="del_6m">10</div>
+				<div class="del_6m"><%= del180_ups + del180_usps %></div>
 			</div>
 			
 			<div class="stat_line_bold">
@@ -136,78 +136,109 @@
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body_ups">UPS:</div>
-				<div class="del_ups">6</div>
+				<div class="del_ups"><%= all_ups %></div>
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body_usps">USPS:</div>
-				<div class="del_usps">9</div>
+				<div class="del_usps"><%= all_usps %></div>
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered:</div>
-				<div class="del_at">15</div>
-			</div>
-			
-			<div class="stat_line_bold">
-				<div class="bold_body">Distance (miles):</div>
-				<div class="miles_total">99437</div>
+				<div class="del_at"><%= dat.length %></div>
 			</div>
 		</div>
 		
 		<div class="bar_graph">
 			<div class="g_column">
 				<div class="g_bar_transit">
-					<div class="ups_bar">
+					<% const ups_bar_it = '<div class="ups_bar" style="height:' + it_ups*100/dat.length + '%;">'; %> 
+					<%- ups_bar_it %>
 						<span class="ups_hover">UPS</span>
-					</div>
-					<div class="usps_bar">
+						<span class="ups_hover"><%= it_ups %></span>
+						</div>
+					<% const usps_bar_it = '<div class="usps_bar" style="height:' + it_usps*100/dat.length + 'px;">'; %> 
+					<%- usps_bar_it %>
 						<span class="usps_hover">USPS</span>
-					</div>
+						<span class="usps_hover"><%= it_usps %></span>
+						</div>
 				</div>
 				<div class="g_name">In Transit</div>
 			</div>
 			<div class="g_column">
 				<div class="g_bar_7">
-					<div class="ups_bar">
+					<% const ups_bar_7 = '<div class="ups_bar" style="height:' + del7_ups*100/dat.length + '%;">'; %> 
+					<%- ups_bar_7 %>
 						<span class="ups_hover">UPS</span>
-					</div>
-					<div class="usps_bar">
+						<span class="ups_hover"><%= del7_ups %></span>
+						</div>
+					<% const usps_bar_7 = '<div class="usps_bar" style="height:' + del7_usps*100/dat.length + '%;">'; %> 
+					<%- usps_bar_7 %>
 						<span class="usps_hover">USPS</span>
-					</div>
+						<span class="usps_hover"><%= del7_usps %></span>
+						</div>
 				</div>
 				<div class="g_name">7 days</div>
 			</div>
 			<div class="g_column">
 				<div class="g_bar_30">
-					<div class="ups_bar">
-						<span class="ups_hover">UPS</span>
-					</div>
-					<div class="usps_bar">
-						<span class="usps_hover">USPS</span>
-					</div>
+					<% const ups_bar_30 = '<div class="ups_bar" style="height:' + del30_ups*100/dat.length + '%;">'; %> 
+						<%- ups_bar_30 %>
+							<span class="ups_hover">UPS</span>
+							<span class="ups_hover"><%= del30_ups %></span>
+						</div>
+						<% const usps_bar_30 = '<div class="usps_bar" style="height:' + del30_usps*100/dat.length + '%;">'; %> 
+						<%- usps_bar_30 %>
+							<span class="usps_hover">USPS</span>
+							<span class="usps_hover"><%= del30_usps %></span>
+						</div>
 				</div>
 				<div class="g_name">30 days</div>
 			</div>
 			<div class="g_column">
 				<div class="g_bar_90">
-					<div class="ups_bar">
-						<span class="ups_hover">UPS</span>
+					<% const ups_bar_90 = '<div class="ups_bar" style="height:' + del90_ups*100/dat.length + '%;">'; %> 
+						<%- ups_bar_90 %>
+							<span class="ups_hover">UPS</span>
+							<span class="ups_hover"><%= del90_ups %></span>
 					</div>
-					<div class="usps_bar">
-						<span class="usps_hover">USPS</span>
+						<% const usps_bar_90 = '<div class="usps_bar" style="height:' + del90_usps*100/dat.length + '%;">'; %> 
+						<%- usps_bar_90 %>
+							<span class="usps_hover">USPS</span>
+							<span class="usps_hover"><%= del90_usps %></span>
 					</div>
 				</div>
 				<div class="g_name">90 days</div>
 			</div>
 			<div class="g_column">
 				<div class="g_bar_180">
-					<div class="ups_bar">
-						<span class="ups_hover">UPS</span>
-					</div>
-					<div class="usps_bar">
-						<span class="usps_hover">USPS</span>
-					</div>
+					<% const ups_bar_180 = '<div class="ups_bar" style="height:' + del180_ups*100/dat.length + '%;">'; %> 
+						<%- ups_bar_180 %>
+							<span class="ups_hover">UPS</span>
+							<span class="ups_hover"><%= del180_ups %></span>
+
+						</div>
+						<% const usps_bar_180 = '<div class="usps_bar" style="height:' + del180_usps*100/dat.length + '%;">'; %> 
+						<%- usps_bar_180 %>
+							<span class="usps_hover">USPS</span>
+							<span class="usps_hover"><%= del180_usps %></span>
+						</div>
 				</div>
 				<div class="g_name">180 days</div>
+			</div>
+			<div class="g_column">
+				<div class="g_bar_all">
+					<% const ups_bar_all = '<div class="ups_bar" style="height:' + all_ups*100/dat.length + '%;">'; %> 
+					<%- ups_bar_all %>
+						<span class="ups_hover">UPS</span>
+						<span class="ups_hover"><%= all_ups %></span>
+					</div>
+					<% const usps_bar_all = '<div class="usps_bar" style="height:' + all_usps*100/dat.length + '%;">'; %> 
+					<%- usps_bar_all %>
+						<span class="usps_hover">USPS</span>
+						<span class="usps_hover"><%= all_usps %></span>
+					</div>
+				</div>
+				<div class="g_name">All Time</div>
 			</div>
 		</div>
 	</div>
