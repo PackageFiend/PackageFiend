@@ -92,13 +92,19 @@
 		<% for (let i = 0; i < dd.length; i++) { %>
 		<div class="delivered_data_line">
 			<!-- Split into left and right divs for spacing -->                    
+			<div class="editable">
+				<i id="save_name" class="fas fa-save"></i>
+				<div class="ed_parcel_name" contenteditable="true">
+					<%= dd[i].Name ? dd[i].Name : "Add Custom Name" %>
+				</div>
+			</div>
 			<div class="data_line_l">
-				<p><%= dd[i].Name ? dd[i].Name : dd[i].TrackNum %></p>
+				<p><%= dd[i].TrackNum %></p>
 				<div class="carrier_icon"><%= dd[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
-				<div class="data_line_status">Delivered: </div>
-				<div class="data_line_delivery_date indv_time"><%= dd[i].MostRecentTime %></div>
+				<div id="data_line_status">Delivered: </div>
+				<div id="data_line_delivery_date" class="indv_time"><%= dd[i].MostRecentTime %></div>
 			</div>
 		</div>
 		<% } %>
@@ -109,7 +115,7 @@
 		<div class="stats_data_lines">
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered - 7 days:</div>
-				<div class="del_7">2</div>
+				<div class="del_7">fuck</div>
 			</div>
 			<div class="stat_line_bold">
 				<div class="bold_body">Delivered - 30 days:</div>
