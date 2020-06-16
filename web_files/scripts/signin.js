@@ -27,8 +27,9 @@ $(document).ready(() => {
           return null;
         }
       });
+      console.log(res);
       if (res === null) {
-        $('#sign_in_message').html('Log in failed. Please try again.');
+        $('.sign_in_message').html('Log in failed. Please try again.');
         return;
       } else {
         console.log(res);
