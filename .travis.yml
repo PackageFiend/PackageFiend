@@ -22,4 +22,4 @@ jobs:
 stages:
         - "Node App Test"
 before_script:
-       - ./k_init
+       - node k_init
