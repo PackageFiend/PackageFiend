@@ -319,9 +319,29 @@ html, body {
     margin-left: 3px;
 }
 
+.editable i {
+    visibility: hidden;
+}
+
 .ed_parcel_name {
+    display: flex;
+    flex-direction: row;
     margin-left: 5px;
     width: 150px;
+    overflow: hidden;
+}
+
+#name_input {
+    border: none;
+    width: 100%;
+}
+
+#name_input::placeholder {
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: black;
 }
 
 .ed_parcel_name:hover {

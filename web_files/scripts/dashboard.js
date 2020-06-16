@@ -89,7 +89,12 @@ $(document).ready(function() {
       const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
       const rowDat = `
         <div class="delivered_data_line">
-          <!-- Split into left and right divs for spacing -->                    
+          <div class="editable">
+            <i id="save_name" class="fas fa-save"></i>
+            <div class="ed_parcel_name">
+              <input id="name_input" type="text" placeholder="Customize" />
+            </div>
+          </div>
           <div class="data_line_l">
             <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
             <div class="carrier_icon">${parcel.Provider}</div>
@@ -107,7 +112,12 @@ $(document).ready(function() {
       const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
       const rowDat = `
         <div class="alert_data_line">
-          <!-- Split into left and right divs for spacing -->                    
+          <div class="editable">
+            <i id="save_name" class="fas fa-save"></i>
+            <div class="ed_parcel_name">
+              <input id="name_input" type="text" placeholder="Customize" />
+            </div>
+          </div>
           <div class="data_line_l">
             <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
             <div class="carrier_icon">${parcel.Provider}</div>
@@ -125,7 +135,12 @@ $(document).ready(function() {
       const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
       const rowDat = `
         <div class="active_data_line">
-          <!-- Split into left and right divs for spacing -->                    
+          <div class="editable">
+            <i id="save_name" class="fas fa-save"></i>
+            <div class="ed_parcel_name">
+              <input id="name_input" type="text" placeholder="Customize" />
+            </div>
+          </div>
           <div class="data_line_l">
             <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
             <div class="carrier_icon">${parcel.Provider}</div>

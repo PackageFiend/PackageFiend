@@ -94,8 +94,10 @@
 			<!-- Split into left and right divs for spacing -->                    
 			<div class="editable">
 				<i id="save_name" class="fas fa-save"></i>
-				<div class="ed_parcel_name" contenteditable="true">
-					<%= dd[i].Name ? dd[i].Name : "Add Custom Name" %>
+				<div class="ed_parcel_name">
+					<% const parc_name = dd[i].Name ? dd[i].Name : "Customize"; %>
+					<% const input_template = '<input id="name_input" type="text" placeholder="' + parc_name + '" />'; %>
+					<%- input_template %>
 				</div>
 			</div>
 			<div class="data_line_l">
