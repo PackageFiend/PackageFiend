@@ -28,6 +28,7 @@ router.get('/dashboard', async (req, res) => {
   const it = [];
   const dd = [];
   const ofd = [];
+  // Trying to get these to dashboard.html so I don't clutter up the ejs
   let del7_ups = 0;
   let del30_ups = 0;
   let del90_ups = 0;
