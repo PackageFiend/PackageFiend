@@ -134,12 +134,11 @@ html, body {
     cursor: pointer;
 }
 
-.sign_in_box {
+.sign_in_box:hover {
     opacity: 1;
 }
 
 .inactive {
-    cursor: pointer;
     opacity: .3;
 }
 

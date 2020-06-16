@@ -1,14 +1,22 @@
-// Create account collapsible
-const collapse_button = document.querySelector('.no_account');
-collapse_button.addEventListener("click", event => {
-    collapse_button.classList.toggle('active');
-    const collapsible = document.querySelector('.create_collapsible');
-    collapsible.classList.toggle('create_uncollapsed');
-    const signin = document.querySelector('.sign_in_box');
-    signin.classList.toggle('inactive');
-});
+function toggle_focus() {
+  $('.create_collapsible').toggleClass('create_uncollapsed');
+  $('.no_account').toggleClass('active');
+  $('.sign_in_box').toggleClass('inactive');
+}
 
 $(document).ready(() => {
+
+  // Collapsible Toggle
+  $('.no_account').click(() => {
+    toggle_focus();
+  });
+
+  // Switch back to Existing User box
+  $('.sign_in_box').click(() => {
+    if ($('.sign_in_box').hasClass('inactive')) {
+      toggle_focus();
+    }
+  });
 
   // Checks validity of data entered for log in attempts.
   // Redirects to dashboard if successful.
@@ -27,12 +35,10 @@ $(document).ready(() => {
           return null;
         }
       });
-      console.log(res);
       if (res === null) {
         $('.sign_in_message').html('Log in failed. Please try again.');
         return;
       } else {
-        console.log(res);
         localStorage.pkgfnd_token = res.data.token;
         localStorage.pkgfnd_name = res.data.user.name;
     
@@ -40,8 +46,9 @@ $(document).ready(() => {
       };
     };
   });
-// Check validity of data entered for user creation attempts.
-// Logs them in and redirects to dashboard is successful.
+
+  // Check validity of data entered for user creation attempts.
+  // Logs them in and redirects to dashboard is successful.
   $('.create_button').click(async () => {
     const name = $('#name').val();
     const username = $('#username').val();
