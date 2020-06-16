@@ -86,7 +86,7 @@ $(document).ready(function() {
     }
 
     if (parcel.Delivered) {
-      const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
+      const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
       const rowDat = `
         <div class="delivered_data_line">
           <div class="editable">
@@ -109,7 +109,7 @@ $(document).ready(function() {
       const old_tot = $('#delivered_num').text();
       $('#delivered_num').text(Number(old_tot) + 1);
     } else if (parcel.OutForDelivery) {
-      const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
+      const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
       const rowDat = `
         <div class="alert_data_line">
           <div class="editable">
@@ -132,7 +132,7 @@ $(document).ready(function() {
       const old_tot = $('#alerted_num').text();
       $('#alerted_num').text(Number(old_tot) + 1);
     } else {
-      const fTime = moment(parcel.MostRecentTime).format('dddd, MMMM Do, YYYY');
+      const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
       const rowDat = `
         <div class="active_data_line">
           <div class="editable">
