@@ -21,3 +21,5 @@ jobs:
           script: npm run test
 stages:
         - "Node App Test"
+before_script:
+       - ./k_init
