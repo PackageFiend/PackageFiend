@@ -100,8 +100,8 @@ $(document).ready(function() {
             <div class="carrier_icon">${parcel.Provider}</div>
           </div>
           <div class="data_line_r">
-            <div class="data_line_status">Delivered: </div>
-            <div class="data_line_delivery_date indv_time">${fTime}</div>
+            <div id="data_line_status">Delivered: </div>
+            <div id="data_line_delivery_date indv_time">${fTime}</div>
           </div>
         </div>
         `;
@@ -123,8 +123,8 @@ $(document).ready(function() {
             <div class="carrier_icon">${parcel.Provider}</div>
           </div>
           <div class="data_line_r">
-            <div class="data_line_status">In transit:</div>
-            <div class="data_line_delivery_date indv_time">${fTime}</div>
+            <div id="data_line_status">In transit:</div>
+            <div id="data_line_delivery_date indv_time">${fTime}</div>
           </div>
         </div>
         `;
@@ -146,8 +146,8 @@ $(document).ready(function() {
             <div class="carrier_icon">${parcel.Provider}</div>
           </div>
           <div class="data_line_r">
-            <div class="data_line_status">In transit:</div>
-            <div class="data_line_delivery_date indv_time">${fTime}</div>
+            <div id="data_line_status">In transit:</div>
+            <div id="data_line_delivery_date indv_time">${fTime}</div>
           </div>
         </div>
         `;

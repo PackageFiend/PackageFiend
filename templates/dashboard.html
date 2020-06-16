@@ -38,6 +38,14 @@
 		<% for (let i = 0; i < ofd.length; i++) { %>
 		<div class="alert_data_line">
 			<!-- Split into left and right divs for spacing -->                    
+			<div class="editable">
+				<i id="save_name" class="fas fa-save"></i>
+				<div class="ed_parcel_name">
+					<% const parc_name = ofd[i].Name ? ofd[i].Name : "Customize"; %>
+					<% const input_template = '<input id="name_input" type="text" placeholder="' + parc_name + '" />'; %>
+					<%- input_template %>
+				</div>
+			</div>
 			<div class="data_line_l">
 				<p><%= dat[i].Name ? dat[i].Name : dat[i].TrackNum %></p>
 				<div class="carrier_icon"><% ofd[i].Provider %></div>
@@ -65,6 +73,14 @@
 		<% for (let i = 0; i < it.length; i++) { %>
 		<div class="active_data_line">
 			<!-- Split into left and right divs for spacing -->                    
+			<div class="editable">
+				<i id="save_name" class="fas fa-save"></i>
+				<div class="ed_parcel_name">
+					<% const parc_name = it[i].Name ? it[i].Name : "Customize"; %>
+					<% const input_template = '<input id="name_input" type="text" placeholder="' + parc_name + '" />'; %>
+					<%- input_template %>
+				</div>
+			</div>
 			<div class="data_line_l">
 				<p><%= dat[i].Name ? dat[i].Name : dat[i].TrackNum %></p>
 				<div class="carrier_icon"><%= it[i].Provider %></div>
