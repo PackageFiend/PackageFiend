@@ -34,7 +34,7 @@ $(document).ready(function() {
   });
 
   $('.ed_parcel_name').click(function() {
-    const parent = $(this).parent();;
+    const parent = $(this).parent();
     const icon = parent.children('#save_name');
     icon.css('visibility', 'visible');
   })
