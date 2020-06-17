@@ -4,12 +4,11 @@
         <meta charset="utf8">
         <link rel="stylesheet" href="./styles/index.css">
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
-		<script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
 			  crossorigin="anonymous"></script>
         <title>Package Fiend</title>
-		<script src="https://packagefiend.com/scripts/homepage.js"></script>
+		<script src="https://www.packagefiend.com/scripts/homepage.js"></script>
     </head>
     <body>
         <header class="header">
@@ -18,22 +17,17 @@
                     <p id="about">About This Project</p>
                 </div>
                 <div class="spacer"></div>
-                <div class="sign_in_box">
-					<a href="https://packagefiend.com/signin.html">
-						<div class="sign_in_button">
-							Sign In
-						</div>
-					</a>
-                </div>
+                <!-- Sign in vs Logged In button is filled by homepage.js script-->
+                <div class="sign_in_box"></div>
             </div>
         </header>
         <div class="home_body">
-            <img class="logo" src="./images/PkgFiend_logo.svg">
+            <img class="logo" src="https://www.packagefiend.com/images/PkgFiend_logo.svg">
             <div class="enter_track">
                 <form class="enter_numbers">
                     <div class="enter_numbers_box">
-                      <i class="fas fa-box"></i>
-                      <input type="text" placeholder="ENTER TRACKING NUMBER(S)" required />
+                      <img src="https://www.packagefiend.com/images/box-solid.svg">
+                      <input type="text" placeholder="ENTER TRACKING NUMBER(S)" />
                     </div>
                 </form>   
             </div>
@@ -46,9 +40,9 @@
                 <div></div>
                 <div class="holberton">
                     <img class="holb_logo" src="./images/holb_logo_black.svg">
-                    <p>Holberton School</p>
+                    <a id="holb_link" href="http://www.holbertonschool.com" target="_blank">Holberton School</a>
                 </div>
-                <p id="footer_link">Privacy</p>
+                <p id="footer_link"></p>
             </div>
         </footer>
     </body>

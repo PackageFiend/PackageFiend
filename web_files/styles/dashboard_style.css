@@ -60,7 +60,7 @@ html, body {
     margin-left: 4px;
 }
 
-.enter_numbers_box i {
+.enter_numbers_box img {
     padding: 10px;
 }
 
@@ -101,7 +101,7 @@ html, body {
 .sign_in_box p {
     font-size: 18px;
     font-weight: 700;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .user_icon {
@@ -109,7 +109,7 @@ html, body {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    margin-right: 5px;
+    margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,8 +171,18 @@ html, body {
 }
 
 .line_quantity p,
-.line_quantity i {
+.line_quantity img {
     margin-right: 6px;
+}
+
+.icons {
+    height: 16px;
+}
+
+.enter_numbers_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .alerts_collapsible {
@@ -218,8 +228,7 @@ html, body {
     background-color: rgb(187, 107, 217);
 }
 
-.alerted_nums,
-.delivered_nums {
+.alerted_nums {
     max-height: 0px;
     overflow: hidden;
     width: 752px;
@@ -262,12 +271,14 @@ html, body {
 
 .add_five_lines {
     max-height: 138px;
+    min-height: 27px;
     overflow: auto;
     border-bottom-width: 2px;
 }
 
 .add_ten_lines {
     max-height: 276px;
+    min-height: 27px;
     overflow: auto;
     border-bottom-width: 2px;
 }
@@ -278,19 +289,30 @@ html, body {
     border-bottom-width: 2px;
 }
 
-.track_data_line,
+.track_data_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 27px;
+    font-size: 16px;
+
+}
+
 .alert_data_line,
 .delivered_data_line,
 .active_data_line {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-content: center;
     width: 100%;
     height: 27px;
-    font-size: 18px;
-
+    font-size: 16px;
+    overflow: hidden;
 }
+
 
 .tdl_bold {
     font-weight: 700;
@@ -301,6 +323,43 @@ html, body {
     cursor: pointer;
 }
 
+.editable {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.editable i {
+    visibility: hidden;
+}
+
+.ed_parcel_name {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    width: 150px;
+    overflow: hidden;
+}
+
+#name_input {
+    border: none;
+    width: 100%;
+}
+
+#name_input::placeholder {
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: black;
+}
+
+.ed_parcel_name:hover {
+    background-color: lightgray;
+    cursor: text;
+}
+
 .active_data_line:hover,
 .delivered_data_line:hover {
     background-color: rgb(187, 107, 217, 0.3);
@@ -309,24 +368,40 @@ html, body {
 
 .data_line_l {
     display: flex;
-    width: 50%;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    margin-right: 15px;
-    margin-left: 7px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.data_line_l p {
+    width: 212px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 5px;
 }
 
 .data_line_r {
     display: flex;
-    width: 50%;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    margin-left: 14px;
-    margin-right: 7px;
-    
+    width: 305px;
+    align-items: center;
+    white-space: nowrap;
 }
+
+#data_line_status {
+    display: flex;
+    width: 120px;
+    justify-content: center;
+}
+
+#data_line_delivery_date {
+    width: 185px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .tracking_number {
     font-weight: 700;
     font-size: 24px;
@@ -335,7 +410,7 @@ html, body {
 
 .carrier_icon {
     display: flex;
-    width: 69px;
+    width: 45px;
     height: 24px;
     font-size: 12px;
     font-weight: 400;
@@ -345,7 +420,8 @@ html, body {
     color: rgb(86, 204, 242);
     box-sizing: border-box;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .stat_line_bold {
@@ -406,6 +482,15 @@ html, body {
     justify-content: flex-end;
 }
 
+#total_line {
+    margin-top: 6px;
+}
+
+.stat_spacer {
+    height: 19px;
+    width: 350px;
+}
+
 .bar_graph {
     display: flex;
     flex-direction: row;
@@ -426,27 +511,30 @@ html, body {
 .g_bar_7,
 .g_bar_30,
 .g_bar_90,
-.g_bar_180 {
+.g_bar_180,
+.g_bar_all {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 192px;
     justify-content: flex-end;
 }
 
 .ups_bar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 40px;
-    height: 100px;
+    min-height: 4px;
     background-color: rgb(255, 176, 0);
 }
 
 .usps_bar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 40px;
-    height: 92px;
+    min-height: 4px;
     background-color: rgb(86, 204, 242);
 }
 
@@ -462,8 +550,7 @@ html, body {
     visibility: hidden;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    font-size: 10px;
 }
   
 .ups_bar:hover .ups_hover,

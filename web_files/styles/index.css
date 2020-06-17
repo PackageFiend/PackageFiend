@@ -33,11 +33,16 @@ html, body {
     flex: 1;
     display: inline-flex;
     justify-content: center;
+    align-items: center;
 }
 
 .sign_in_box {
     margin-left: auto;
     justify-content: flex-end;
+}
+
+.sign_in_box a {
+    text-decoration: none;
 }
 
 .left_nav_box {
@@ -46,32 +51,88 @@ html, body {
 }
 
 .sign_in_button {
-    background: #AF74E7;
-    opacity: .75;
+    background-color: rgb(187, 107, 217, 0.75);
     border-radius: 3px;
     width: 73px;
     height: 32px;
+    margin-right: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 8px;
 }
 
 .sign_in_button:hover {
-    opacity: 1;
+    cursor: pointer;
+    background-color: rgb(187, 107, 217);
+}
+
+#dashboard_link {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 10px;
+    color: rgb(0, 0, 0, 0.5);
+}
+#dashboard_link:hover {
+    color: rgb(0, 0, 0);
+}
+
+.sign_in_button:hover {
+    background-color: rgb(187, 107, 217);
+    color: white;
     cursor: pointer;
 }
 
+.user_icon {
+    background-color: rgb(187, 107, 217, 0.75);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_icon:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.user_initial {
+    position: absolute;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logout_button {
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    color: red;
+}
+
+.logout_button:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+  
+.user_icon:hover .logout_button {
+    visibility: visible;
+}
+.user_icon:hover .user_initial {
+    visibility: hidden;
+}
+
 #about {
-    color: #AF74E7;
-    opacity: .65;
+    color: rgb(187, 107, 217, 0.75);
     margin-left: 8px;
 }
 
 #about:hover {
     text-decoration: underline;
+    color: rgb(187, 107, 217);
     cursor: pointer;
-    opacity: 1;
 }
 
 .home_body {
@@ -98,8 +159,15 @@ html, body {
     margin-top: 25px;
 }
 
-.enter_numbers_box i {
+.enter_numbers_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.enter_numbers_box img {
     padding: 10px;
+    height: 20px;
 }
 
 .enter_numbers_box input {
@@ -118,14 +186,19 @@ html, body {
     margin-top: 10px;
     width: 176px;
     height: 40px;
-    background: #4DBC7B;
-    opacity: .75;
+    background-color: rgb(77, 188, 123, 0.75);
+    font-weight: 700;
     border-radius: 5px;
 }
 
 .go_button:hover {
-    opacity: 1;
+    background-color: rgb(77, 188, 123);
     cursor: pointer;
+}
+
+.regex_errors {
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 #bottom_line {
@@ -145,7 +218,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     height: 32px;
-    opacity: 0.75;
+    opacity: 0.9;
 }
 
 .holberton img {
@@ -159,11 +232,15 @@ html, body {
     align-items: center;
 }
 
-.holberton:hover {
+#holb_link {
+    color: black;
+    text-decoration: none;
+}
+
+#holb_link:hover {
     color: #D9534F;
     text-decoration: underline;
     cursor: pointer;
-    opacity: 1;
 }
 
 #footer_link {

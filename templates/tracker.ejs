@@ -2,17 +2,16 @@
 <html lang='en'>
     <head>
         <meta charset="utf8">
-        <link rel="stylesheet" href="https://packagefiend.com/styles/tracker.css">
+        <link rel="stylesheet" href="https://www.packagefiend.com/styles/tracker.css">
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">        
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
 			  crossorigin="anonymous"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-        <script src="https://kit.fontawesome.com/03ce98851b.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="https://packagefiend.com/scripts/time.js"></script>
+		<script src="https://www.packagefiend.com/scripts/time.js"></script>
         <title>Package Fiend</title>
     </head>
     <body>
@@ -22,14 +21,15 @@
                     <div class="enter_track">
                         <form class="enter_numbers">
                             <div class="enter_numbers_box">
-                                <i class="fas fa-box"></i>
+                                <img class="icons" src="https://www.packagefiend.com/images/box-solid.svg">
                                 <input class="add_in" type="text" placeholder="ADD TRACKING NUMBER(S)" />
                             </div>
                         </form>
                     </div>
                     <div class="add_button">ADD</div> 
                 </div>
-                <img class="logo" src="https://packagefiend.com/images/PkgFiend_logo.svg">
+                <a href="https://www.packagefiend.com/"><img class="logo" src="https://www.packagefiend.com/images/PkgFiend_logo.svg"></a>
+                <!-- Filled out by time.js-->
                 <div class="sign_in_box"></div>
             </div>    
         </header>
@@ -44,7 +44,7 @@
                 <!-- This only appears if multiple tracking numbers are present. -->
                 <div class="more_numbers_selector">
                     <p>more</p>
-                    <i class="fas fa-caret-down"></i>
+                    <img class="icons" src="https://www.packagefiend.com/images/caret-down-solid.svg">
                 </div>
             </div>
             <!-- This is the dropdown that displays if there are multiple tracking numbers present in the URL -->
@@ -145,14 +145,14 @@
                        %>
                     <%- time_bar_template %>
                 <% } else { %>
-                    <div class="bold_body">Travel Time Unknown</div>
+                    <div class="reg_body"></div>
                 <% } %>
             </div>
 
             <div class="travel_totals">
                 <div class="miles_total">
                     <div class="bold_body">Total Miles Traveled:</div>
-                    <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance %> Miles</div>
+                    <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance ? dat[0].TotalDistance : 0 %> Miles</div>
                 </div>
                 <div class="time_elapsed_total">
                     <div class="bold_body">Total Time Elapsed:</div>
@@ -169,7 +169,7 @@
                            %>
                         <%- time_elapsed_template %>
                     <% } else { %>
-                        <div id = "total_time" class="bold_body">Unknown</div>
+                        <div id="total_time" class="bold_body">Unknown</div>
                     <% } %>
                 </div>
             </div>
@@ -242,14 +242,14 @@
             <div class="footer_div">
                 <div></div>
                 <div class="holberton">
-                    <img class="holb_logo" src="https://packagefiend.com/images/holb_logo_black.svg">
+                    <img class="holb_logo" src="https://www.packagefiend.com/images/holb_logo_black.svg">
                     <p>Holberton School</p>
                 </div>
                 <p id="footer_link">Privacy</p>
             </div>
         </footer>
     </body>
-	<script type="text/javascript" src="https://packagefiend.com/scripts/tracker.js"></script>
+	<script type="text/javascript" src="https://www.packagefiend.com/scripts/tracker.js"></script>
 	<script type="text/javascript">
 		let latlngs = [];
 		<% if (!dat[0].Error) { %>

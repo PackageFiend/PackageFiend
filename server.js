@@ -52,5 +52,3 @@ app.use('*', function (req, res, next) {
 });
 // Serves static files
 app.use(express.static(path.join(__dirname, 'web_files')));
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
