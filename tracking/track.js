@@ -142,7 +142,7 @@ module.exports = {
       // Add geo data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
-        if (parcel.Demo) continue;
+        if (parcel.Demo && !parcel.Fill) continue;
         if (parcel.Error) continue;
         for (let j = 0; j < parcel.Events.length; j++) {
           const event = parcel.Events[j];
@@ -167,7 +167,7 @@ module.exports = {
         const parcel = ret[i];
         console.log(parcel);
         if (parcel.Error) continue;
-        if (parcel.Demo) continue;
+        if (parcel.Demo && !parcel.Fill) continue;
         parcel.Travels = [];
         parcel.TotalDistance = 0;
         const start = null;
@@ -207,7 +207,7 @@ module.exports = {
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
-      if (parcel.Demo) continue;
+      if (parcel.Demo && !parcel.Fill) continue;
       for (let j = 0; j < parcel.Events.length; j++) {
         if (parcel.Events[j].Time !== null) {
           parcel.MostRecentTime = parcel.Events[j].Time;
