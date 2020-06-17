@@ -18,7 +18,7 @@ function send_to_tracking() {
   }
   
   if (tnums !== "" && !err) {
-    window.location = `http://localhost:8080/track/num/${tnums.replace(/\s/g, '')}`;
+    window.location = `https://www.packagefiend.com/track/num/${tnums.replace(/\s/g, '')}`;
   }
 }
 
@@ -28,16 +28,16 @@ $(document).ready(() => {
   /* Switches between signin button and logged in user in Nav Bar */
   if (localStorage.pkgfnd_name) {
     const user_initial = localStorage.pkgfnd_name.slice(0,1);
-    const user_html = `<a id="dashboard_link" href="http://localhost:8080/track/dashboard/">DASHBOARD</a><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
+    const user_html = `<a id="dashboard_link" href="https://www.packagefiend.com/track/dashboard/">DASHBOARD</a><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
     $('.sign_in_box').append(user_html);
   } else {
-    $('.sign_in_box').append('<a href="http://localhost:8080/signin.html"><div class="sign_in_button">Sign In</div></a>');
+    $('.sign_in_box').append('<a href="https://www.packagefiend.com/signin.html"><div class="sign_in_button">Sign In</div></a>');
   };
 
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-    window.location = "http://localhost:8080";
+    window.location = "https://www.packagefiend.com";
   });
 
   $('.go_button').click(() => {
