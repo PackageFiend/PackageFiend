@@ -33,11 +33,35 @@ $(document).ready(function() {
     window.location = "http://localhost:8080";
   });
 
-  $('#save_name').click(async () => {
-      const testtt = $(this).next();
-      console.log('You clicked a saver');
-      console.log(testtt);
+  $('.ed_parcel_name').click(function() {
+    const parent = $(this).parent();;
+    const icon = parent.children('#save_name');
+    icon.css('visibility', 'visible');
   })
+
+  $('.fas').click(function() {
+    const inputDiv = $(this).next();
+    const nameVal = inputDiv.children('input');
+    const inputVal = nameVal.val();
+
+    nameVal.attr('placeholder', inputVal);
+    nameVal.val('');
+
+    axios.post('http://localhost:8080/user/packages/name', {
+      id: inputDiv.data('id'),
+      name: inputVal,
+    }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.pkgfnd_token}`
+      }
+    }).then(data => {
+      $(this).css('color', 'green');
+      setTimeout(() => {
+        $(this).css('visibility', 'hidden');
+      }, 3000);
+    });
+    
+  });
 
 
   /* Adds a tracking number to the user's stored numbers */

@@ -110,9 +110,9 @@
 			<!-- Split into left and right divs for spacing -->                    
 			<div class="editable">
 				<i id="save_name" class="fas fa-save"></i>
-				<div class="ed_parcel_name">
+				<div class="ed_parcel_name" data-id="<%= dd[i].TrackNum %>">
 					<% const parc_name = dd[i].Name ? dd[i].Name : "Customize"; %>
-					<% const input_template = '<input id="name_input" type="text" placeholder="' + parc_name + '" />'; %>
+					<% const input_template = `<input id="name_input" type="text" placeholder="` + parc_name + '" />'; %>
 					<%- input_template %>
 				</div>
 			</div>
