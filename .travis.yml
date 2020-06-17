@@ -7,7 +7,7 @@ deploy:
         secret_access_key: "$SECRETACCESSKEY"
         region: "us-east-1"
         app: "PKGFND"
-        env: "Pkgfnd-env"
+        env: "Pkgfnd-env-1"
         bucket_name: "elasticbeanstalk-us-east-1-236301425402" 
 after_deploy:
         - echo "(!!!)done deploying!"
