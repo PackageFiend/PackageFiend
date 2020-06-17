@@ -27,7 +27,7 @@ $(document).ready(() => {
     if (username === "" || pass === "") {
       $('.sign_in_message').html('Please enter username and password.');
     } else {
-      const res = await axios.post('http://www.packagefiend.com/auth/login', {
+      const res = await axios.post('https://www.packagefiend.com/auth/login', {
         username: username,
         password: pass
       }).catch((err) => {
@@ -42,7 +42,7 @@ $(document).ready(() => {
         localStorage.pkgfnd_token = res.data.token;
         localStorage.pkgfnd_name = res.data.user.name;
     
-        window.location = "http://www.packagefiend.com/track/dashboard";
+        window.location = "https://www.packagefiend.com/track/dashboard";
       };
     };
   });
@@ -61,7 +61,7 @@ $(document).ready(() => {
       $('.create_message').html('Passwords must match. Try again.');
     } else {
       
-      const res = await axios.post('http://www.packagefiend.com/auth/createuser', {
+      const res = await axios.post('https://www.packagefiend.com/auth/createuser', {
         name: name,
         username: username,
         password: pass1

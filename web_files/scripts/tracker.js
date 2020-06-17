@@ -10,7 +10,7 @@ collapsible.addEventListener("click", event => {
 $(document).ready(() => {
     
     $('.sign_in_button').click(() => {
-        window.location = "http://www.packagefiend.com/signin.html";
+        window.location = "https://www.packagefiend.com/signin.html";
     });
 // Test stuff
     
@@ -30,7 +30,7 @@ $(document).ready(() => {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-    window.location = "http://www.packagefiend.com"
+    window.location = "https://www.packagefiend.com"
   });
 
 });
