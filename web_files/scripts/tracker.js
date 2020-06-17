@@ -13,9 +13,6 @@ $(document).ready(() => {
         window.location = "http://localhost:8080/signin.html";
     });
 // Test stuff
-    $('.logo').click(() => {
-        console.log(data);
-    });
     
     /* Travel Bar slider animation */
     $('.travel_time_bar').hover(() => {
@@ -33,8 +30,7 @@ $(document).ready(() => {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-
-    $('.sign_in_box').empty();
+    window.location = "http://localhost:8080"
   });
 
 });
