@@ -5,6 +5,11 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const path = require('path');
 
+/*
+const kscript = require('./k_init');
+kscript();
+*/
+
 const keys = JSON.parse(fs.readFileSync(path.join(__dirname, 'keys.json'), 'utf8'));
 
 AWS.config.update({
