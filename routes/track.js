@@ -11,8 +11,6 @@ router.get('/num/:tracknum', async (req, res) => {
   const trackingNumber = req.params.tracknum.split(',');
   const data = await track.track(trackingNumber);
 
-  console.log(data);
-
   res.send(await ejs.renderFile('./templates/tracker.ejs', { dat: data }));
   //res.send(JSON.stringify(await track.track([trackingNumber]), null, 2));
 });
