@@ -9,6 +9,7 @@ deploy:
         app: "PKGFND"
         env: "Pkgfnd-env-1"
         bucket_name: "elasticbeanstalk-us-east-1-236301425402" 
+        skip_cleanup: true
 after_deploy:
         - echo "(!!!)done deploying!"
         - cat keys.json
