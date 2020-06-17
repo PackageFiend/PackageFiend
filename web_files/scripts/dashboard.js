@@ -1,6 +1,6 @@
 // Accordion dropdowns
 $(document).ready(function() {
-  console.log('First Script');
+  //console.log('First Script');
   $('.indv_time').each(function () {
     const time = $(this).text().trim();
     //console.log(time);
@@ -140,17 +140,17 @@ $(document).ready(function() {
         <div class="delivered_data_line">
           <div class="editable">
             <i id="save_name" class="fas fa-save"></i>
-            <div class="ed_parcel_name">
-              <input id="name_input" type="text" placeholder="Customize" />
+            <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
+              <input id="name_input" type="text" placeholder="(Add name)" />
             </div>
           </div>
           <div class="data_line_l">
-            <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
+            <p>${parcel.TrackNum}</p>
             <div class="carrier_icon">${parcel.Provider}</div>
           </div>
           <div class="data_line_r">
             <div id="data_line_status">Delivered: </div>
-            <div id="data_line_delivery_date indv_time">${fTime}</div>
+            <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
           </div>
         </div>
         `;
@@ -164,17 +164,17 @@ $(document).ready(function() {
         <div class="alert_data_line">
           <div class="editable">
             <i id="save_name" class="fas fa-save"></i>
-            <div class="ed_parcel_name">
-              <input id="name_input" type="text" placeholder="Customize" />
+            <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
+              <input id="name_input" type="text" placeholder="(Add name)" />
             </div>
           </div>
           <div class="data_line_l">
-            <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
+            <p>${parcel.TrackNum}</p>
             <div class="carrier_icon">${parcel.Provider}</div>
           </div>
           <div class="data_line_r">
             <div id="data_line_status">In transit:</div>
-            <div id="data_line_delivery_date indv_time">${fTime}</div>
+            <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
           </div>
         </div>
         `;
@@ -188,17 +188,17 @@ $(document).ready(function() {
         <div class="active_data_line">
           <div class="editable">
             <i id="save_name" class="fas fa-save"></i>
-            <div class="ed_parcel_name">
-              <input id="name_input" type="text" placeholder="Customize" />
+            <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
+              <input id="name_input" type="text" placeholder="(Add name)" />
             </div>
           </div>
           <div class="data_line_l">
-            <p>${parcel.Name ? parcel.Name : parcel.TrackNum}</p>
+            <p>${parcel.TrackNum}</p>
             <div class="carrier_icon">${parcel.Provider}</div>
           </div>
           <div class="data_line_r">
             <div id="data_line_status">In transit:</div>
-            <div id="data_line_delivery_date indv_time">${fTime}</div>
+            <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
           </div>
         </div>
         `;
