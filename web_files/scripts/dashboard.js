@@ -1,6 +1,6 @@
 // Accordion dropdowns
 $(document).ready(function() {
-  console.log('First Script');
+  //console.log('First Script');
   $('.indv_time').each(function () {
     const time = $(this).text().trim();
     //console.log(time);

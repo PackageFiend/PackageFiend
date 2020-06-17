@@ -16,8 +16,8 @@
 		<div class="sign_in_box">
 			<p>DASHBOARD</p>
 			<div class="user_icon">
-				<div class="user_initial">T</div>
-				<div class="logout_button">EXIT</div>
+				<div class="user_initial"></div>
+				<div class="logout_button">Logout</div>
 			</div>
 		</div>
 	</div>    
@@ -51,8 +51,8 @@
 				<div class="carrier_icon"><% ofd[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
-				<div id="data_line_status">Out for Delivery:</div>
-				<div id="data_line_delivery_date indv_time"><%= ofd[i].MostRecentTime %></div>
+				<div id="data_line_status">Arriving:</div>
+				<div id="data_line_delivery_date" class="indv_time"><%= ofd[i].MostRecentTime %></div>
 			</div>
 		</div>
 		<% } %>
@@ -87,7 +87,7 @@
 			</div>
 			<div class="data_line_r">
 				<div id="data_line_status">In transit:</div>
-				<div id="data_line_delivery_date indv_time"><%= it[i].MostRecentTime %></div>
+				<div id="data_line_delivery_date" class="indv_time"><%= it[i].MostRecentTime %></div>
 			</div>
 		</div>
 		<% } %>
