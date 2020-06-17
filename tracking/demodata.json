@@ -1,19 +1,9 @@
 {
-  "9349020111404906152767": {
-	"Demo": true,
-    "TrackNum": "9349020111404906152767",
-    "Provider": "USPS",
-    "Error": {
-      "Number": 2,
-      "Description": "The U.S. Postal Service was electronically notified by the shipper on June 12, 2020 to expect your package for mailing. This does not indicate receipt by the USPS or the actual mailing date. Delivery status information will be provided if/when available."
-    }
-  },
-  "9400116901645855817273": {
-	"Demo": true,
-    "TrackNum": "9400116901645855817273",
+  "9274899996334864838254": {
+    "TrackNum": "9274899996334864838254",
     "Provider": "USPS",
     "Error": false,
-    "Summary": "Your item was delivered in or at the mailbox at 2:27 pm on April 4, 2020 in MARIETTA, PA 17547.",
+    "Summary": "Your item was delivered in or at the mailbox at 2:18 pm on May 16, 2020 in MARIETTA, PA 17547.",
     "Delivered": true,
     "OutForDelivery": false,
     "Events": [
@@ -21,155 +11,106 @@
         "Time": null,
         "Description": "Your item was delivered in or at the mailbox ",
         "Location": {
-          "String": "MARIETTA, PA 17547"
+          "String": "MARIETTA, PA 17547",
+          "Geo": {
+            "lng": -76.5521882,
+            "lat": 40.0570411
+          },
+          "Address": "Marietta, PA 17547, USA"
         }
       },
       {
-        "Time": "2020-04-04T14:32:00.000Z",
+        "Time": "2020-05-16T14:11:00.000Z",
         "Description": "Out for Delivery",
         "Location": {
-          "String": "MARIETTA, PA 17547"
+          "String": "MARIETTA, PA 17547",
+          "Geo": {
+            "lng": -76.5521882,
+            "lat": 40.0570411
+          },
+          "Address": "Marietta, PA 17547, USA"
         }
       },
       {
-        "Time": "2020-04-04T14:21:00.000Z",
+        "Time": "2020-05-16T14:00:00.000Z",
         "Description": "Arrived at Post Office",
         "Location": {
-          "String": "MARIETTA, PA 17547"
+          "String": "MARIETTA, PA 17547",
+          "Geo": {
+            "lng": -76.5521882,
+            "lat": 40.0570411
+          },
+          "Address": "Marietta, PA 17547, USA"
         }
       },
       {
-        "Time": "2020-04-04T12:46:00.000Z",
-        "Description": "Departed USPS Regional Facility",
+        "Time": "2020-05-16T12:45:00.000Z",
+        "Description": "Accepted at USPS Destination Facility",
         "Location": {
-          "String": "LANCASTER PA DISTRIBUTION CENTER"
+          "String": "MARIETTA, PA 17547",
+          "Geo": {
+            "lng": -76.5521882,
+            "lat": 40.0570411
+          },
+          "Address": "Marietta, PA 17547, USA"
         }
       },
       {
-        "Time": "2020-04-04T10:01:00.000Z",
-        "Description": "Arrived at USPS Regional Facility",
+        "Time": "2020-05-10T06:46:00.000Z",
+        "Description": "Arrived Shipping Partner Facility, USPS Awaiting Item",
         "Location": {
-          "String": "LANCASTER PA DISTRIBUTION CENTER"
+          "String": "ELKRIDGE, MD 21075",
+          "Geo": {
+            "lng": -76.745195,
+            "lat": 39.2112091
+          },
+          "Address": "Elkridge, MD 21075, USA"
         }
       },
       {
-        "Time": "2020-04-04T08:46:00.000Z",
-        "Description": "Accepted at USPS Origin Facility",
+        "Time": "2020-05-09T03:43:00.000Z",
+        "Description": "Departed Shipping Partner Facility, USPS Awaiting Item",
         "Location": {
-          "String": "LEBANON, PA 17046"
-        }
-      },
-      {
-        "Time": "2020-04-03T22:11:00.000Z",
-        "Description": "Shipment Received, Package Acceptance Pending",
-        "Location": {
-          "String": "LEBANON, PA 17042"
-        }
-      },
-      {
-        "Time": null,
-        "Description": "Pre-Shipment Info Sent to USPS, USPS Awaiting Item",
-        "Location": {
-          "String": "USPS Awaiting Item, April 3, 2020"
+          "String": "HEBRON, KY 41048",
+          "Geo": {
+            "lng": -84.70318879999999,
+            "lat": 39.0661472
+          },
+          "Address": "Hebron, KY 41048, USA"
         }
       }
     ],
-    "MostRecentTime": "2020-04-04T14:32:00.000Z",
-    "Name": "IT Number"
-  },
-  "9449010200883352882719": {
-	"Demo": true,
-    "TrackNum": "9449010200883352882719",
-    "Provider": "USPS",
-    "Error": false,
-    "Summary": "Your item has been delivered and is available at a PO Box at 7:16 am on June 8, 2020 in SODDY DAISY, TN 37379.",
-    "Delivered": true,
-    "OutForDelivery": false,
-    "Events": [
+    "Travels": [
       {
-        "Time": null,
-        "Description": "Your item has been delivered and is available at a PO Box ",
-        "Location": {
-          "String": "SODDY DAISY, TN 37379"
-        }
+        "From": "Hebron, KY 41048, USA",
+        "To": "Elkridge, MD 21075, USA",
+        "Distance": 426,
+        "TimeTaken": 97380
       },
       {
-        "Time": "2020-06-08T12:53:00.000Z",
-        "Description": "Arrived at Post Office",
-        "Location": {
-          "String": "SODDY DAISY, TN 37379"
-        }
+        "From": "Elkridge, MD 21075, USA",
+        "To": "Marietta, PA 17547, USA",
+        "Distance": 59,
+        "TimeTaken": 539940
       },
       {
-        "Time": "2020-06-07T19:29:00.000Z",
-        "Description": "Arrived at USPS Regional Destination Facility",
-        "Location": {
-          "String": "ATLANTA GA NETWORK DISTRIBUTION CENTER"
-        }
+        "From": "Marietta, PA 17547, USA",
+        "To": "Marietta, PA 17547, USA",
+        "Distance": 0,
+        "TimeTaken": 4500
       },
       {
-        "Time": "2020-06-06T07:00:00.000Z",
-        "Description": "In Transit to Next Facility",
-        "Location": {
-          "String": null
-        }
-      },
-      {
-        "Time": "2020-06-05T07:00:00.000Z",
-        "Description": "In Transit to Next Facility",
-        "Location": {
-          "String": null
-        }
-      },
-      {
-        "Time": "2020-06-04T16:31:00.000Z",
-        "Description": "Arrived at USPS Regional Origin Facility",
-        "Location": {
-          "String": "JERSEY CITY NJ NETWORK DISTRIBUTION CENTER"
-        }
-      },
-      {
-        "Time": "2020-06-03T07:00:00.000Z",
-        "Description": "In Transit to Next Facility",
-        "Location": {
-          "String": null
-        }
-      },
-      {
-        "Time": "2020-06-02T07:00:00.000Z",
-        "Description": "In Transit to Next Facility",
-        "Location": {
-          "String": null
-        }
-      },
-      {
-        "Time": "2020-06-01T23:50:00.000Z",
-        "Description": "Departed Post Office",
-        "Location": {
-          "String": "MOUNT JOY, PA 17552"
-        }
-      },
-      {
-        "Time": "2020-06-01T18:58:00.000Z",
-        "Description": "USPS picked up item",
-        "Location": {
-          "String": "MOUNT JOY, PA 17552"
-        }
-      },
-      {
-        "Time": "2020-05-30T17:19:00.000Z",
-        "Description": "Shipping Label Created, USPS Awaiting Item",
-        "Location": {
-          "String": "MOUNT JOY, PA 17552"
-        }
+        "From": "Marietta, PA 17547, USA",
+        "To": "Marietta, PA 17547, USA",
+        "Distance": 0,
+        "TimeTaken": 660
       }
     ],
-    "MostRecentTime": "2020-06-08T12:53:00.000Z",
-    "Name": "Esther's Bong"
+    "TotalDistance": 485,
+    "MostRecentTime": "2020-05-16T14:11:00.000Z"
   },
-  "1Z69662Y0334062288": {
-	"Demo": true,
-    "TrackNum": "1Z69662Y0334062288",
+  "1Z69662Y0334065228": {
+    "TrackNum": "1Z69662Y0334065228",
     "Provider": "UPS",
     "Error": false,
     "Summary": "foo",
@@ -180,227 +121,207 @@
         "Time": "2020-06-04T19:19:53.000Z",
         "Description": "Delivered",
         "Location": {
-          "String": "MARIETTA PA  US"
+          "String": "MARIETTA PA  US",
+          "Geo": {
+            "lng": -76.5521882,
+            "lat": 40.0570411
+          },
+          "Address": "Marietta, PA 17547, USA"
         }
       },
       {
         "Time": "2020-06-04T16:23:02.000Z",
         "Description": "Out For Delivery Today",
         "Location": {
-          "String": "East Petersburg PA  US"
+          "String": "East Petersburg PA  US",
+          "Geo": {
+            "lng": -76.35412649999999,
+            "lat": 40.10009609999999
+          },
+          "Address": "East Petersburg, PA, USA"
         }
       },
       {
         "Time": "2020-06-04T11:54:57.000Z",
         "Description": "Loaded on Delivery Vehicle ",
         "Location": {
-          "String": "East Petersburg PA  US"
+          "String": "East Petersburg PA  US",
+          "Geo": {
+            "lng": -76.35412649999999,
+            "lat": 40.10009609999999
+          },
+          "Address": "East Petersburg, PA, USA"
         }
       },
       {
         "Time": "2020-06-04T11:39:03.000Z",
         "Description": "Destination Scan",
         "Location": {
-          "String": "East Petersburg PA  US"
+          "String": "East Petersburg PA  US",
+          "Geo": {
+            "lng": -76.35412649999999,
+            "lat": 40.10009609999999
+          },
+          "Address": "East Petersburg, PA, USA"
         }
       },
       {
         "Time": "2020-06-04T07:12:00.000Z",
         "Description": "Arrived",
         "Location": {
-          "String": "East Petersburg PA  US"
+          "String": "East Petersburg PA  US",
+          "Geo": {
+            "lng": -76.35412649999999,
+            "lat": 40.10009609999999
+          },
+          "Address": "East Petersburg, PA, USA"
         }
       },
       {
         "Time": "2020-06-04T06:15:00.000Z",
         "Description": "Departed",
         "Location": {
-          "String": "Harrisburg PA  US"
+          "String": "Harrisburg PA  US",
+          "Geo": {
+            "lng": -76.8867008,
+            "lat": 40.2731911
+          },
+          "Address": "Harrisburg, PA, USA"
         }
       },
       {
         "Time": "2020-06-03T16:48:00.000Z",
         "Description": "Arrived",
         "Location": {
-          "String": "Harrisburg PA  US"
+          "String": "Harrisburg PA  US",
+          "Geo": {
+            "lng": -76.8867008,
+            "lat": 40.2731911
+          },
+          "Address": "Harrisburg, PA, USA"
         }
       },
       {
         "Time": "2020-06-02T07:13:00.000Z",
         "Description": "Departed",
         "Location": {
-          "String": "Atlanta GA  US"
+          "String": "Atlanta GA  US",
+          "Geo": {
+            "lng": -84.3879824,
+            "lat": 33.7489954
+          },
+          "Address": "Atlanta, GA, USA"
         }
       },
       {
         "Time": "2020-06-02T00:57:00.000Z",
         "Description": "Arrived",
         "Location": {
-          "String": "Atlanta GA  US"
+          "String": "Atlanta GA  US",
+          "Geo": {
+            "lng": -84.3879824,
+            "lat": 33.7489954
+          },
+          "Address": "Atlanta, GA, USA"
         }
       },
       {
         "Time": "2020-06-02T00:29:00.000Z",
         "Description": "Departed",
         "Location": {
-          "String": "Doraville GA  US"
+          "String": "Doraville GA  US",
+          "Geo": {
+            "lng": -84.2832564,
+            "lat": 33.8981579
+          },
+          "Address": "Doraville, GA, USA"
         }
       },
       {
         "Time": "2020-06-01T22:55:06.000Z",
         "Description": "Origin Scan",
         "Location": {
-          "String": "Doraville GA  US"
+          "String": "Doraville GA  US",
+          "Geo": {
+            "lng": -84.2832564,
+            "lat": 33.8981579
+          },
+          "Address": "Doraville, GA, USA"
         }
       },
       {
         "Time": "2020-06-01T12:02:13.000Z",
         "Description": "Order Processed: Ready for UPS ",
         "Location": {
-          "String": "   US"
+          "String": "   US",
+          "Geo": null,
+          "Address": null
         }
       }
     ],
-    "MostRecentTime": "2020-06-04T19:19:53.000Z",
-    "Name": "Not Poop"
-  },
-  "1Z7V266F0311804284": {
-	"Demo": true,
-    "TrackNum": "1Z7V266F0311804284",
-    "Provider": "UPS",
-    "Error": false,
-    "Summary": "foo",
-    "Delivered": true,
-    "OutForDelivery": false,
-    "Events": [
+    "Travels": [
       {
-        "Time": "2020-06-13T22:20:45.000Z",
-        "Description": "Delivered",
-        "Location": {
-          "String": "SAN FRANCISCO CA  US"
-        }
+        "From": "Doraville, GA, USA",
+        "To": "Doraville, GA, USA",
+        "Distance": 0,
+        "TimeTaken": 5634
       },
       {
-        "Time": "2020-06-13T16:35:01.000Z",
-        "Description": "Out For Delivery Today",
-        "Location": {
-          "String": "San Francisco CA  US"
-        }
+        "From": "Doraville, GA, USA",
+        "To": "Atlanta, GA, USA",
+        "Distance": 11,
+        "TimeTaken": 1680
       },
       {
-        "Time": "2020-06-13T12:36:32.000Z",
-        "Description": "Loaded on Delivery Vehicle ",
-        "Location": {
-          "String": "San Francisco CA  US"
-        }
+        "From": "Atlanta, GA, USA",
+        "To": "Atlanta, GA, USA",
+        "Distance": 0,
+        "TimeTaken": 22560
       },
       {
-        "Time": "2020-06-13T11:37:04.000Z",
-        "Description": "Destination Scan",
-        "Location": {
-          "String": "San Francisco CA  US"
-        }
+        "From": "Atlanta, GA, USA",
+        "To": "Harrisburg, PA, USA",
+        "Distance": 611,
+        "TimeTaken": 120900
       },
       {
-        "Time": "2020-06-13T04:50:00.000Z",
-        "Description": "Arrived",
-        "Location": {
-          "String": "San Francisco CA  US"
-        }
+        "From": "Harrisburg, PA, USA",
+        "To": "Harrisburg, PA, USA",
+        "Distance": 0,
+        "TimeTaken": 48420
       },
       {
-        "Time": "2020-06-13T04:11:00.000Z",
-        "Description": "Departed",
-        "Location": {
-          "String": "Oakland CA  US"
-        }
+        "From": "Harrisburg, PA, USA",
+        "To": "East Petersburg, PA, USA",
+        "Distance": 30,
+        "TimeTaken": 3420
       },
       {
-        "Time": "2020-06-12T12:00:00.000Z",
-        "Description": "Your package has been delayed due to events beyond our control. We're adjusting delivery plans as quickly as possible.",
-        "Location": {
-          "String": "Oakland CA  US"
-        }
+        "From": "East Petersburg, PA, USA",
+        "To": "East Petersburg, PA, USA",
+        "Distance": 0,
+        "TimeTaken": 16023
       },
       {
-        "Time": "2020-06-12T09:10:00.000Z",
-        "Description": "Arrived",
-        "Location": {
-          "String": "Oakland CA  US"
-        }
+        "From": "East Petersburg, PA, USA",
+        "To": "East Petersburg, PA, USA",
+        "Distance": 0,
+        "TimeTaken": 954
       },
       {
-        "Time": "2020-06-12T08:31:00.000Z",
-        "Description": "Departed",
-        "Location": {
-          "String": "San Pablo CA  US"
-        }
+        "From": "East Petersburg, PA, USA",
+        "To": "East Petersburg, PA, USA",
+        "Distance": 0,
+        "TimeTaken": 16085
       },
       {
-        "Time": "2020-06-12T07:55:00.000Z",
-        "Description": "Arrived",
-        "Location": {
-          "String": "San Pablo CA  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T21:20:00.000Z",
-        "Description": "Departed",
-        "Location": {
-          "String": "Roseburg OR  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T20:01:00.000Z",
-        "Description": "Arrived",
-        "Location": {
-          "String": "Roseburg OR  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T16:03:00.000Z",
-        "Description": "Departed",
-        "Location": {
-          "String": "Portland OR  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T12:00:00.000Z",
-        "Description": "Your package has been delayed due to events beyond our control. We're adjusting delivery plans as quickly as possible.",
-        "Location": {
-          "String": "Oakland CA  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T07:15:00.000Z",
-        "Description": "Arrived",
-        "Location": {
-          "String": "Portland OR  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T07:02:23.000Z",
-        "Description": "Origin Scan",
-        "Location": {
-          "String": "Kent WA  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T04:37:00.000Z",
-        "Description": "Departed",
-        "Location": {
-          "String": "Tacoma WA  US"
-        }
-      },
-      {
-        "Time": "2020-06-11T00:14:06.000Z",
-        "Description": "Order Processed: Ready for UPS ",
-        "Location": {
-          "String": "   US"
-        }
+        "From": "East Petersburg, PA, USA",
+        "To": "Marietta, PA 17547, USA",
+        "Distance": 10,
+        "TimeTaken": 10611
       }
     ],
-    "MostRecentTime": "2020-06-13T22:20:45.000Z",
-    "Name": "New Name"
+    "TotalDistance": 662,
+    "MostRecentTime": "2020-06-04T19:19:53.000Z"
   }
 }

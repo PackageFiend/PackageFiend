@@ -11,6 +11,15 @@ const parseUSPS = require('./parse_usps');
 const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
 const demoData = JSON.parse(fs.readFileSync('tracking/demodata.json', 'utf8'));
 
+console.log("loaded");
+for (const parcelID in demoData) {
+  const parcel = demoData[parcelID];
+  for (const event of parcel.Events) {
+    if (event.Time === null) continue;
+    event.Time = new Date(event.Time);
+  }
+}
+
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
 const upsReg = /^1Z[A-Z0-9]+$/;
 const fedexReg = /^(?:\d{12}|\d{15}|\d{20})$/;
@@ -152,9 +161,11 @@ module.exports = {
         console.error('Error getting geo information:', err);
       }
 
+
       // Add travel time data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
+        console.log(parcel);
         if (parcel.Error) continue;
         if (parcel.Demo) continue;
         parcel.Travels = [];
