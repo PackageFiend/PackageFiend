@@ -181,7 +181,7 @@ $(document).ready(function() {
       $('.alerted_nums').append(rowDat);
       const old_tot = $('#alerted_num').text();
       window.ofd.push(parcel);
-      $('#alerted_num').text(Number(old_tot) + 1);
+      $('#alerts_num').text(Number(old_tot) + 1);
     } else {
       const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
       const rowDat = `
