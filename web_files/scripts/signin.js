@@ -42,7 +42,7 @@ $(document).ready(() => {
         localStorage.pkgfnd_token = res.data.token;
         localStorage.pkgfnd_name = res.data.user.name;
     
-        window.location = "http://localhost:8080";
+        window.location = "http://localhost:8080/track/dashboard";
       };
     };
   });

@@ -34,6 +34,12 @@ $(document).ready(() => {
     $('.sign_in_box').append('<a href="http://localhost:8080/signin.html"><div class="sign_in_button">Sign In</div></a>');
   };
 
+  $('.logout_button').click(() => {
+    delete localStorage.pkgfnd_name;
+    delete localStorage.pkgfnd_token;
+    window.location = "http://localhost:8080";
+  });
+
   $('.go_button').click(() => {
     send_to_tracking();
   });
