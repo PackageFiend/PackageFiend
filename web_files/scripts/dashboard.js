@@ -63,6 +63,31 @@ $(document).ready(function() {
     
   });
 
+  $('.data_line_l, .data_line_r').click(function () {
+    const parent = $(this).parent();
+    if (parent.hasClass('alert_data_line')) {
+      const numList = [];
+      for (const parcel of ofd) {
+        numList.push(parcel.TrackNum);
+      }
+      const formattedList = numList.join(',');
+      window.location = `http://localhost:8080/track/num/${formattedList}`;
+    } else if (parent.hasClass('active_data_line')) {
+      const numList = [];
+      for (const parcel of it) {
+        numList.push(parcel.TrackNum);
+      }
+      const formattedList = numList.join(',');
+      window.location = `http://localhost:8080/track/num/${formattedList}`;
+    } else if (parent.hasClass('delivered_data_line')) {
+      const numList = [];
+      for (const parcel of dd) {
+        numList.push(parcel.TrackNum);
+      }
+      const formattedList = numList.join(',');
+      window.location = `http://localhost:8080/track/num/${formattedList}`;
+    }
+  });
 
   /* Adds a tracking number to the user's stored numbers */
   $('.add_button').click(async () => {
@@ -131,6 +156,7 @@ $(document).ready(function() {
         `;
       $('.delivered_nums').append(rowDat);
       const old_tot = $('#delivered_num').text();
+      window.dd.push(parcel);
       $('#delivered_num').text(Number(old_tot) + 1);
     } else if (parcel.OutForDelivery) {
       const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
@@ -154,6 +180,7 @@ $(document).ready(function() {
         `;
       $('.alerted_nums').append(rowDat);
       const old_tot = $('#alerted_num').text();
+      window.ofd.push(parcel);
       $('#alerted_num').text(Number(old_tot) + 1);
     } else {
       const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
@@ -177,6 +204,7 @@ $(document).ready(function() {
         `;
       $('.active_nums').append(rowDat);
       const old_tot = $('#active_num').text();
+      window.it.push(parcel);
       $('#active_num').text(Number(old_tot) + 1);
     }
 
