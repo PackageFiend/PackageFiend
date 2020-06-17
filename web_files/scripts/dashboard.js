@@ -63,7 +63,7 @@ $(document).ready(function() {
     
   });
 
-  $('.data_line_l, .data_line_r').click(function () {
+  $('.data_line_l, .data_line_r').on('click', function () {
     const parent = $(this).parent();
     if (parent.hasClass('alert_data_line')) {
       const numList = [];
