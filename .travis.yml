@@ -23,7 +23,7 @@ jobs:
           script: npm run test
 stages:
         - "Node App Test"
-before_install:
+after_script:
        - node k_init
 before_deploy:
        - node k_init
