@@ -24,9 +24,15 @@ function send_to_tracking() {
 
 
 $(document).ready(() => {
+  
+  /* Switches between signin button and logged in user in Nav Bar */
   if (localStorage.pkgfnd_name) {
-    $('.sign_in_box').html('<a href="http://localhost:8080/track/dashboard">Dashboard</a> Hello, ' + localStorage.pkgfnd_name);
-  }
+    const user_initial = localStorage.pkgfnd_name.slice(0,1);
+    const user_html = `<a id="dashboard_link" href="http://localhost:8080/track/dashboard/">DASHBOARD</a><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
+    $('.sign_in_box').append(user_html);
+  } else {
+    $('.sign_in_box').append('<a href="http://localhost:8080/signin.html"><div class="sign_in_button">Sign In</div></a>');
+  };
 
   $('.go_button').click(() => {
     send_to_tracking();

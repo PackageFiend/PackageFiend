@@ -33,6 +33,7 @@ html, body {
     flex: 1;
     display: inline-flex;
     justify-content: center;
+    align-items: center;
 }
 
 .sign_in_box {
@@ -54,17 +55,73 @@ html, body {
     border-radius: 3px;
     width: 73px;
     height: 32px;
+    margin-right: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 8px;
+}
+
+.sign_in_button:hover {
+    cursor: pointer;
+    background-color: rgb(187, 107, 217);
+}
+
+#dashboard_link {
+    font-size: 18px;
     font-weight: 700;
+    margin-right: 5px;
+    color: rgb(0, 0, 0, 0.5);
+}
+#dashboard_link:hover {
+    color: rgb(0, 0, 0);
 }
 
 .sign_in_button:hover {
     background-color: rgb(187, 107, 217);
     color: white;
     cursor: pointer;
+}
+
+.user_icon {
+    background-color: rgb(187, 107, 217, 0.75);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_icon:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.user_initial {
+    position: absolute;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logout_button {
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    color: red;
+}
+
+.logout_button:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+  
+.user_icon:hover .logout_button {
+    visibility: visible;
+}
+.user_icon:hover .user_initial {
+    visibility: hidden;
 }
 
 #about {
