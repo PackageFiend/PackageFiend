@@ -1,6 +1,8 @@
 const axios = require('axios');
 const convert = require('xml-js');
 const fs = require('fs');
+const path = require('path');
+
 const GeoPoint = require('geopoint');
 
 const Geos = require('./geos');
@@ -8,7 +10,7 @@ const Geos = require('./geos');
 const parseUPS = require('./parse_ups');
 const parseUSPS = require('./parse_usps');
 
-const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
+
 const demoData = JSON.parse(fs.readFileSync('tracking/demodata.json', 'utf8'));
 
 console.log("loaded");
@@ -19,6 +21,9 @@ for (const parcelID in demoData) {
     event.Time = new Date(event.Time);
   }
 }
+
+const keys = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'keys.json'), 'utf8'));
+
 
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
 const upsReg = /^1Z[A-Z0-9]+$/;

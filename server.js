@@ -1,11 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
 const ejs = require('ejs');
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const path = require('path');
 
-const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
+/*
+const kscript = require('./k_init');
+kscript();
+*/
+
+const keys = JSON.parse(fs.readFileSync(path.join(__dirname, 'keys.json'), 'utf8'));
 
 AWS.config.update({
   region: 'us-east-1',
@@ -35,8 +40,6 @@ app.use(express.static(path.join(__dirname, 'web_files')));
 
 app.get('/bad_login', (req, res) => res.send("Bad login info"));
 app.get('/good_login', (req, res) => res.send("Good login info"));
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
 
 // Redirects to https:// if X-Forwareded-Proto !== https
 app.use('*', function (req, res, next) {

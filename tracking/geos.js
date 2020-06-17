@@ -1,8 +1,9 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
 const axios = require('axios');
+const path = require('path');
 
-const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
+const keys = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'keys.json'), 'utf8'));
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 

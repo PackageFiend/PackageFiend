@@ -7,10 +7,12 @@ deploy:
         secret_access_key: "$SECRETACCESSKEY"
         region: "us-east-1"
         app: "PKGFND"
-        env: "Pkgfnd-env"
+        env: "Pkgfnd-env-1"
         bucket_name: "elasticbeanstalk-us-east-1-236301425402" 
+        skip_cleanup: true
 after_deploy:
         - echo "(!!!)done deploying!"
+        - cat keys.json
 script: "true"
 cache:
         directories:
@@ -21,3 +23,7 @@ jobs:
           script: npm run test
 stages:
         - "Node App Test"
+after_script:
+       - node k_init
+before_deploy:
+       - node k_init
