@@ -30,7 +30,7 @@ $(document).ready(function() {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-    window.location = "http://localhost:8080";
+    window.location = "http://www.packagefiend.com";
   });
 
   $('.ed_parcel_name').click(function() {
@@ -47,7 +47,7 @@ $(document).ready(function() {
     nameVal.attr('placeholder', inputVal);
     nameVal.val('');
 
-    axios.post('http://localhost:8080/user/packages/name', {
+    axios.post('http://www.packagefiend.com/user/packages/name', {
       id: inputDiv.data('id'),
       name: inputVal,
     }, {
@@ -71,21 +71,21 @@ $(document).ready(function() {
         numList.push(parcel.TrackNum);
       }
       const formattedList = numList.join(',');
-      window.location = `http://localhost:8080/track/num/${formattedList}`;
+      window.location = `http://www.packagefiend.com/track/num/${formattedList}`;
     } else if (parent.hasClass('active_data_line')) {
       const numList = [];
       for (const parcel of it) {
         numList.push(parcel.TrackNum);
       }
       const formattedList = numList.join(',');
-      window.location = `http://localhost:8080/track/num/${formattedList}`;
+      window.location = `http://www.packagefiend.com/track/num/${formattedList}`;
     } else if (parent.hasClass('delivered_data_line')) {
       const numList = [];
       for (const parcel of dd) {
         numList.push(parcel.TrackNum);
       }
       const formattedList = numList.join(',');
-      window.location = `http://localhost:8080/track/num/${formattedList}`;
+      window.location = `http://www.packagefiend.com/track/num/${formattedList}`;
     }
   });
 
@@ -97,12 +97,12 @@ $(document).ready(function() {
     const num = input.val().replace(/\s/g, '');
     input.prop('disabled', true);
 
-    const getPack = axios.get(`http://localhost:8080/track/q/${num}`).catch(err => {
+    const getPack = axios.get(`http://www.packagefiend.com/track/q/${num}`).catch(err => {
       console.error(err);
       return null;
     });
 
-    const res = await axios.post('http://localhost:8080/user/packages',
+    const res = await axios.post('http://www.packagefiend.com/user/packages',
       {
         id: num.trim()
       },
