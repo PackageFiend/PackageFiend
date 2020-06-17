@@ -149,7 +149,7 @@
 			</div>
 			
 			<div class="stat_line_bold">
-				<div class="bold_body">TOTALS</div>
+				<div class="bold_body" id="total_line">TOTALS</div>
 				<div></div>
 			</div>
 			<div class="stat_line_bold">
@@ -164,17 +164,18 @@
 				<div class="bold_body">Delivered:</div>
 				<div class="del_at"><%= dat.length %></div>
 			</div>
+			<div class="stat_spacer"></div>
 		</div>
 		
 		<div class="bar_graph">
 			<div class="g_column">
 				<div class="g_bar_transit">
-					<% const ups_bar_it = '<div class="ups_bar" style="height:' + it_ups*100/dat.length + '%;">'; %> 
+					<% const ups_bar_it = '<div class="ups_bar" style="height:' + it_ups*100/(it_ups + it_usps) + '%;">'; %> 
 					<%- ups_bar_it %>
 						<span class="ups_hover">UPS</span>
 						<span class="ups_hover"><%= it_ups %></span>
 						</div>
-					<% const usps_bar_it = '<div class="usps_bar" style="height:' + it_usps*100/dat.length + 'px;">'; %> 
+					<% const usps_bar_it = '<div class="usps_bar" style="height:' + it_usps*100/(it_ups + it_usps) + '%;">'; %> 
 					<%- usps_bar_it %>
 						<span class="usps_hover">USPS</span>
 						<span class="usps_hover"><%= it_usps %></span>
@@ -184,12 +185,12 @@
 			</div>
 			<div class="g_column">
 				<div class="g_bar_7">
-					<% const ups_bar_7 = '<div class="ups_bar" style="height:' + del7_ups*100/dat.length + '%;">'; %> 
+					<% const ups_bar_7 = '<div class="ups_bar" style="height:' + del7_ups*100/(del7_ups + del7_usps) + '%;">'; %> 
 					<%- ups_bar_7 %>
 						<span class="ups_hover">UPS</span>
 						<span class="ups_hover"><%= del7_ups %></span>
 						</div>
-					<% const usps_bar_7 = '<div class="usps_bar" style="height:' + del7_usps*100/dat.length + '%;">'; %> 
+					<% const usps_bar_7 = '<div class="usps_bar" style="height:' + del7_usps*100/(del7_ups + del7_usps) + '%;">'; %> 
 					<%- usps_bar_7 %>
 						<span class="usps_hover">USPS</span>
 						<span class="usps_hover"><%= del7_usps %></span>
@@ -199,12 +200,12 @@
 			</div>
 			<div class="g_column">
 				<div class="g_bar_30">
-					<% const ups_bar_30 = '<div class="ups_bar" style="height:' + del30_ups*100/dat.length + '%;">'; %> 
+					<% const ups_bar_30 = '<div class="ups_bar" style="height:' + del30_ups*100/(del30_ups + del30_usps) + '%;">'; %> 
 						<%- ups_bar_30 %>
 							<span class="ups_hover">UPS</span>
 							<span class="ups_hover"><%= del30_ups %></span>
 						</div>
-						<% const usps_bar_30 = '<div class="usps_bar" style="height:' + del30_usps*100/dat.length + '%;">'; %> 
+						<% const usps_bar_30 = '<div class="usps_bar" style="height:' + del30_usps*100/(del30_ups + del30_usps) + '%;">'; %> 
 						<%- usps_bar_30 %>
 							<span class="usps_hover">USPS</span>
 							<span class="usps_hover"><%= del30_usps %></span>
@@ -214,12 +215,12 @@
 			</div>
 			<div class="g_column">
 				<div class="g_bar_90">
-					<% const ups_bar_90 = '<div class="ups_bar" style="height:' + del90_ups*100/dat.length + '%;">'; %> 
+					<% const ups_bar_90 = '<div class="ups_bar" style="height:' + del90_ups*100/(del90_ups + del90_usps) + '%;">'; %> 
 						<%- ups_bar_90 %>
 							<span class="ups_hover">UPS</span>
 							<span class="ups_hover"><%= del90_ups %></span>
 					</div>
-						<% const usps_bar_90 = '<div class="usps_bar" style="height:' + del90_usps*100/dat.length + '%;">'; %> 
+						<% const usps_bar_90 = '<div class="usps_bar" style="height:' + del90_usps*100/(del90_ups + del90_usps) + '%;">'; %> 
 						<%- usps_bar_90 %>
 							<span class="usps_hover">USPS</span>
 							<span class="usps_hover"><%= del90_usps %></span>
@@ -229,13 +230,13 @@
 			</div>
 			<div class="g_column">
 				<div class="g_bar_180">
-					<% const ups_bar_180 = '<div class="ups_bar" style="height:' + del180_ups*100/dat.length + '%;">'; %> 
+					<% const ups_bar_180 = '<div class="ups_bar" style="height:' + del180_ups*100/(del180_ups + del180_usps) + '%;">'; %> 
 						<%- ups_bar_180 %>
 							<span class="ups_hover">UPS</span>
 							<span class="ups_hover"><%= del180_ups %></span>
 
 						</div>
-						<% const usps_bar_180 = '<div class="usps_bar" style="height:' + del180_usps*100/dat.length + '%;">'; %> 
+						<% const usps_bar_180 = '<div class="usps_bar" style="height:' + del180_usps*100/(del180_ups + del180_usps) + '%;">'; %> 
 						<%- usps_bar_180 %>
 							<span class="usps_hover">USPS</span>
 							<span class="usps_hover"><%= del180_usps %></span>
@@ -245,12 +246,12 @@
 			</div>
 			<div class="g_column">
 				<div class="g_bar_all">
-					<% const ups_bar_all = '<div class="ups_bar" style="height:' + all_ups*100/dat.length + '%;">'; %> 
+					<% const ups_bar_all = '<div class="ups_bar" style="height:' + all_ups*100/(all_ups + all_usps) + '%;">'; %> 
 					<%- ups_bar_all %>
 						<span class="ups_hover">UPS</span>
 						<span class="ups_hover"><%= all_ups %></span>
 					</div>
-					<% const usps_bar_all = '<div class="usps_bar" style="height:' + all_usps*100/dat.length + '%;">'; %> 
+					<% const usps_bar_all = '<div class="usps_bar" style="height:' + all_usps*100/(all_ups + all_usps) + '%;">'; %> 
 					<%- usps_bar_all %>
 						<span class="usps_hover">USPS</span>
 						<span class="usps_hover"><%= all_usps %></span>

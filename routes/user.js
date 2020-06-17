@@ -54,7 +54,7 @@ router.get('/dashboard', async (req, res) => {
       ofd.push(parcel);
       if (parcel.Provider === "UPS") {
         it_ups = it_ups + 1;
-      } else {
+      } else if (parcel.Provider === "USPS") {
         it_usps = it_usps + 1;
       }
     } else if (parcel.Delivered) {
@@ -62,31 +62,31 @@ router.get('/dashboard', async (req, res) => {
       if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 7) {
         if (parcel.Provider === "UPS") {
           del7_ups = del7_ups + 1;
-        } else {
+        } else if (parcel.Provider === "USPS") {
           del7_usps = del7_usps + 1;
         };
       } else if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 30) {
         if (parcel.Provider === "UPS") {
           del30_ups = del30_ups + 1;
-        } else {
+        } else if (parcel.Provider === "USPS") {
           del30_usps = del30_usps + 1;
         };
       } else if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 90) {
         if (parcel.Provider === "UPS") {
           del90_ups = del90_ups + 1;
-        } else {
+        } else if (parcel.Provider === "USPS") {
           del90_usps = del90_usps + 1;
         };
       } else if (Math.round(moment().diff(moment(parcel.MostRecentTime))/(1000*3600*24)) <= 180) {
         if (parcel.Provider === "UPS") {
           del180_ups = del180_ups + 1;
-        } else {
+        } else if (parcel.Provider === "USPS") {
           del180_usps = del180_usps + 1;
         };
       } else {
         if (parcel.Provider === "UPS") {
           delold_ups = delold_ups + 1;
-        } else {
+        } else if (parcel.Provider === "USPS") {
           delold_usps = delold_usps + 1;
         };
       }
@@ -94,7 +94,7 @@ router.get('/dashboard', async (req, res) => {
       it.push(parcel);
       if (parcel.Provider === "UPS") {
         it_ups = it_ups + 1;
-      } else {
+      } else if (parcel.Provider === "USPS") {
         it_usps = it_usps + 1;
       }
     }
