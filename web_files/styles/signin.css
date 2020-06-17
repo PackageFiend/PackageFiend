@@ -96,8 +96,10 @@ html, body {
 }
 
 .enter_email_box i,
-.enter_password_box i {
+.enter_password_box i,
+.icons {
     padding: 10px;
+    height: 16px;
 }
 
 .enter_email_box input,
@@ -108,6 +110,13 @@ html, body {
     height: 100%;
     outline: none;
     width: 400px;
+}
+
+.enter_email_box,
+.enter_password_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .sign_in_dialogue,

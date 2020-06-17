@@ -33,6 +33,7 @@ html, body {
     justify-content: center;
 }
 
+
 .sign_in_box {
     display: flex;
     align-items: center;
@@ -71,8 +72,15 @@ html, body {
     margin-left: 4px;
 }
 
-.enter_numbers_box i {
+.icons {
     padding: 10px;
+    height: 16px;
+}
+
+.enter_numbers_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .enter_numbers_box input {
@@ -220,10 +228,6 @@ html, body {
 
 .visible {
     visibility: visible;
-}
-
-.more_numbers_selector p {
-    margin-right: 4px;
 }
 
 .collapsible_list {

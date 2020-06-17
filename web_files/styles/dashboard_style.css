@@ -60,7 +60,7 @@ html, body {
     margin-left: 4px;
 }
 
-.enter_numbers_box i {
+.enter_numbers_box img {
     padding: 10px;
 }
 
@@ -171,8 +171,18 @@ html, body {
 }
 
 .line_quantity p,
-.line_quantity i {
+.line_quantity img {
     margin-right: 6px;
+}
+
+.icons {
+    height: 16px;
+}
+
+.enter_numbers_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .alerts_collapsible {
