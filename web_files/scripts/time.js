@@ -3,7 +3,7 @@ $(document).ready(function() {
   /* Switches between signin button and logged in user in Nav Bar */
   if (localStorage.pkgfnd_name) {
     const user_initial = localStorage.pkgfnd_name.slice(0,1);
-    const user_html = `<p><a href="https://packagefiend.com/track/dashboard/">DASHBOARD</a></p><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
+    const user_html = `<a id="dashboard_link" href="https://www.packagefiend.com/track/dashboard/">DASHBOARD</a><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
     
     $('.sign_in_box').append(user_html);
   } else {
@@ -38,7 +38,7 @@ $(document).ready(function() {
     $(this).text('Time: ' + fTime);
   });
 
-  /* Resets all the data when a new tracking number is selected from the collapsible */
+  /* Switches to selected data from collapsible */
   $('.collapsible_list').on('click', '.track_data_line', function (e) {
     if ($(this).is('.tdl_bold')) return;
     $('.tdl_bold').removeClass('tdl_bold');
@@ -60,6 +60,10 @@ $(document).ready(function() {
     $('.tracking_number').text(parcel.TrackNum);
     $('.track_number_title .carrier_icon_bold').text(parcel.Provider);
     $('.events_data_box').empty();
+    $('#total_time').empty();
+    $('#total_dist').empty();
+    $('.location_list').empty();
+    $('.travel_time_bar').empty();
     /* Clear map */
     mymap.eachLayer((layer) => {
       mymap.removeLayer(layer);
@@ -98,11 +102,9 @@ $(document).ready(function() {
 
         $('.events_data_box').append(loctimes);
       };
-
       $('#total_dist').text(parcel.TotalDistance + " Miles");
 
-      $('.location_list').empty();
-      $('.travel_time_bar').empty();
+      
 
       /* Populate Areas requiring travels */
       let running_time_total = 0;
@@ -164,7 +166,9 @@ $(document).ready(function() {
       $("#est_delivery_desc").text("");
       $("#est_delivery_time").text("");
       $('#total_dist').text("");
-      $('.travel_time_bar').html("<p>Geo Data Unavailable</p>");
+      $('.travel_time_bar').html("");
+      $('#total_time').html("Unknown");
+      $('#total_dist').html("Unknown");
 
 
       const loctimes = `
@@ -196,7 +200,7 @@ $(document).ready(function() {
     const newnums = $('.add_in').val();
     $('.add_in').val('');
     //TODO: Check to make sure the number isn't already there
-    const newdat = await axios.get(`https://packagefiend.com/track/q/${newnums}`);
+    const newdat = await axios.get(`https://www.packagefiend.com/track/q/${newnums}`);
 
     data.push(...newdat.data);
 

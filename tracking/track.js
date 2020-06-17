@@ -10,7 +10,20 @@ const Geos = require('./geos');
 const parseUPS = require('./parse_ups');
 const parseUSPS = require('./parse_usps');
 
+
+const demoData = JSON.parse(fs.readFileSync('tracking/demodata.json', 'utf8'));
+
+console.log("loaded");
+for (const parcelID in demoData) {
+  const parcel = demoData[parcelID];
+  for (const event of parcel.Events) {
+    if (event.Time === null) continue;
+    event.Time = new Date(event.Time);
+  }
+}
+
 const keys = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'keys.json'), 'utf8'));
+
 
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
 const upsReg = /^1Z[A-Z0-9]+$/;
@@ -33,6 +46,10 @@ module.exports = {
     };
 
     for (let i = 0; i < ids.length; i++) {
+      if (ids[i] in demoData) {
+        ret.push(demoData[ids[i]]);
+        continue;
+      }
       idClean = ids[i].replace(/\s/g, '');
       if (uspsReg.test(idClean)) {
         console.log('USPS number');
@@ -130,6 +147,7 @@ module.exports = {
       // Add geo data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
+        if (parcel.Demo && !parcel.Fill) continue;
         if (parcel.Error) continue;
         for (let j = 0; j < parcel.Events.length; j++) {
           const event = parcel.Events[j];
@@ -148,10 +166,13 @@ module.exports = {
         console.error('Error getting geo information:', err);
       }
 
+
       // Add travel time data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
+        console.log(parcel);
         if (parcel.Error) continue;
+        if (parcel.Demo && !parcel.Fill) continue;
         parcel.Travels = [];
         parcel.TotalDistance = 0;
         const start = null;
@@ -191,6 +212,7 @@ module.exports = {
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
+      if (parcel.Demo && !parcel.Fill) continue;
       for (let j = 0; j < parcel.Events.length; j++) {
         if (parcel.Events[j].Time !== null) {
           parcel.MostRecentTime = parcel.Events[j].Time;

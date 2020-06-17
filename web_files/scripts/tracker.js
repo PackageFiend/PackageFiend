@@ -10,12 +10,9 @@ collapsible.addEventListener("click", event => {
 $(document).ready(() => {
     
     $('.sign_in_button').click(() => {
-        window.location = "https://packagefiend.com/signin.html";
+        window.location = "https://www.packagefiend.com/signin.html";
     });
 // Test stuff
-    $('.logo').click(() => {
-        console.log(data);
-    });
     
     /* Travel Bar slider animation */
     $('.travel_time_bar').hover(() => {
@@ -33,8 +30,7 @@ $(document).ready(() => {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-
-    $('.sign_in_box').empty();
+    window.location = "https://www.packagefiend.com"
   });
 
 });
