@@ -30,7 +30,7 @@
                     <div class="add_button">ADD</div> 
                 </div>
                 <a href="http://localhost:8080/"><img class="logo" src="http://localhost:8080/images/PkgFiend_logo.svg"></a>
-                <!-- Filled out by tracker.js-->
+                <!-- Filled out by time.js-->
                 <div class="sign_in_box"></div>
             </div>    
         </header>
@@ -146,14 +146,14 @@
                        %>
                     <%- time_bar_template %>
                 <% } else { %>
-                    <div class="bold_body">Travel Time Unknown</div>
+                    <div class="reg_body"></div>
                 <% } %>
             </div>
 
             <div class="travel_totals">
                 <div class="miles_total">
                     <div class="bold_body">Total Miles Traveled:</div>
-                    <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance %> Miles</div>
+                    <div id="total_dist" class="bold_body"><%= dat[0].TotalDistance ? dat[0].TotalDistance : 0 %> Miles</div>
                 </div>
                 <div class="time_elapsed_total">
                     <div class="bold_body">Total Time Elapsed:</div>
@@ -170,7 +170,7 @@
                            %>
                         <%- time_elapsed_template %>
                     <% } else { %>
-                        <div id = "total_time" class="bold_body">Unknown</div>
+                        <div id="total_time" class="bold_body">Unknown</div>
                     <% } %>
                 </div>
             </div>
