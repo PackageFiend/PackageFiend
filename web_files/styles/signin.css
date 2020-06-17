@@ -67,6 +67,9 @@ html, body {
     justify-self: center;
     opacity: .8;
 }
+.logo:hover {
+    cursor: pointer;
+}
 
 .big_text {
     display: flex;

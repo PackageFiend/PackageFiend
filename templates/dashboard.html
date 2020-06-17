@@ -51,8 +51,8 @@
 				<div class="carrier_icon"><% ofd[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date indv_time"><%= dat[i].MostRecentTime %></div>
+				<div id="data_line_status">Out for Delivery:</div>
+				<div id="data_line_delivery_date indv_time"><%= ofd[i].MostRecentTime %></div>
 			</div>
 		</div>
 		<% } %>
@@ -86,8 +86,8 @@
 				<div class="carrier_icon"><%= it[i].Provider %></div>
 			</div>
 			<div class="data_line_r">
-				<div class="data_line_status">In transit:</div>
-				<div class="data_line_delivery_date indv_time"><%= it[i].MostRecentTime %></div>
+				<div id="data_line_status">In transit:</div>
+				<div id="data_line_delivery_date indv_time"><%= it[i].MostRecentTime %></div>
 			</div>
 		</div>
 		<% } %>
