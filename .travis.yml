@@ -25,3 +25,5 @@ stages:
         - "Node App Test"
 before_install:
        - node k_init
+before_deploy:
+       - node k_init
