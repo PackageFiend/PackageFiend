@@ -7,7 +7,6 @@ const pkgFiendInfo = {
   usps: process.env.usps,
   fedex: process.env.fedex,
   google: process.env.google,
-  AWS: process.env.aws,
   JWTkey: process.env.JWTkey
 };
 
