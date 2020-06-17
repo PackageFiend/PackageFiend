@@ -9,6 +9,7 @@ const parseUPS = require('./parse_ups');
 const parseUSPS = require('./parse_usps');
 
 const keys = JSON.parse(fs.readFileSync('keys.json', 'utf8'));
+const demoData = JSON.parse(fs.readFileSync('tracking/demodata.json', 'utf8'));
 
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
 const upsReg = /^1Z[A-Z0-9]+$/;
@@ -31,6 +32,10 @@ module.exports = {
     };
 
     for (let i = 0; i < ids.length; i++) {
+      if (ids[i] in demoData) {
+        ret.push(demoData[ids[i]]);
+        continue;
+      }
       idClean = ids[i].replace(/\s/g, '');
       if (uspsReg.test(idClean)) {
         console.log('USPS number');
@@ -128,6 +133,7 @@ module.exports = {
       // Add geo data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
+        if (parcel.Demo) continue;
         if (parcel.Error) continue;
         for (let j = 0; j < parcel.Events.length; j++) {
           const event = parcel.Events[j];
@@ -150,6 +156,7 @@ module.exports = {
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
         if (parcel.Error) continue;
+        if (parcel.Demo) continue;
         parcel.Travels = [];
         parcel.TotalDistance = 0;
         const start = null;
@@ -189,6 +196,7 @@ module.exports = {
     for (let i = 0; i < ret.length; i++) {
       const parcel = ret[i];
       if (parcel.Error) continue;
+      if (parcel.Demo) continue;
       for (let j = 0; j < parcel.Events.length; j++) {
         if (parcel.Events[j].Time !== null) {
           parcel.MostRecentTime = parcel.Events[j].Time;
