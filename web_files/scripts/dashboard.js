@@ -219,5 +219,14 @@ $(document).ready(function() {
     }, 2000);
 
     //TODO: Call function to add to render
-  })
+  });
+
+  $('.enter_numbers_box input').keypress(function(event){
+    const keycode = event.which;
+    if(keycode == 13){
+      // Keeps form from clearing
+      event.preventDefault();
+      $('.add_button').click();
+    }
+  });
 });

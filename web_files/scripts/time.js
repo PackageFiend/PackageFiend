@@ -195,6 +195,15 @@ $(document).ready(function() {
     pline.addTo(mymap);
   });
 
+  $('.add_in').keypress(function(event){
+    const keycode = event.which;
+    if(keycode == 13){
+      // Keeps form from clearing
+      event.preventDefault();
+      $('.add_button').click();
+    }
+  });
+
   /* Add tracking number to list */
   $('.add_button').click(async function() {
     const newnums = $('.add_in').val();
