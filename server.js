@@ -49,6 +49,7 @@ app.get('*', function (req, res, next) {
     res.redirect('https://' + req.hostname + req.url);
   }
 });
+
 // Serves static files
 app.use(express.static(path.join(__dirname, 'web_files')));
 
