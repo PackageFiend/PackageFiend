@@ -63,30 +63,30 @@ $(document).ready(function() {
     
   });
 
-  $('.alerted_nums, .active_nums, .delivered_nums').on('click', '.data_ilne_l, .data_line_r', function () {
+  $('.alerted_nums, .active_nums, .delivered_nums').on('click', '.data_line_l, .data_line_r', function () {
     const parent = $(this).parent();
+    const clickedNumber = parent.children('.data_line_l').children('p').text();
+    console.log(clickedNumber);
+    const numList = [];
+    numList.push(clickedNumber);
     if (parent.hasClass('alert_data_line')) {
-      const numList = [];
       for (const parcel of ofd) {
+        if (parcel.TrackNum === clickedNumber) continue;
         numList.push(parcel.TrackNum);
       }
-      const formattedList = numList.join(',');
-      window.location = `/track/num/${formattedList}`;
     } else if (parent.hasClass('active_data_line')) {
-      const numList = [];
       for (const parcel of it) {
+        if (parcel.TrackNum === clickedNumber) continue;
         numList.push(parcel.TrackNum);
       }
-      const formattedList = numList.join(',');
-      window.location = `/track/num/${formattedList}`;
     } else if (parent.hasClass('delivered_data_line')) {
-      const numList = [];
       for (const parcel of dd) {
+        if (parcel.TrackNum === clickedNumber) continue;
         numList.push(parcel.TrackNum);
       }
-      const formattedList = numList.join(',');
-      window.location = `/track/num/${formattedList}`;
     }
+    const formattedList = numList.join(',');
+    window.location = `/track/num/${formattedList}`;
   });
 
   /* Adds a tracking number to the user's stored numbers */
