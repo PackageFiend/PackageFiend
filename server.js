@@ -31,7 +31,9 @@ const port = 8080;
 
 // Redirects to https:// if X-Forwareded-Proto !== https
 app.get('*', function (req, res, next) {
-  console.log(req);
+  //console.log(req);
+  console.log(req.hostname);
+  if (req.hostname === 'localhost') next(); return;
   if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
     res.set('X-Forwarded-Proto', 'https');
     console.log('Redirecting now!!!!!!');
