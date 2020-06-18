@@ -122,8 +122,7 @@ $(document).ready(function() {
 
     const packDat = await getPack;
 
-    const parcel = packDat.data[0];
-    if (!parcel) {
+    if (!packDat.data[0]) {
       input.prop('disabled', false);
       input.val('Problem adding number :(');
 
@@ -134,82 +133,86 @@ $(document).ready(function() {
       return;
     }
 
-    if (parcel.Delivered) {
-      const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
-      const rowDat = `
-        <div class="delivered_data_line">
-          <div class="editable">
-            <i id="save_name" class="fas fa-save"></i>
-            <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
-              <input id="name_input" type="text" placeholder="(Add name)" />
+    for (let i = 0; i < packDat.data.length; i++) {
+      parcel = packDat.data[i];
+
+      if (parcel.Delivered) {
+        const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
+        const rowDat = `
+          <div class="delivered_data_line">
+            <div class="editable">
+              <i id="save_name" class="fas fa-save"></i>
+              <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
+                <input id="name_input" type="text" placeholder="(Add name)" />
+              </div>
+            </div>
+            <div class="data_line_l">
+              <p>${parcel.TrackNum}</p>
+              <div class="carrier_icon">${parcel.Provider}</div>
+            </div>
+            <div class="data_line_r">
+              <div id="data_line_status">Delivered: </div>
+              <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
             </div>
           </div>
-          <div class="data_line_l">
-            <p>${parcel.TrackNum}</p>
-            <div class="carrier_icon">${parcel.Provider}</div>
-          </div>
-          <div class="data_line_r">
-            <div id="data_line_status">Delivered: </div>
-            <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
-          </div>
-        </div>
-        `;
-      $('.delivered_nums').append(rowDat);
-      const old_tot = $('#delivered_num').text();
-      window.dd.push(parcel);
-      $('#delivered_num').text(Number(old_tot) + 1);
-    } else if (parcel.OutForDelivery) {
-      const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
-      const rowDat = `
-        <div class="alert_data_line">
-          <div class="editable">
-            <i id="save_name" class="fas fa-save"></i>
-            <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
-              <input id="name_input" type="text" placeholder="(Add name)" />
+          `;
+        $('.delivered_nums').append(rowDat);
+        const old_tot = $('#delivered_num').text();
+        window.dd.push(parcel);
+        $('#delivered_num').text(Number(old_tot) + 1);
+      } else if (parcel.OutForDelivery) {
+        const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
+        const rowDat = `
+          <div class="alert_data_line">
+            <div class="editable">
+              <i id="save_name" class="fas fa-save"></i>
+              <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
+                <input id="name_input" type="text" placeholder="(Add name)" />
+              </div>
+            </div>
+            <div class="data_line_l">
+              <p>${parcel.TrackNum}</p>
+              <div class="carrier_icon">${parcel.Provider}</div>
+            </div>
+            <div class="data_line_r">
+              <div id="data_line_status">In transit:</div>
+              <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
             </div>
           </div>
-          <div class="data_line_l">
-            <p>${parcel.TrackNum}</p>
-            <div class="carrier_icon">${parcel.Provider}</div>
-          </div>
-          <div class="data_line_r">
-            <div id="data_line_status">In transit:</div>
-            <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
-          </div>
-        </div>
-        `;
-      $('.alerted_nums').append(rowDat);
-      const old_tot = $('#alerted_num').text();
-      window.ofd.push(parcel);
-      $('#alerts_num').text(Number(old_tot) + 1);
-    } else {
-      const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
-      const rowDat = `
-        <div class="active_data_line">
-          <div class="editable">
-            <i id="save_name" class="fas fa-save"></i>
-            <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
-              <input id="name_input" type="text" placeholder="(Add name)" />
+          `;
+        $('.alerted_nums').append(rowDat);
+        const old_tot = $('#alerted_num').text();
+        window.ofd.push(parcel);
+        $('#alerts_num').text(Number(old_tot) + 1);
+      } else {
+        const fTime = moment(parcel.MostRecentTime).format('ddd, MMMM Do, YYYY');
+        const rowDat = `
+          <div class="active_data_line">
+            <div class="editable">
+              <i id="save_name" class="fas fa-save"></i>
+              <div class="ed_parcel_name" data-id="${parcel.TrackNum}">
+                <input id="name_input" type="text" placeholder="(Add name)" />
+              </div>
+            </div>
+            <div class="data_line_l">
+              <p>${parcel.TrackNum}</p>
+              <div class="carrier_icon">${parcel.Provider}</div>
+            </div>
+            <div class="data_line_r">
+              <div id="data_line_status">In transit:</div>
+              <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
             </div>
           </div>
-          <div class="data_line_l">
-            <p>${parcel.TrackNum}</p>
-            <div class="carrier_icon">${parcel.Provider}</div>
-          </div>
-          <div class="data_line_r">
-            <div id="data_line_status">In transit:</div>
-            <div id="data_line_delivery_date" class="indv_time">${fTime}</div>
-          </div>
-        </div>
-        `;
-      $('.active_nums').append(rowDat);
-      const old_tot = $('#active_num').text();
-      window.it.push(parcel);
-      $('#active_num').text(Number(old_tot) + 1);
+          `;
+        $('.active_nums').append(rowDat);
+        const old_tot = $('#active_num').text();
+        window.it.push(parcel);
+        $('#active_num').text(Number(old_tot) + 1);
+      }
     }
 
     input.prop('disabled', false);
-    input.val('Number added!');
+    input.val('Number(s) added!');
 
     window.setTimeout(() => {
       input.val('');
