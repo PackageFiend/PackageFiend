@@ -3,7 +3,7 @@ $(document).ready(function() {
   /* Switches between signin button and logged in user in Nav Bar */
   if (localStorage.pkgfnd_name) {
     const user_initial = localStorage.pkgfnd_name.slice(0,1);
-    const user_html = `<a id="dashboard_link" href="https://www.packagefiend.com/track/dashboard/">DASHBOARD</a><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
+    const user_html = `<a id="dashboard_link" href="/track/dashboard/">DASHBOARD</a><div class="user_icon"><div class="user_initial">${user_initial}</div><div class="logout_button">Logout</div></div>`;
     
     $('.sign_in_box').append(user_html);
   } else {
@@ -200,7 +200,7 @@ $(document).ready(function() {
     const newnums = $('.add_in').val();
     $('.add_in').val('');
     //TODO: Check to make sure the number isn't already there
-    const newdat = await axios.get(`https://www.packagefiend.com/track/q/${newnums}`);
+    const newdat = await axios.get(`/track/q/${newnums}`);
 
     data.push(...newdat.data);
 

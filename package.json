@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "node k_init.js; node server.js",
+    "start": "node server.js",
+	"prestart": "node k_init.js",
     "dev": "nodemon server.js"
   },
   "repository": {

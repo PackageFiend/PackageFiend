@@ -30,7 +30,7 @@ $(document).ready(function() {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-    window.location = "https://www.packagefiend.com";
+    window.location = "";
   });
 
   $('.ed_parcel_name').click(function() {
@@ -47,7 +47,7 @@ $(document).ready(function() {
     nameVal.attr('placeholder', inputVal);
     nameVal.val('');
 
-    axios.post('https://www.packagefiend.com/user/packages/name', {
+    axios.post('/user/packages/name', {
       id: inputDiv.data('id'),
       name: inputVal,
     }, {
@@ -71,21 +71,21 @@ $(document).ready(function() {
         numList.push(parcel.TrackNum);
       }
       const formattedList = numList.join(',');
-      window.location = `https://www.packagefiend.com/track/num/${formattedList}`;
+      window.location = `/track/num/${formattedList}`;
     } else if (parent.hasClass('active_data_line')) {
       const numList = [];
       for (const parcel of it) {
         numList.push(parcel.TrackNum);
       }
       const formattedList = numList.join(',');
-      window.location = `https://www.packagefiend.com/track/num/${formattedList}`;
+      window.location = `/track/num/${formattedList}`;
     } else if (parent.hasClass('delivered_data_line')) {
       const numList = [];
       for (const parcel of dd) {
         numList.push(parcel.TrackNum);
       }
       const formattedList = numList.join(',');
-      window.location = `https://www.packagefiend.com/track/num/${formattedList}`;
+      window.location = `/track/num/${formattedList}`;
     }
   });
 
@@ -97,12 +97,12 @@ $(document).ready(function() {
     const num = input.val().replace(/\s/g, '');
     input.prop('disabled', true);
 
-    const getPack = axios.get(`https://www.packagefiend.com/track/q/${num}`).catch(err => {
+    const getPack = axios.get(`/track/q/${num}`).catch(err => {
       console.error(err);
       return null;
     });
 
-    const res = await axios.post('https://www.packagefiend.com/user/packages',
+    const res = await axios.post('/user/packages',
       {
         id: num.trim()
       },
