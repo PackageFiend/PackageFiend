@@ -76,7 +76,25 @@ $(document).ready(() => {
       $('.create_message').html('Username is taken. Please enter a different name.');
         return;
       } else {
-      $('.create_message').html('User creation successful.');
+        $('.create_message').html('User creation successful.');
+        const res = await axios.post('/auth/login', {
+          username: username,
+          password: pass1
+        }).catch((err) => {
+          if (err.response.status === 400) {
+            return null;
+          }
+        });
+
+        if (res === null) {
+          console.error('Login after signup failed.');
+          return;
+        } else {
+          localStorage.pkgfnd_token = res.data.token;
+          localStorage.pkgfnd_name = res.data.user.name;
+      
+          window.location = "/track/dashboard";
+        };
       };
       console.log(res);
     };
