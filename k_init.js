@@ -11,7 +11,7 @@ async function getKeys() {
   console.log('Running script');
 
   const data = await client.getSecretValue({SecretId: 'Pkgfnd'}).promise();
-  console.log(data);
+  //console.log(data);
 
   const keyDat = JSON.parse(data.SecretString);
 
