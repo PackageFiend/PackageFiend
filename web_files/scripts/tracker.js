@@ -30,7 +30,7 @@ $(document).ready(() => {
   $('.logout_button').click(() => {
     delete localStorage.pkgfnd_name;
     delete localStorage.pkgfnd_token;
-    window.location = ""
+    window.location = "/";
   });
 
 });
