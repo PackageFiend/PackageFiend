@@ -29,6 +29,16 @@ require('./pass-auth');
 const app = express();
 const port = 8080;
 
+// Redirects to https:// if X-Forwareded-Proto !== https
+app.get('*', function (req, res, next) {
+  console.log(req);
+  if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
+    res.set('X-Forwarded-Proto', 'https');
+    console.log('Redirecting now!!!!!!');
+    res.redirect('https://' + req.hostname + req.url);
+  }
+});
+
 app.use(bodyParser.json());
 
 app.use('/auth', auth);
@@ -39,16 +49,6 @@ app.use(express.static(path.join(__dirname, 'web_files')));
 
 app.get('/bad_login', (req, res) => res.send('Bad login info'));
 app.get('/good_login', (req, res) => res.send('Good login info'));
-
-// Redirects to https:// if X-Forwareded-Proto !== https
-app.get('*', function (req, res, next) {
-  console.log(req);
-  if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
-    res.set('X-Forwarded-Proto', 'https');
-    console.log('Redirecting now!!!!!!');
-    res.redirect('https://' + req.hostname + req.url);
-  }
-});
 
 // Serves static files
 app.use(express.static(path.join(__dirname, 'web_files')));
