@@ -33,13 +33,13 @@ $(document).ready(function() {
     window.location = "";
   });
 
-  $('.ed_parcel_name').click(function() {
+  $('.alerted_nums, .active_nums, .delivered_nums').on('click', '.ed_parcel_name', function() {
     const parent = $(this).parent();
     const icon = parent.children('#save_name');
     icon.css('visibility', 'visible');
   })
 
-  $('.fas').click(function() {
+  $('.alerted_nums, .active_nums, .delivered_nums').on('click', '.fas', function() {
     const inputDiv = $(this).next();
     const nameVal = inputDiv.children('input');
     const inputVal = nameVal.val();
@@ -63,7 +63,7 @@ $(document).ready(function() {
     
   });
 
-  $('.data_line_l, .data_line_r').on('click', function () {
+  $('.alerted_nums, .active_nums, .delivered_nums').on('click', '.data_ilne_l, .data_line_r', function () {
     const parent = $(this).parent();
     if (parent.hasClass('alert_data_line')) {
       const numList = [];
