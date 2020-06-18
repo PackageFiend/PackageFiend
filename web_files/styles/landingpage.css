@@ -50,6 +50,18 @@ html, body {
     justify-content: flex-start;
 }
 
+.left_nav_button {
+    color: rgb(187, 107, 217, 0.75);
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.left_nav_button:hover {
+    color: rgb(187, 107, 217);
+    cursor: pointer;
+}
+
 .sign_in_button {
     background-color: rgb(187, 107, 217, 0.75);
     border-radius: 3px;
@@ -116,90 +128,101 @@ html, body {
     text-decoration: underline;
     font-weight: 700;
 }
-  
-.user_icon:hover .logout_button {
-    visibility: visible;
-}
-.user_icon:hover .user_initial {
-    visibility: hidden;
-}
 
-#about {
-    color: rgb(187, 107, 217, 0.75);
-    margin-left: 8px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-#about:hover {
-    color: rgb(187, 107, 217);
-    cursor: pointer;
-}
-
-.home_body {
+.main_logo_box {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: 100%;
+    margin-bottom: 75px;
+}
+
+.title_text {
+    font-size: 30px;
 }
 
 .logo {
-    width: 350px;
+    width: 550px;
     margin-top: 150px;
+    margin-bottom: 25px;
 }
 
-.enter_track {
+.minor_logo {
+    width: 250px;
+    margin-top: 90px;
+    margin-bottom: 30px;
+}
+
+.big_text {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+    max-width: 300px;
+}
+
+.reg_text {
+    max-width: 300px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+.main_content {
     display: flex;
-    width: 459px;
-    height: 56px;
-    border: 1px solid #9B51E0;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-radius: 19px;
-    margin-top: 25px;
+    flex: 1 0 auto;
+    margin-bottom: 30px;
 }
 
-.enter_numbers_box {
+.feature {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    justify-content: space-between;
+    margin-top: 100px;
 }
 
-.enter_numbers_box img {
-    padding: 10px;
-    height: 20px;
-}
-
-.enter_numbers_box input {
-    background: none;
-    border: none;
-    flex: 1;
-    height: 100%;
-    outline: none;
-    width: 400px;
-}
-
-.go_button {
+.about_text {
     display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.feature_image {
+    display: flex;
+    width: 45%;
     justify-content: center;
+    box-shadow: 11px 15px 46px 0 rgba(0,0,0,.2);
+}
+
+.feature_description {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 10px;
-    width: 176px;
+    justify-content: center;
+    width: 45%;
+}
+
+.about_description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
+
+.link_list img {
     height: 40px;
-    background-color: rgb(77, 188, 123, 0.75);
-    font-weight: 700;
-    border-radius: 5px;
-}
-
-.go_button:hover {
-    background-color: rgb(77, 188, 123);
-    cursor: pointer;
-}
-
-.regex_errors {
-    margin-top: 10px;
-    font-size: 16px;
 }
 
 #bottom_line {
@@ -211,6 +234,7 @@ html, body {
 .footer {
     bottom: 0;
     width: 100%;
+    flex-shrink: 0;
 }
 
 .footer_div {
