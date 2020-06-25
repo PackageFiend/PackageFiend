@@ -10,10 +10,10 @@ const Geos = require('./geos');
 const parseUPS = require('./parse_ups');
 const parseUSPS = require('./parse_usps');
 
-
+// Import example packages for testing
 const demoData = JSON.parse(fs.readFileSync('tracking/demodata.json', 'utf8'));
 
-console.log("loaded");
+// Convert JSON times to JS Dates
 for (const parcelID in demoData) {
   const parcel = demoData[parcelID];
   for (const event of parcel.Events) {
@@ -22,9 +22,10 @@ for (const parcelID in demoData) {
   }
 }
 
+// Import keys from `keys.json`
 const keys = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'keys.json'), 'utf8'));
 
-
+// Regular expressions for figuring out provider based on tracking ID
 const uspsReg = /^(?:9(?:4|2|3)|EC|CP|82)\d+(?:EA)?\d+(?:US)?$/;
 const upsReg = /^1Z[A-Z0-9]+$/;
 const fedexReg = /^(?:\d{12}|\d{15}|\d{20})$/;
@@ -147,15 +148,19 @@ module.exports = {
       // Add geo data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
+        // Don't add Geo to example or error packages
         if (parcel.Demo && !parcel.Fill) continue;
         if (parcel.Error) continue;
+
         for (let j = 0; j < parcel.Events.length; j++) {
           const event = parcel.Events[j];
+          // Don't add Geo if there's no string to get location from
           if (event.Location.String === null || event.Location.String.length <= 5) {
             event.Location.Geo = null;
             event.Location.Address = null;
             continue;
           }
+          // Add the coordinates to the array of Geo promises
           geos.push(Geos.getGeo(event.Location.String, event));
         }
       }
@@ -170,24 +175,32 @@ module.exports = {
       // Add travel time data
       for (let i = 0; i < ret.length; i++) {
         const parcel = ret[i];
-        console.log(parcel);
+
+        // Don't add time data for testing or error packages
         if (parcel.Error) continue;
         if (parcel.Demo && !parcel.Fill) continue;
+
         parcel.Travels = [];
         parcel.TotalDistance = 0;
         const start = null;
         const end = null;
+
+        // Loop through all package events
         for (let j = parcel.Events.length - 1; j > 0; j--) {
           const event = parcel.Events[j];
+
           if (!event.Location.Geo || !event.Time) continue;
           const thisPosition = new GeoPoint(event.Location.Geo.lat, event.Location.Geo.lng);
 
+          // Find the next valid travel event
           for (let k = j - 1; k >= 0; k--) {
             const nextEvent = parcel.Events[k];
             if (!nextEvent.Location.Geo || !nextEvent.Time) continue;
             const nextPosition = new GeoPoint(nextEvent.Location.Geo.lat, nextEvent.Location.Geo.lng);
 
+            // Calculate distance between the two events
             const dist = thisPosition.distanceTo(nextPosition);
+            // Calculate the time between the two events
             const timeDiff = (nextEvent.Time.getTime() - event.Time.getTime()) / 1000;
 
             const niceDist = (dist ? Math.floor(dist) : 0);
@@ -200,7 +213,7 @@ module.exports = {
               TimeTaken: timeDiff
             });
 
-            // console.log(j, k);
+            // Set the current event to the last valid package found
             j = k + 1;
             break;
           }
@@ -224,8 +237,6 @@ module.exports = {
       }
     }
 
-
-    // console.log(parcel.Travels);
 
     return ret;
   }

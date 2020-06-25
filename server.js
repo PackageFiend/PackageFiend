@@ -10,8 +10,10 @@ const kscript = require('./k_init');
 kscript();
 */
 
+// Get the keys from the `keys.json` file
 const keys = JSON.parse(fs.readFileSync(path.join(__dirname, 'keys.json'), 'utf8'));
 
+// Configure AWS SDK for DynamoDB
 AWS.config.update({
   region: 'us-east-1',
   accessKeyId: keys.AWS.accessKeyId,
@@ -19,10 +21,12 @@ AWS.config.update({
   endpointDiscoveryEnabled: true
 });
 
+// Import all of the routes
 const auth = require('./routes/auth');
 const user = require('./routes/user');
 const track = require('./routes/track');
 
+// Import passport for authentication
 const passport = require('passport');
 require('./pass-auth');
 
@@ -45,15 +49,14 @@ app.get('*', function (req, res, next) {
 app.use(bodyParser.json());
 
 app.use('/auth', auth);
+// Set /user to the user rout with passport middleware
 app.use('/user', passport.authenticate('jwt', { session: false }), user);
 app.use('/track', track);
 
 app.use(express.static(path.join(__dirname, 'web_files')));
 
-app.get('/bad_login', (req, res) => res.send('Bad login info'));
-app.get('/good_login', (req, res) => res.send('Good login info'));
-
 // Serves static files
 app.use(express.static(path.join(__dirname, 'web_files')));
 
+// Initialize the server
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
