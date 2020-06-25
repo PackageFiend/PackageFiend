@@ -16,5 +16,7 @@ If you'd like, you can create an account to be able to save, organize, and name 
 
 ## Authors
 [Nehal Shastri](https://www.linkedin.com/in/nehalshastri/)
+
 [Travis Bearden](https://www.linkedin.com/in/travis-bearden-b9089029/)
+
 [Ben Keener](https://www.linkedin.com/in/ben-keener/)
