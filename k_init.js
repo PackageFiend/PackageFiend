@@ -35,6 +35,10 @@ async function getKeys() {
   const pkgFiendInfoData = JSON.stringify(pkgFiendInfo);
   // Write the file to `keys.json`
   fs.writeFileSync('keys.json', pkgFiendInfoData);
+
+  console.log('Completed writing to keys.json');
 }
 
-getKeys();
+//getKeys();
+
+module.exports = { getKeys };
