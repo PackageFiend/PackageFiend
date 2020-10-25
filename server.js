@@ -46,7 +46,7 @@ async function main() {
   app.get('*', function (req, res, next) {
     //console.log(req);
     console.log(req.hostname);
-    if (process.env.DO_SSH == "0") next();
+    if (parseInt(process.env.DO_SSH) == 0) next();
     if (req.hostname === 'localhost') {
       next();
     }  else if (req.get('X-Forwarded-Proto') === 'https') { next(); } else {
